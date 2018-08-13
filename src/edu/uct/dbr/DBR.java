@@ -6,10 +6,13 @@ import edu.uct.dbr.implication.*;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.Iterator;
 
 import edu.ksu.cis.bnj.bbn.inference.elimbel.*;
 import edu.ksu.cis.bnj.bbn.inference.*;
 import edu.ksu.cis.bnj.bbn.BBNGraph;
+import edu.ksu.cis.bnj.bbn.BBNNode;
 
 
 public class DBR {
@@ -20,6 +23,16 @@ public class DBR {
     output("~~~~~~~~ Welcome to DBR ~~~~~~~~~~");
     output("\n~ A bayesian reasoner with logic ~\n");
 
+    /*
+    BNGraph graph = new BNGraph("./examples/asia/asia.bif");
+
+    //System.out.println(graph);
+    Set nodes = graph.getGraphNodes();
+    for (Iterator i=nodes.iterator(); i.hasNext(); ) {
+        BBNNode n = (BBNNode) i.next();
+        System.out.println(n);
+    }
+    */
     dbr();
 
     output("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -48,6 +61,10 @@ public class DBR {
         case "im":
         case "implication":
           if (graph != null) viewImplicationStatements(); else output("\nNo network loaded\n");
+          break;
+        case "o":
+        case "observe":
+          if (graph != null) output("This does nothing for now"); else output("\nNo network loaded\n");
           break;
         case "c":
         case "cpt":
@@ -97,12 +114,39 @@ public class DBR {
     output("\n(c)lassical or (d)efeasible implication?\n>");
     Scanner inputScanner = new Scanner(System.in);
     String userInput = inputScanner.next();
-    Implication impl = null
+    Implication impl = null;
+
+    Set nodes = graph.getGraphNodes();
+    for (Iterator i=nodes.iterator(); i.hasNext(); ) {
+        BNNode n = (BNNode) i.next();
+        System.out.println(n);
+    }
+
     if (userInput.equals("c")){
-      impl = new ClassicalImplication(graph);
+      output("\nEnter antecedent node name\n>");
+      String antecedentName = inputScanner.next();
+      output("\nEnter consequent node name\n>");
+      String consequentName = inputScanner.next();
+      BNNode antecedentNode = graph.getNode(antecedentName);
+      BNNode consequentNode = graph.getNode(consequentName);
+
+      if (antecedentNode != null && consequentNode != null){
+        impl = new ClassicalImplication(antecedentNode, consequentNode);
+      }
+      else {output("Cannot find nodes with those names");}
     }
     else if (userInput.equals("d")){
-      impl = new DefeasibleImplication(graph);
+      output("\nEnter antecedent node name\n>");
+      String antecedentName = inputScanner.next();
+      output("\nEnter consequent node name\n>");
+      String consequentName = inputScanner.next();
+      BNNode antecedentNode = graph.getNode(antecedentName);
+      BNNode consequentNode = graph.getNode(consequentName);
+
+      if (antecedentNode != null && consequentNode != null){
+        impl = new DefeasibleImplication(antecedentNode, consequentNode);
+      }
+      else {output("Cannot find nodes with those names");}
     }
     if (impl != null) graph.addImplicationStatement(impl);
   }
@@ -110,7 +154,7 @@ public class DBR {
   private static void viewImplicationStatements(){
     ArrayList<Implication> implicationStatements = graph.getImplicationStatements();
     for (Implication impl : implicationStatements){
-      output(impl);
+      output(impl+"\n");
     }
   }
 
@@ -126,7 +170,7 @@ public class DBR {
     String networkName = (graph == null) ? "None" : graph.getName();
     String menuText = "\n~DBR Menu~"+
                       "\nNetwork loaded: "+networkName+
-                      "\n(l)oad a BN, draw (i)nference, (a)dd implication,"+
+                      "\n(l)oad a BN, draw (i)nference, (a)dd implication, (o)bserve, "+
                       "\nview (im)plication, view (C)PT, view (g)raph, (q)uit"+
                       "\n>";
     return menuText;

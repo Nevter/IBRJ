@@ -1,16 +1,16 @@
 package edu.uct.dbr.implication;
 
+import edu.uct.dbr.BNNode;
+
+public class DefeasibleImplication extends Implication {
 
 
-public class DefeasibleImplication implements Implication {
-
-
-  public DefeasibleImplication(){
-
+  public DefeasibleImplication(BNNode antecedentNode, BNNode consequentNode){
+    super(antecedentNode, consequentNode);
   }
 
   public String toString(){
-    return "DefeasibleImplication";
+    return "DefeasibleImplication\n" + super.toString();
   }
 
 }
