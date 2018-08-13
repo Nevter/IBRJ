@@ -1,0 +1,121 @@
+net
+{
+    node_size = (120 40);
+    HR_Monitor_InitSD = "2";
+    HR_Monitor_InitStates = "5";
+    HR_Monitor_OpenGraph = "0";
+    HR_Monitor_GraphPrecision = "100";
+    HR_Monitor_AutoUpdGraph = "0";
+    HR_Compile_ApproxEpsilon = "0.00001";
+    HR_Compile_Approximate = "0";
+    HR_Compile_Compress = "0";
+    HR_Compile_TriangMethod = "0";
+    HR_Propagate_AutoNormal = "1";
+    HR_Propagate_AutoSum = "1";
+    HR_Propagate_Auto = "0";
+    HR_Font_Italic = "0";
+    HR_Font_Weight = "400";
+    HR_Font_Size = "-12";
+    HR_Font_Name = "Arial";
+    HR_Grid_GridShow = "0";
+    HR_Grid_GridSnap = "1";
+    HR_Grid_Y = "10";
+    HR_Grid_X = "10";
+    HRUNTIME_Grid_X = "10";
+    HRUNTIME_Grid_Y = "10";
+    HRUNTIME_Grid_GridSnap = "1";
+    HRUNTIME_Grid_GridShow = "0";
+    HRUNTIME_Font_Name = "Arial";
+    HRUNTIME_Font_Size = "-12";
+    HRUNTIME_Font_Weight = "400";
+    HRUNTIME_Font_Italic = "0";
+    HRUNTIME_Propagate_Auto = "0";
+    HRUNTIME_Propagate_AutoSum = "1";
+    HRUNTIME_Propagate_AutoNormal = "1";
+    HRUNTIME_Compile_TriangMethod = "0";
+    HRUNTIME_Compile_Compress = "0";
+    HRUNTIME_Compile_Approximate = "0";
+    HRUNTIME_Compile_ApproxEpsilon = "0.00001";
+    HRUNTIME_Monitor_AutoUpdGraph = "0";
+    HRUNTIME_Monitor_GraphPrecision = "100";
+    HRUNTIME_Monitor_OpenGraph = "0";
+    HR_Groups_GroupColors = "";
+    HR_Groups_GroupNames = "";
+    HR_Groups_UserGroupsNo = "0";
+    HR_Color_Decision = "17";
+    HR_Color_Utility = "36";
+    HR_Color_ContinuosChance = "48";
+    HR_Color_DiscreteChance = "16";
+}
+
+node O
+{
+    position = (196 81);
+    states = ("dr" "wt" "sk");
+}
+
+node Seismic
+{
+    position = (178 183);
+    states = ("cl" "op" "di");
+}
+
+utility Drillpay
+{
+    label = "Drillpay";
+    position = (347 81);
+}
+
+decision Drill
+{
+    position = (348 178);
+    states = ("Drill" "No Drill");
+}
+
+utility Testpay
+{
+    label = "Testpay";
+    position = (22 292);
+}
+
+decision Test
+{
+    label = "Test Yes/No";
+    states = ("Test" "No test");
+    position = (0 178);
+}
+
+potential (O)
+{
+ data = ( 0.5 0.3 0.2 );
+}
+
+potential (Seismic | O Test)
+{
+ data = ((( 0.1 0.3 0.6 )	%  dr  Test
+	  ( 0.333333 0.333333 0.333333 ))	%  dr  No test
+	 (( 0.3 0.4 0.3 )	%  wt  Test
+	  ( 0.333333 0.333333 0.333333 ))	%  wt  No test
+	 (( 0.5 0.4 0.1 )	%  sk  Test
+	  ( 0.333333 0.333333 0.333333 )));	%  sk  No test
+}
+
+potential (Drillpay | O Drill)
+{
+ data = (( -70	%  dr  Drill
+	   0 )	%  dr  No Drill
+	 ( 50	%  wt  Drill
+	   0 )	%  wt  No Drill
+	 ( 200	%  sk  Drill
+	   0 ));	%  sk  No Drill
+}
+
+potential (Drill | Seismic) {}
+
+potential (Testpay | Test)
+{
+ data = ( -10	%  Test
+	  0 );	%  No test
+}
+
+potential (Test) {}

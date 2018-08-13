@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!-- Evidence file for alarm -->
+<!-- By: Roby Joehanes -->
+
+<!-- DTD for the evidence file format -->
+<!DOCTYPE EVIDENCES [
+    <!ELEMENT EVIDENCES ( EVIDENCE )+>
+    <!ELEMENT EVIDENCE EMPTY>
+        <!ATTLIST EVIDENCE NAME CDATA #REQUIRED
+                           VALUE CDATA #REQUIRED>
+]>
+
+
+<EVIDENCES>
+    <EVIDENCE NAME="Hypovolemia" VALUE="False" />
+    <EVIDENCE NAME="LVFailure" VALUE="False" />
+    <EVIDENCE NAME="MinVolSet" VALUE="Normal" />
+    <EVIDENCE NAME="Disconnect" VALUE="False" />
+    <EVIDENCE NAME="ErrLowOutput" VALUE="False" />
+    <EVIDENCE NAME="ErrCauter" VALUE="False" />
+    <EVIDENCE NAME="Anaphylaxis" VALUE="False" />
+</EVIDENCES>

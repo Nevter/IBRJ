@@ -1,0 +1,90 @@
+@RELATION COURSE
+@ATTRIBUTE Course_ID integer @PRIMARY
+@ATTRIBUTE Course string
+@ATTRIBUTE Rating {High, Medium, Low}
+@ATTRIBUTE Difficulty {High, Medium, Low}
+@ATTRIBUTE Prof_ID integer @REFERENCE INSTRUCTOR.Prof_ID
+
+@DATA
+1, CIS_101, High, Low, 1
+2, CIS_102, Low, Medium, 2
+3, CIS_103, Medium, Medium, 3
+4, CIS_104, High, Medium, 1
+5, CIS_204, High, Low, 2
+6, CIS_301, Low, High, 1
+7, CIS_401, High, Low, 3
+8, CIS_402, Low, High, 4
+9, CIS_403, High, Medium, 6
+10, CIS_404, Low, Medium, 7
+11, CIS_405, Medium, Low, 8
+12, CIS_406, Medium, Medium, 5
+13, CIS_409, Low, Low, 4
+14, CIS_500, Medium, Medium, 8
+
+			
+@RELATION INSTRUCTOR
+@ATTRIBUTE Prof_ID integer @PRIMARY
+@ATTRIBUTE TeachingAbility {High, Medium, Low}
+@ATTRIBUTE Popularity {High, Medium, Low}
+
+@DATA
+1, High, Medium
+2, Low, Low
+3, Low, Medium
+4, Medium, High
+5, High, Medium
+6, High, High
+7, Medium, Low
+8, High, Low
+10, High, High
+
+
+@RELATION REGISTRATION
+@ATTRIBUTE Reg_ID integer @PRIMARY
+@ATTRIBUTE Grade {A, B, C}
+@ATTRIBUTE Satisfaction {High, Medium, Low}
+@ATTRIBUTE Course_ID integer @REFERENCE COURSE.Course_ID
+@ATTRIBUTE Student_ID integer @REFERENCE STUDENT.Student_ID
+
+@DATA
+1, A, Medium, 1, 1
+2, B, High, 2, 1
+3, B, Low, 9, 1
+4, B, Low, 1, 2 
+5, C, Low, 5, 2
+6, B, Medium, 9, 2
+7, A, Medium, 10, 3
+8, A, High, 1, 3
+9, B, Low, 5, 3
+10, C, High, 6, 4
+11, A, Medium, 7, 4
+12, B, High, 8, 5
+13, B, High, 8, 6
+14, C, Low, 10, 6
+15, A, High, 10, 7
+16, B, High, 8, 7
+17, A, High, 1, 7
+
+
+@RELATION STUDENT
+@ATTRIBUTE Student_ID integer @PRIMARY
+@ATTRIBUTE Intelligence {High, Medium, Low}
+@ATTRIBUTE Ranking {High, Medium, Low}
+
+@DATA
+1, High, Medium
+2, High, High
+3, Low,	Low
+4, Medium, Medium
+5, High, Low
+6, Medium, High
+7, Low, High
+8, Low, Medium
+9, Low, High
+10, High, Low
+11, Medium, Medium
+12, Low, Medium
+13, High, Low
+
+
+

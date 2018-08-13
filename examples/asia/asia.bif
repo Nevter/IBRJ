@@ -1,0 +1,62 @@
+// Bayesian Network in the Interchange Format
+// Produced by BayesianNetworks package in JavaBayes
+// Output created Sun Nov 02 18:01:29 GMT+00:00 1997
+// Bayesian network 
+network "Asia" { //8 variables and 8 probability distributions
+}
+variable  "VisitAsia" { //2 values
+	type discrete[2] {  "Visit"  "NoVisit" };
+	property "position = (138, 187)" ;
+}
+variable  "Tuberculosis" { //2 values
+	type discrete[2] {  "Present"  "Absent" };
+	property "position = (225, 235)" ;
+}
+variable  "Smoking" { //2 values
+	type discrete[2] {  "Smoker"  "NonSmoker" };
+	property "position = (533, 180)" ;
+}
+variable  "Cancer" { //2 values
+	type discrete[2] {  "Present"  "Absent" };
+	property "position = (437, 245)" ;
+}
+variable  "TbOrCa" { //2 values
+	type discrete[2] {  "True"  "False" };
+	property "position = (351, 304)" ;
+}
+variable  "XRay" { //2 values
+	type discrete[2] {  "Abnormal"  "Normal" };
+	property "position = (256, 373)" ;
+}
+variable  "Bronchitis" { //2 values
+	type discrete[2] {  "Present"  "Absent" };
+	property "position = (625, 242)" ;
+}
+variable  "Dyspnea" { //2 values
+	type discrete[2] {  "Present"  "Absent" };
+	property "position = (492, 374)" ;
+}
+probability (  "VisitAsia" ) { //1 variable(s) and 2 values
+	table 0.01 0.99 ;
+}
+probability (  "Tuberculosis"  "VisitAsia" ) { //2 variable(s) and 4 values
+	table 0.05 0.01 0.95 0.99 ;
+}
+probability (  "Smoking" ) { //1 variable(s) and 2 values
+	table 0.5 0.5 ;
+}
+probability (  "Cancer"  "Smoking" ) { //2 variable(s) and 4 values
+	table 0.1 0.01 0.9 0.99 ;
+}
+probability (  "TbOrCa"  "Tuberculosis"  "Cancer" ) { //3 variable(s) and 8 values
+	table 1.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 ;
+}
+probability (  "XRay"  "TbOrCa" ) { //2 variable(s) and 4 values
+	table 0.98 0.05 0.02 0.95 ;
+}
+probability (  "Bronchitis"  "Smoking" ) { //2 variable(s) and 4 values
+	table 0.6 0.3 0.4 0.7 ;
+}
+probability (  "Dyspnea"  "TbOrCa"  "Bronchitis" ) { //3 variable(s) and 8 values
+	table 0.9 0.7 0.8 0.1 0.1 0.3 0.2 0.9 ;
+}

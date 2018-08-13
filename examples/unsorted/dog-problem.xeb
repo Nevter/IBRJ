@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!-- DTD for the evidence file format -->
+<!DOCTYPE EVIDENCES [
+    <!ELEMENT EVIDENCES ( EVIDENCE )+>
+    <!ELEMENT EVIDENCE EMPTY>
+        <!ATTLIST EVIDENCE NAME CDATA #REQUIRED
+                           VALUE CDATA #REQUIRED>
+]>
+
+
+<EVIDENCES>
+    <EVIDENCE NAME="hear-bark" VALUE="false" /> 
+</EVIDENCES>

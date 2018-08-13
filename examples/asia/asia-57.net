@@ -1,0 +1,148 @@
+net
+{
+    node_size = (90 40);
+    HR_Desc = "";
+    HR_Zoom_ZoomFactor = "100";
+    HR_Groups_GroupColors = "";
+    HR_Groups_GroupNames = "";
+    HR_Groups_UserGroupsNo = "0";
+    HR_Color_Interface = "21";
+    HR_Color_Instance = "0";
+    HR_Color_Utility = "36";
+    HR_Color_Decision = "17";
+    HR_Color_ContinuousChance = "48";
+    HR_Color_DiscreteChance = "16";
+    HR_Monitor_InitSD = "2";
+    HR_Monitor_InitStates = "5";
+    HR_Monitor_OpenGraph = "0";
+    HR_Monitor_GraphPrecision = "100";
+    HR_Monitor_AutoUpdGraph = "0";
+    HR_Compile_MaxMinimalSeparators = "250000";
+    HR_Compile_ApproxEpsilon = "1.0E-5";
+    HR_Compile_Approximate = "0";
+    HR_Compile_Compress = "0";
+    HR_Compile_TriangMethod = "0";
+    HR_Propagate_AutoNormal = "1";
+    HR_Propagate_AutoSum = "1";
+    HR_Propagate_Auto = "1";
+    HR_Font_Italic = "0";
+    HR_Font_Weight = "400";
+    HR_Font_Size = "-12";
+    HR_Font_Name = "Arial";
+    HR_Grid_GridShow = "0";
+    HR_Grid_GridSnap = "0";
+    HR_Grid_Y = "40";
+    HR_Grid_X = "40";
+}
+
+node VisitAsia
+{
+    label = "VisitAsia";
+    position = (10 292);
+    states = ("Visit" "No_Visit");
+}
+
+node Tuberculosis
+{
+    label = "Tuberculosis";
+    position = (10 196);
+    states = ("Present" "Absent");
+}
+
+node Smoking
+{
+    label = "Smoking";
+    position = (364 292);
+    states = ("Smoker" "NonSmoker");
+}
+
+node Cancer
+{
+    label = "Cancer";
+    position = (262 196);
+    states = ("Present" "Absent");
+}
+
+node TbOrCa
+{
+    label = "TbOrCa";
+    position = (154 100);
+    states = ("True" "False");
+}
+
+node XRay
+{
+    label = "XRay";
+    position = (22 10);
+    states = ("Abnormal" "Normal");
+}
+
+node Bronchitis
+{
+    label = "Bronchitis";
+    position = (502 196);
+    states = ("Present" "Absent");
+}
+
+node Dyspnea
+{
+    label = "Dyspnea";
+    position = (298 10);
+    states = ("Present" "Absent");
+}
+
+potential (VisitAsia)
+{
+    data = ( 0.01 0.99 );
+}
+
+potential (Tuberculosis | VisitAsia)
+{
+    data
+     = (( 0.05 0.95 )	%  VisitAsia=Visit
+	( 0.01 0.99 ));	%  VisitAsia=No_Visit
+}
+
+potential (Smoking)
+{
+    data = ( 0.5 0.5 );
+}
+
+potential (Cancer | Smoking)
+{
+    data
+     = (( 0.1 0.9 )	%  Smoking=Smoker
+	( 0.01 0.99 ));	%  Smoking=NonSmoker
+}
+
+potential (TbOrCa | Tuberculosis Cancer)
+{
+    data
+     = ((( 1 0 )	%  Tuberculosis=Present  Cancer=Present
+	 ( 1 0 ))	%  Tuberculosis=Present  Cancer=Absent
+	(( 1 0 )	%  Tuberculosis=Absent  Cancer=Present
+	 ( 0 1 )));	%  Tuberculosis=Absent  Cancer=Absent
+}
+
+potential (XRay | TbOrCa)
+{
+    data
+     = (( 0.98 0.02 )	%  TbOrCa=True
+	( 0.05 0.95 ));	%  TbOrCa=False
+}
+
+potential (Bronchitis | Smoking)
+{
+    data
+     = (( 0.6 0.4 )	%  Smoking=Smoker
+	( 0.3 0.7 ));	%  Smoking=NonSmoker
+}
+
+potential (Dyspnea | TbOrCa Bronchitis)
+{
+    data
+     = ((( 0.9 0.1 )	%  TbOrCa=True  Bronchitis=Present
+	 ( 0.7 0.3 ))	%  TbOrCa=True  Bronchitis=Absent
+	(( 0.8 0.2 )	%  TbOrCa=False  Bronchitis=Present
+	 ( 0.1 0.9 )));	%  TbOrCa=False  Bronchitis=Absent
+}

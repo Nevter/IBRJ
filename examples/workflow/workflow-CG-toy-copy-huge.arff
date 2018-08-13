@@ -1,0 +1,1053 @@
+@RELATION CDNA_MICROARRAY
+@ATTRIBUTE Array_ID string @PRIMARY
+@ATTRIBUTE cDNA_Sequence string @REFERENCE GENE.DNA_Sequence
+@ATTRIBUTE Treatment {HeatStress, Pathogen, Control}
+@ATTRIBUTE Hybridizations {Cy3, Cy5}
+@ATTRIBUTE Data { R, N, I } 
+@ATTRIBUTE Normalization {Log, LogCenter, Threshold}
+@ATTRIBUTE Regulation {Up, Down, Neither}
+
+@DATA
+Array_1,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_2,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_3,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_4,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_5,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_6,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_7,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_8,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_9,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_10, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_11, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_12, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_13, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_14, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_15,  Seq_1, Control,    Cy5,  N, LogCenter, Neither
+Array_16,  Seq_2, Pathogen,   Cy5,  R, LogCenter, Neither
+Array_17,  Seq_3, Pathogen,   Cy5,  I, LogCenter, Down
+Array_18,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_19,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_20,  Seq_2, HeatStress, Cy5,  R, LogCenter, Up
+Array_21,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_22,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_23,  Seq_1, Pathogen,   Cy3,  R, LogCenter, Up
+Array_24, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_25, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_26, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_27, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_28, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_29,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_30,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_31,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_32,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_33,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_34,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_35,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_36,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_37,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_38, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_39, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_40, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_41, Seq_2, Control,    Cy5,  R, LogCenter, Neither
+Array_42, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_43,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_44,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_45,  Seq_3, Pathogen,   Cy5,  N, LogCenter, Down
+Array_46,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_47,  Seq_2, Control,    Cy3,  R, LogCenter, Neither
+Array_48,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_49,  Seq_1, Control,    Cy3,  R, LogCenter, Neither
+Array_50,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_51,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_52, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_53, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_54, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_55, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_56, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_57,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_58,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_59,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_60,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_61,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_62,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_63,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_64,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_65,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_66, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_67, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_68, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_69, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_70, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_71,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_72,  Seq_2, Pathogen,   Cy5,  R, LogCenter, Neither
+Array_73,  Seq_3, Pathogen,   Cy5,  I, LogCenter, Down
+Array_74,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_75,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_76,  Seq_2, HeatStress, Cy5,  R, LogCenter, Up
+Array_77,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_78,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_79,  Seq_1, Pathogen,   Cy3,  R, LogCenter, Up
+Array_80, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_81, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_82, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_83, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_84, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_85,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_86,  Seq_2, Pathogen,   Cy3,  N, LogCenter, Neither
+Array_87,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_88,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_89,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_90,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_91,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_92,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_93,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_94, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_95, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_96, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_97, Seq_2, Control,    Cy5,  R, LogCenter, Neither
+Array_98, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_99,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_100,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_101,  Seq_3, Pathogen,   Cy5,  N, LogCenter, Down
+Array_102,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_103,  Seq_2, Control,    Cy3,  R, LogCenter, Neither
+Array_104,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_105,  Seq_1, Control,    Cy3,  R, LogCenter, Neither
+Array_106,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_107,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_108, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_109, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_110, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_111, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_112, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_113,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_114,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_115,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_116,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_117,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_118,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_119,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_120,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_121,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_122, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_123, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_124, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_125, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_126, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_127,  Seq_1, Control,    Cy5,  N, LogCenter, Neither
+Array_128,  Seq_2, Pathogen,   Cy5,  R, LogCenter, Neither
+Array_129,  Seq_3, Pathogen,   Cy5,  I, LogCenter, Down
+Array_130,  Seq_1, Control,   Cy5,  I, LogCenter, Up
+Array_131,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_132,  Seq_2, HeatStress, Cy5,  R, LogCenter, Up
+Array_133,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_134,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_135,  Seq_1, Pathogen,   Cy3,  R, LogCenter, Up
+Array_136, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_137, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_138, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_139, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_140, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_141,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_142,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_143,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_144,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_145,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_146,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_147,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_148,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_149,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_150, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_151, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_152, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_153, Seq_2, Control,    Cy5,  R, LogCenter, Neither
+Array_154, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_155,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_156,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_157,  Seq_3, Pathogen,   Cy5,  N, LogCenter, Down
+Array_158,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_159,  Seq_2, Control,    Cy3,  R, LogCenter, Neither
+Array_160,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_161,  Seq_1, Control,    Cy3,  R, LogCenter, Neither
+Array_162,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_163,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_164, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_165, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_166, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_167, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_168, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_169,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_170,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_171,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_172,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_173,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_174,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_175,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_176,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_177,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_178, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_179, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_180, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_181, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_182, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_183,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_184,  Seq_2, Pathogen,   Cy5,  R, LogCenter, Neither
+Array_185,  Seq_3, Pathogen,   Cy5,  I, LogCenter, Down
+Array_186,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_187,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_188,  Seq_2, HeatStress, Cy5,  R, LogCenter, Up
+Array_189,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_190,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_191,  Seq_1, Pathogen,   Cy3,  R, LogCenter, Up
+Array_192, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_193, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_194, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_195, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_196, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_197,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_198,  Seq_2, Pathogen,   Cy3,  N, LogCenter, Neither
+Array_199,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_200,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_201,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_202,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_203,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_204,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_205,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_206, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_207, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_208, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_209, Seq_2, Control,    Cy5,  R, LogCenter, Neither
+Array_210, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_211,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_212,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_213,  Seq_3, Pathogen,   Cy5,  N, LogCenter, Down
+Array_214,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_215,  Seq_2, Control,    Cy3,  R, LogCenter, Neither
+Array_216,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_217,  Seq_1, Control,    Cy3,  R, LogCenter, Neither
+Array_218,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_219,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_220, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_221, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_222, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_223, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_224, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_225,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_226,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_227,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_228,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_229,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_230,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_231,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_232,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_233,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_234, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_235, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_236, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_237, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_238, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_239,  Seq_1, Control,    Cy5,  N, LogCenter, Neither
+Array_240,  Seq_2, Pathogen,   Cy5,  R, LogCenter, Neither
+Array_241,  Seq_3, Pathogen,   Cy5,  I, LogCenter, Down
+Array_242,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_243,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_244,  Seq_2, HeatStress, Cy5,  R, LogCenter, Up
+Array_245,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_246,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_247,  Seq_1, Pathogen,   Cy3,  R, LogCenter, Up
+Array_248, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_249, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_250, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_251, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_252, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_253,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_254,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_255,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_256,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_257,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_258,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_259,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_260,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_261,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_262, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_263, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_264, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_265, Seq_2, Control,    Cy5,  R, LogCenter, Neither
+Array_266, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_267,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_268,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_269,  Seq_3, Pathogen,   Cy5,  N, LogCenter, Down
+Array_270,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_271,  Seq_2, Control,    Cy3,  R, LogCenter, Neither
+Array_272,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_273,  Seq_1, Control,    Cy3,  R, LogCenter, Neither
+Array_274,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_275,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_276, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_277, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_278, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_279, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_280, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_281,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_282,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_283,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_284,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_285,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_286,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_287,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_288,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_289,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_290, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_291, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_292, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_293, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_294, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_295,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_296,  Seq_2, Pathogen,   Cy5,  R, LogCenter, Neither
+Array_297,  Seq_3, Pathogen,   Cy5,  I, LogCenter, Down
+Array_298,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_299,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_300,  Seq_2, HeatStress, Cy5,  R, LogCenter, Up
+Array_301,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_302,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_303,  Seq_1, Pathogen,   Cy3,  R, LogCenter, Up
+Array_304, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_305, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_306, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_307, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_308, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_309,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_310,  Seq_2, Pathogen,   Cy3,  N, LogCenter, Neither
+Array_311,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_312,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_313,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_314,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_315,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_316,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_317,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_318, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_319, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_320, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_321, Seq_2, Control,    Cy5,  R, LogCenter, Neither
+Array_322, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_323,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_324,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_325,  Seq_3, Pathogen,   Cy5,  N, LogCenter, Down
+Array_326,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_327,  Seq_2, Control,    Cy3,  R, LogCenter, Neither
+Array_328,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_329,  Seq_1, Control,    Cy3,  R, LogCenter, Neither
+Array_330,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_331,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_332, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_333, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_334, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_335, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_336, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_337,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_338,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_339,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_340,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_341,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_342,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_343,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_344,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_345,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_346, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_347, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_348, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_349, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_350, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_351,  Seq_1, Control,    Cy5,  N, LogCenter, Neither
+Array_352,  Seq_2, Pathogen,   Cy5,  R, LogCenter, Neither
+Array_353,  Seq_3, Pathogen,   Cy5,  I, LogCenter, Down
+Array_354,  Seq_1, Control,   Cy5,  I, LogCenter, Up
+Array_355,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_356,  Seq_2, HeatStress, Cy5,  R, LogCenter, Up
+Array_357,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_358,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_359, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_360, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_361, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_362, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_363, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_364,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_365,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_366,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_367,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_368,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_369,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_370,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_371,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_372,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_373, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_374, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_375, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_376, Seq_2, Control,    Cy5,  R, LogCenter, Neither
+Array_377, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_378,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_379,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_380,  Seq_3, Pathogen,   Cy5,  N, LogCenter, Down
+Array_381,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_382,  Seq_2, Control,    Cy3,  R, LogCenter, Neither
+Array_383,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_384,  Seq_1, Control,    Cy3,  R, LogCenter, Neither
+Array_385,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_386,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_387, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_388, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_389, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_390, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_391, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_392,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_393,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_394,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_395,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_396,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_397,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_398,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_399,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_400,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_401, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_402, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_403, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_404, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_405, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_406,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_407,  Seq_2, Pathogen,   Cy5,  R, LogCenter, Neither
+Array_408,  Seq_3, Pathogen,   Cy5,  I, LogCenter, Down
+Array_409,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_410,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_411,  Seq_2, HeatStress, Cy5,  R, LogCenter, Up
+Array_412,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_413,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_414,  Seq_1, Pathogen,   Cy3,  R, LogCenter, Up
+Array_415, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_416, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_417, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_418, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_419, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_420,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_421,  Seq_2, Pathogen,   Cy3,  N, LogCenter, Neither
+Array_422,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_423,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_424,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_425,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_426,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_427,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_428,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_429, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_430, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_431, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_432, Seq_2, Control,    Cy5,  R, LogCenter, Neither
+Array_433, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_434,  Seq_1, Control,    Cy3,  I, LogCenter, Neither
+Array_435,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_436,  Seq_3, Pathogen,   Cy5,  N, LogCenter, Down
+Array_437,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_438,  Seq_2, Control,    Cy3,  R, LogCenter, Neither
+Array_439,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_440,  Seq_1, Control,    Cy3,  R, LogCenter, Neither
+Array_441,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_442,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_443, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_444, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_445, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_446, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_447, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_448,  Seq_1, Pathogen,   Cy3,  R, LogCenter, Up
+
+		
+@RELATION GENE
+@ATTRIBUTE DNA_Sequence string @PRIMARY
+@ATTRIBUTE Protein_Product string @REFERENCE PROTEIN.Protein_ID
+@ATTRIBUTE Pathway string @REFERENCE PATHWAY.Pathway_ID
+@ATTRIBUTE Functional_Description string
+@ATTRIBUTE Accession_Number string
+@ATTRIBUTE Organism string
+@ATTRIBUTE Name string
+
+@DATA
+Seq_1, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_2, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_3, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_4, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_5, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_6, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_7, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_8, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_9, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_10, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_11, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_12, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_13, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_14, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_15, P5, Pathway_4, vernalization,          Os2g00011, Arabidopsis_thaliana,     LFY
+Seq_16, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_17, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_18, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_19, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_20, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_21, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     Y250
+Seq_22, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_23, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_24, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_25, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_26, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_27, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_28, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_29, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_30, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_31, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_32, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_33, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_34, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_35, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_36, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_37, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_38, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_39, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_40, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_41, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_42, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_43, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_44, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_45, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_46, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_47, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_48, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_49, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_50, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_51, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_52, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_53, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_54, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_55, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_56, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_57, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_58, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_59, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_60, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_61, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_62, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_63, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_64, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_65, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_66, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_67, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_68, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_69, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_70, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_71, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_72, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_73, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_74, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_75, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_76, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_77, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_78, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_79, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_80, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_81, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_82, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_83, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_84, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_85, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_86, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_87, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_88, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_89, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_90, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_91, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_92, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_93, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_94, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_95, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_96, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_97, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_98, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_99, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_100, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_101, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_102, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_103, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_104, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_105, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_106, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_107, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_108, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_109, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_110, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_111, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_112, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_113, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_114, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_115, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_116, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_117, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_118, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_119, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_120, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_121, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_122, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_123, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_124, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_125, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_126, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_127, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_128, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_129, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_130, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_131, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_132, P5, Pathway_2, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_133, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_134, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_135, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_136, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_137, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_138, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_139, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_140, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_141, P5, Pathway_4, vernalization,          U49845, Arabidopsis_thaliana,     LFY
+Seq_142, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_143, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_144, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_145, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_146, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_147, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_148, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_149, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_150, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_151, P2, Pathway_3, flowering_time_control, Os2g00011, Arabidopsis_thaliana,     RICE3
+Seq_152, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_153, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_154, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_155, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_156, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_157, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_158, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_159, P5, Pathway_4, vernalization,          Os2g00011, Arabidopsis_thaliana,     LFY
+Seq_160, P2, Pathway_2, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_161, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_162, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_163, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_164, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_165, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     Y250
+Seq_166, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_167, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_168, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_169, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_170, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_171, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_172, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_173, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_174, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_175, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_176, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_177, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_178, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_179, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_180, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_181, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_182, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_183, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_184, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_185, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_186, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_187, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_188, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_189, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_190, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_191, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_192, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_193, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_194, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_195, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_196, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_197, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_198, P7, Pathway_3, vernalization, Os2g00011, Oryza_sativa,             RICE3
+Seq_199, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_200, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_201, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_202, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_203, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_204, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_205, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_206, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_207, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_208, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_209, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_210, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_211, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_212, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_213, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_214, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_215, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_216, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_217, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_218, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_219, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_220, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_221, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_222, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_223, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_224, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_225, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_226, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_227, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_228, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_229, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_230, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_231, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_232, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_233, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_234, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_235, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_236, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_237, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_238, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_239, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_240, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_241, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_242, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_243, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_244, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_245, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_246, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_247, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_248, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_249, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_250, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_251, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_252, P7, Pathway_3, chalcone_synthase, Os2g00011, Oryza_sativa,             RICE3
+Seq_253, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_254, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_255, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_256, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_257, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_258, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_259, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_260, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_261, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_262, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_263, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_264, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_265, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_266, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_267, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_268, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_269, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_270, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_271, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_272, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_273, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_274, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_275, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_276, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_277, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_278, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_279, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_280, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_281, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_282, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_283, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_284, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_285, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_286, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_287, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_288, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+
+
+@RELATION PROTEIN
+@ATTRIBUTE Protein_ID string @PRIMARY
+@ATTRIBUTE Canonical_Name string
+@ATTRIBUTE Role {Enzyme, TranscriptionFactor, Other}
+
+@DATA
+P0, unknown,           Other
+P1, chalcone_synthase, Enzyme
+P2, trans_factor1,     TranscriptionFactor
+P3, trans_factor2,     TranscriptionFactor
+P4, trans_factor3,     TranscriptionFactor
+P5, cAMP_kinase1,      Enzyme
+P6, cAMP_kinase2,      Enzyme
+P7, cAMP_kinase3,      Enzyme
+P8, unknown,           Other
+P9, chalcone_synthase, Enzyme
+P10, trans_factor1,     TranscriptionFactor
+P11, trans_factor2,     TranscriptionFactor
+P12, trans_factor3,     TranscriptionFactor
+P13, cAMP_kinase1,      Enzyme
+P14, cAMP_kinase2,      Enzyme
+P15, cAMP_kinase3,      Enzyme
+P16, unknown,           Other
+P17, chalcone_synthase, Enzyme
+P18, trans_factor1,     TranscriptionFactor
+P19, trans_factor2,     TranscriptionFactor
+P20, trans_factor3,     TranscriptionFactor
+P21, cAMP_kinase1,      Enzyme
+P22, cAMP_kinase2,      Enzyme
+P23, cAMP_kinase3,      Enzyme
+P24, unknown,           Other
+P25, chalcone_synthase, Enzyme
+P26, trans_factor1,     TranscriptionFactor
+P27, trans_factor2,     Enzyme
+P28, trans_factor3,     TranscriptionFactor
+P29, cAMP_kinase1,      Enzyme
+P30, cAMP_kinase2,      Enzyme
+P31, cAMP_kinase3,      Enzyme
+P32, unknown,           Other
+P33, chalcone_synthase, Enzyme
+P34, trans_factor1,     TranscriptionFactor
+P35, trans_factor2,     TranscriptionFactor
+P36, trans_factor3,     Other
+P37, cAMP_kinase1,      Enzyme
+P38, cAMP_kinase2,      Enzyme
+P39, cAMP_kinase3,      Enzyme
+P40, unknown,           Other
+P41, chalcone_synthase, Enzyme
+P42, trans_factor1,     TranscriptionFactor
+P43, trans_factor2,     TranscriptionFactor
+P44, trans_factor3,     TranscriptionFactor
+P45, trans_factor1,      Enzyme
+P46, cAMP_kinase2,      Enzyme
+P47, cAMP_kinase3,      Enzyme
+P48, unknown,           Other
+P49, chalcone_synthase, Enzyme
+P50, trans_factor1,     TranscriptionFactor
+P51, trans_factor2,     TranscriptionFactor
+P52, trans_factor3,     TranscriptionFactor
+P53, cAMP_kinase1,      Enzyme
+P54, cAMP_kinase2,      Enzyme
+P55, cAMP_kinase3,      Enzyme
+P56, unknown,           Other
+P57, chalcone_synthase, Enzyme
+P58, trans_factor1,     TranscriptionFactor
+P59, trans_factor2,     TranscriptionFactor
+P60, trans_factor3,     TranscriptionFactor
+P61, cAMP_kinase1,      Enzyme
+P62, cAMP_kinase2,      Enzyme
+P63, cAMP_kinase3,      Enzyme
+P64, unknown,           Other
+P65, chalcone_synthase, Enzyme
+P66, trans_factor1,     TranscriptionFactor
+P67, trans_factor2,     TranscriptionFactor
+P68, trans_factor3,     TranscriptionFactor
+P69, cAMP_kinase1,      Enzyme
+P70, cAMP_kinase2,      Enzyme
+P71, cAMP_kinase3,      Enzyme
+P72, unknown,           Other
+P73, chalcone_synthase, Enzyme
+P74, trans_factor1,     TranscriptionFactor
+P75, trans_factor2,     TranscriptionFactor
+P76, trans_factor3,     TranscriptionFactor
+P77, cAMP_kinase1,      Enzyme
+P78, cAMP_kinase2,      Enzyme
+P79, cAMP_kinase3,      Enzyme
+P80, unknown,           Other
+P81, chalcone_synthase, Enzyme
+P82, trans_factor1,     TranscriptionFactor
+P83, trans_factor2,     TranscriptionFactor
+P84, trans_factor3,     TranscriptionFactor
+P85, cAMP_kinase1,      Enzyme
+P86, cAMP_kinase2,      Enzyme
+P87, cAMP_kinase3,      Enzyme
+P88, unknown,           Other
+P89, chalcone_synthase, Enzyme
+P90, trans_factor1,     TranscriptionFactor
+P91, trans_factor2,     Enzyme
+P92, trans_factor3,     TranscriptionFactor
+P93, cAMP_kinase1,      Enzyme
+P94, cAMP_kinase2,      Enzyme
+P95, cAMP_kinase3,      Enzyme
+P96, unknown,           Other
+P97, chalcone_synthase, Enzyme
+P98, unknown,     TranscriptionFactor
+P99, trans_factor2,     TranscriptionFactor
+P100, trans_factor3,     Other
+P101, cAMP_kinase1,      Enzyme
+P102, cAMP_kinase2,      Enzyme
+P103, cAMP_kinase3,      Enzyme
+P104, unknown,           Other
+P105, chalcone_synthase, Enzyme
+P106, trans_factor1,     TranscriptionFactor
+P107, trans_factor2,     TranscriptionFactor
+P108, trans_factor3,     TranscriptionFactor
+P109, trans_factor1,      Enzyme
+P110, cAMP_kinase2,      Enzyme
+P111, cAMP_kinase3,      Enzyme
+P112, unknown,           Other
+P113, chalcone_synthase, Enzyme
+P114, trans_factor1,     TranscriptionFactor
+P115, trans_factor2,     TranscriptionFactor
+P116, trans_factor3,     TranscriptionFactor
+P117, cAMP_kinase1,      Enzyme
+P118, cAMP_kinase2,      Enzyme
+P119, cAMP_kinase3,      Enzyme
+P120, unknown,           Other
+P121, chalcone_synthase, Enzyme
+P122, trans_factor1,     TranscriptionFactor
+P123, trans_factor2,     TranscriptionFactor
+P124, trans_factor3,     Other
+P125, cAMP_kinase1,      Enzyme
+P126, cAMP_kinase2,      Enzyme
+P127, cAMP_kinase3,      Enzyme
+P128, unknown,           Other
+P129, chalcone_synthase, Enzyme
+P130, trans_factor1,     TranscriptionFactor
+P131, trans_factor2,     TranscriptionFactor
+P132, trans_factor3,     TranscriptionFactor
+P133, cAMP_kinase1,      Enzyme
+P134, cAMP_kinase2,      Enzyme
+P135, cAMP_kinase3,      Enzyme
+P136, unknown,           Other
+P137, chalcone_synthase, Enzyme
+P138, trans_factor1,     TranscriptionFactor
+P139, trans_factor2,     TranscriptionFactor
+P140, trans_factor3,     TranscriptionFactor
+P141, cAMP_kinase1,      Enzyme
+P142, cAMP_kinase2,      Enzyme
+P143, cAMP_kinase3,      Enzyme
+P144, unknown,           Other
+P145, chalcone_synthase, Enzyme
+P146, trans_factor1,     TranscriptionFactor
+P147, trans_factor2,     TranscriptionFactor
+P148, trans_factor3,     TranscriptionFactor
+P149, cAMP_kinase1,      Enzyme
+P150, cAMP_kinase2,      Enzyme
+P151, cAMP_kinase3,      Enzyme
+P152, unknown,           Other
+P153, chalcone_synthase, Enzyme
+P154, trans_factor1,     TranscriptionFactor
+P155, trans_factor2,     Enzyme
+P156, trans_factor3,     TranscriptionFactor
+P157, cAMP_kinase1,      Enzyme
+P158, cAMP_kinase2,      Enzyme
+P159, cAMP_kinase3,      Enzyme
+P160, unknown,           Other
+P161, chalcone_synthase, Enzyme
+P162, trans_factor1,     TranscriptionFactor
+P163, trans_factor2,     TranscriptionFactor
+P164, trans_factor3,     Other
+P165, cAMP_kinase1,      Enzyme
+P166, cAMP_kinase2,      Enzyme
+P167, cAMP_kinase3,      Enzyme
+P168, unknown,           Other
+P169, chalcone_synthase, Enzyme
+P170, trans_factor1,     TranscriptionFactor
+P171, trans_factor2,     TranscriptionFactor
+P172, trans_factor3,     TranscriptionFactor
+P173, trans_factor1,      Enzyme
+P174, cAMP_kinase2,      Enzyme
+P175, cAMP_kinase3,      Enzyme
+P176, unknown,           Other
+P177, chalcone_synthase, Enzyme
+P178, chalcone_synthase,     Enzyme
+P179, trans_factor2,     TranscriptionFactor
+P180, trans_factor3,     TranscriptionFactor
+P181, cAMP_kinase1,      Enzyme
+P182, cAMP_kinase2,      Enzyme
+P183, cAMP_kinase3,      Enzyme
+P184, unknown,           Other
+P185, chalcone_synthase, Enzyme
+P186, trans_factor1,     TranscriptionFactor
+P187, trans_factor2,     TranscriptionFactor
+P188, trans_factor3,     TranscriptionFactor
+P189, cAMP_kinase1,      Enzyme
+P190, cAMP_kinase2,      Enzyme
+P191, cAMP_kinase3,      Enzyme
+P192, unknown,           Other
+P193, chalcone_synthase, Enzyme
+P194, trans_factor1,     TranscriptionFactor
+P195, trans_factor2,     TranscriptionFactor
+P196, trans_factor3,     TranscriptionFactor
+P197, cAMP_kinase1,      Enzyme
+P198, cAMP_kinase2,      Enzyme
+P199, cAMP_kinase3,      Enzyme
+P200, unknown,           Other
+P201, chalcone_synthase, Enzyme
+P202, trans_factor1,     TranscriptionFactor
+P203, cAMP_kinase3,     TranscriptionFactor
+P204, trans_factor3,     TranscriptionFactor
+P205, cAMP_kinase1,      Enzyme
+P206, cAMP_kinase2,      Enzyme
+P207, cAMP_kinase3,      Enzyme
+P208, unknown,           Other
+P209, chalcone_synthase, Enzyme
+P210, trans_factor1,     TranscriptionFactor
+P211, trans_factor2,     TranscriptionFactor
+P212, trans_factor3,     TranscriptionFactor
+P213, cAMP_kinase1,      Enzyme
+P214, cAMP_kinase2,      Enzyme
+P215, cAMP_kinase3,      Enzyme
+P216, unknown,           Other
+P217, chalcone_synthase, Enzyme
+P218, trans_factor1,     TranscriptionFactor
+P219, trans_factor2,     Enzyme
+P220, trans_factor3,     TranscriptionFactor
+P221, cAMP_kinase1,      Enzyme
+P222, cAMP_kinase2,      Enzyme
+P223, cAMP_kinase3,      Enzyme
+P224, unknown,           Other
+P225, chalcone_synthase, Enzyme
+P226, trans_factor1,     TranscriptionFactor
+P227, trans_factor2,     TranscriptionFactor
+P228, trans_factor3,     Other
+P229, cAMP_kinase1,      Enzyme
+P230, cAMP_kinase2,      Enzyme
+P231, cAMP_kinase3,      Enzyme
+P232, unknown,           Other
+P233, chalcone_synthase, Enzyme
+P234, trans_factor1,     TranscriptionFactor
+P235, trans_factor2,     TranscriptionFactor
+P236, trans_factor3,     TranscriptionFactor
+P237, trans_factor1,      Enzyme
+P238, cAMP_kinase2,      Enzyme
+P239, cAMP_kinase3,      Enzyme
+P240, unknown,           Other
+P241, chalcone_synthase, Enzyme
+P242, trans_factor1,     TranscriptionFactor
+P243, trans_factor2,     TranscriptionFactor
+P244, trans_factor3,     TranscriptionFactor
+P245, cAMP_kinase1,      Enzyme
+P246, cAMP_kinase2,      Enzyme
+P247, cAMP_kinase3,      Enzyme
+P248, unknown,           Other
+P249, chalcone_synthase, Enzyme
+P250, trans_factor1,     Other
+P251, trans_factor2,     TranscriptionFactor
+P252, trans_factor3,     TranscriptionFactor
+P253, cAMP_kinase1,      Enzyme
+P254, cAMP_kinase2,      Enzyme
+P255, cAMP_kinase3,      Enzyme
+
+@RELATION PATHWAY
+@ATTRIBUTE Pathway_ID string @PRIMARY
+@ATTRIBUTE Pathway_Name string
+@ATTRIBUTE Pathway_Descriptor string
+
+@DATA
+Pathway_1,  chalcone_synthase,       chalcone_synthase
+Pathway_2,  mitosis,                 cell_reproduction_cycle
+Pathway_3,  flowering_time_control,  plant_development
+Pathway_4,  vernalization,           plant_development
+Pathway_5,  gibberellin,             plant_development
+Pathway_6,  defense_response1,       plant_immune_defense
+Pathway_7,  defense_response2,       plant_immune_defense
+Pathway_8,  defense_response3,       plant_immune_defense
+Pathway_9,  aptosis1,                programmed_cell_death
+Pathway_10, aptosis2,                programmed_cell_death 
+Pathway_11, insect_mating_behavior1, insect_mating_behavior
+Pathway_12, insect_mating_behavior2, insect_mating_behavior
+Pathway_13,  chalcone_synthase,       chalcone_synthase
+Pathway_14,  mitosis,                 cell_reproduction_cycle
+Pathway_15,  flowering_time_control,  plant_development
+Pathway_16,  vernalization,           plant_development
+Pathway_17,  gibberellin,             plant_development
+Pathway_18,  aptosis2,       plant_immune_defense
+Pathway_19,  defense_response2,       plant_immune_defense
+Pathway_20,  defense_response3,       plant_immune_defense
+Pathway_21,  aptosis1,                programmed_cell_death
+Pathway_22, aptosis2,                programmed_cell_death 
+Pathway_23, insect_mating_behavior1, insect_mating_behavior
+Pathway_24, insect_mating_behavior2, insect_mating_behavior

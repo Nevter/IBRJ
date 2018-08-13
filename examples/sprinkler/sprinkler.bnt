@@ -1,0 +1,23 @@
+% Converted to BNT from BIF by Web-based bif2bnt (2003-01-24T22:04:50)
+
+node = struct('Cloudy', 1, ...
+              'Sprinkler', 2, ...
+              'Rain', 3, ...
+              'WetGrass', 4);
+
+adjacency = zeros(4);
+adjacency([node.Cloudy], node.Sprinkler) = 1;
+adjacency([node.Cloudy], node.Rain) = 1;
+adjacency([node.Rain node.Sprinkler], node.WetGrass) = 1;
+
+value = {{'false'; 'true'}, ...
+         {'false'; 'true'}, ...
+         {'false'; 'true'}, ...
+         {'false'; 'true'}};
+
+bnet = mk_bnet(adjacency, [2 2 2 2]);
+bnet.CPD{node.Cloudy} = tabular_CPD(bnet, node.Cloudy, [0.5 0.5]);
+bnet.CPD{node.Sprinkler} = tabular_CPD(bnet, node.Sprinkler, [0.5 0.9 0.5 0.1]);
+bnet.CPD{node.Rain} = tabular_CPD(bnet, node.Rain, [0.8 0.2 0.2 0.8]);
+bnet.CPD{node.WetGrass} = tabular_CPD(bnet, node.WetGrass, [1.0 0.1 0.1 0.01 0.0 0.9 0.9 0.99]);
+

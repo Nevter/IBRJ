@@ -1,0 +1,46 @@
+// Courtesy: Iakes
+@RELATION Cancer
+ 
+@ATTRIBUTE GEN_M55150_at { underexpressed, overexpressed }
+@ATTRIBUTE GEN_AF009426_at { underexpressed, overexpressed }
+@ATTRIBUTE cancer { ALL, AML }
+ 
+@DATA
+underexpressed, overexpressed, AML
+overexpressed, overexpressed, AML
+overexpressed, overexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, underexpressed, AML
+overexpressed, overexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, underexpressed, AML
+underexpressed, underexpressed, AML
+underexpressed, underexpressed, AML
+underexpressed, overexpressed, AML
+overexpressed, overexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, overexpressed, AML
+overexpressed, overexpressed, AML
+underexpressed, underexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, underexpressed, AML
+underexpressed, underexpressed, AML
+underexpressed, overexpressed, AML
+underexpressed, underexpressed, AML
+underexpressed, underexpressed, AML
+underexpressed, underexpressed, AML
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL
+overexpressed, underexpressed, ALL

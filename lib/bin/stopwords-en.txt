@@ -1,0 +1,25 @@
+// Stop words in English
+// By: Roby Joehanes
+
+a
+an
+the
+for
+I
+you
+we
+they
+he
+she
+it
+my
+your
+our
+their
+his
+her
+its
+of
+and
+or
+nor

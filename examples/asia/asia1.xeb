@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!-- Evidence file for asia -->
+<!-- By: Roby Joehanes -->
+
+<!-- DTD for the evidence file format -->
+<!DOCTYPE EVIDENCES [
+    <!ELEMENT EVIDENCES ( EVIDENCE )+>
+    <!ELEMENT EVIDENCE EMPTY>
+        <!ATTLIST EVIDENCE NAME CDATA #REQUIRED
+                           VALUE CDATA #REQUIRED>
+]>
+
+
+<EVIDENCES>
+    <EVIDENCE NAME="TbOrCa" VALUE="True" />
+</EVIDENCES>

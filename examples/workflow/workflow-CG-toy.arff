@@ -1,0 +1,80 @@
+@RELATION CDNA_MICROARRAY
+@ATTRIBUTE Array_ID string @PRIMARY
+@ATTRIBUTE cDNA_Sequence string @REFERENCE GENE.DNA_Sequence
+@ATTRIBUTE Treatment {HeatStress, Pathogen, Control}
+@ATTRIBUTE Hybridizations {Cy3, Cy5}
+@ATTRIBUTE Data { R, N, I } 
+@ATTRIBUTE Normalization {Log, LogCenter, Threshold}
+@ATTRIBUTE Regulation {Up, Down, Neither}
+
+@DATA
+Array_1,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_2,  Seq_2, Pathogen,   Cy5,  N, LogCenter, Neither
+Array_3,  Seq_3, Pathogen,   Cy5,  R, LogCenter, Down
+Array_4,  Seq_1, Pathogen,   Cy5,  I, LogCenter, Up
+Array_5,  Seq_2, Control,    Cy3,  N, LogCenter, Neither
+Array_6,  Seq_2, HeatStress, Cy5,  I, LogCenter, Up
+Array_7,  Seq_1, Control,    Cy3,  N, LogCenter, Neither
+Array_8,  Seq_2, HeatStress, Cy3,  I, LogCenter, Up
+Array_9,  Seq_1, Pathogen,   Cy3,  I, LogCenter, Up
+Array_10, Seq_2, Pathogen,   Cy3,  I, LogCenter, Up
+Array_11, Seq_3, Control,    Cy5,  N, LogCenter, Neither
+Array_12, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+Array_13, Seq_2, Control,    Cy5,  N, LogCenter, Neither
+Array_14, Seq_3, Pathogen,   Cy3,  R, LogCenter, Down
+
+		
+@RELATION GENE
+@ATTRIBUTE DNA_Sequence string @PRIMARY
+@ATTRIBUTE Protein_Product string @REFERENCE PROTEIN.Protein_ID
+@ATTRIBUTE Pathway string @REFERENCE PATHWAY.Pathway_ID
+@ATTRIBUTE Functional_Description string
+@ATTRIBUTE Accession_Number string
+@ATTRIBUTE Organism string
+@ATTRIBUTE Name string
+
+@DATA
+Seq_1, P1, Pathway_1, chalcone_synthase,      At2g01130, Arabidopsis_thaliana,     CS001
+Seq_2, P0, Pathway_2, cell_cycle,             U49845,    Saccharomyces_cerevisiae, Y250
+Seq_3, P2, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_4, P3, Pathway_3, flowering_time_control, AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_5, P4, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_6, P5, Pathway_4, vernalization,          AT4g00010, Arabidopsis_thaliana,     LFY
+Seq_7, P2, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_8, P6, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+Seq_9, P7, Pathway_3, flowering_time_control, Os2g00011, Oryza_sativa,             RICE3
+
+
+@RELATION PROTEIN
+@ATTRIBUTE Protein_ID string @PRIMARY
+@ATTRIBUTE Canonical_Name string
+@ATTRIBUTE Role {Enzyme, TranscriptionFactor, Other}
+
+@DATA
+P0, unknown,           Other
+P1, chalcone_synthase, Enzyme
+P2, trans_factor1,     TranscriptionFactor
+P3, trans_factor2,     TranscriptionFactor
+P4, trans_factor3,     TranscriptionFactor
+P5, cAMP_kinase1,      Enzyme
+P6, cAMP_kinase2,      Enzyme
+P7, cAMP_kinase3,      Enzyme
+
+@RELATION PATHWAY
+@ATTRIBUTE Pathway_ID string @PRIMARY
+@ATTRIBUTE Pathway_Name string
+@ATTRIBUTE Pathway_Descriptor string
+
+@DATA
+Pathway_1,  chalcone_synthase,       chalcone_synthase
+Pathway_2,  mitosis,                 cell_reproduction_cycle
+Pathway_3,  flowering_time_control,  plant_development
+Pathway_4,  vernalization,           plant_development
+Pathway_5,  gibberellin,             plant_development
+Pathway_6,  defense_response1,       plant_immune_defense
+Pathway_7,  defense_response2,       plant_immune_defense
+Pathway_8,  defense_response3,       plant_immune_defense
+Pathway_9,  aptosis1,                programmed_cell_death
+Pathway_10, aptosis2,                programmed_cell_death 
+Pathway_11, insect_mating_behavior1, insect_mating_behavior
+Pathway_12, insect_mating_behavior2, insect_mating_behavior

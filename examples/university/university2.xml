@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!-- DTD for the XMLBIF 0.3 format -->
+<!DOCTYPE BIF [
+	<!ELEMENT BIF ( NETWORK )*>
+		<!ATTLIST BIF VERSION CDATA #REQUIRED PRM CDATA #IMPLIED>
+	<!ELEMENT NETWORK ( NAME, ( PROPERTY | PRM_CLASS | VARIABLE | DEFINITION )* )>
+	<!ELEMENT NAME (#PCDATA)>
+	<!ELEMENT PRM_CLASS (PRM_CLASSNAME, PRM_ATTRIBUTESET)>	
+	<!ELEMENT PRM_CLASSNAME (#PCDATA)>
+	<!ELEMENT PRM_ATTRIBUTESET (PRM_PKEY+, PRM_RKEY*, PRM_ATTRIBUTE*)>
+	<!ELEMENT PRM_PKEY (#PCDATA)>
+	<!ELEMENT PRM_RKEY (#PCDATA)>
+	<!ELEMENT PRM_ATTRIBUTE (#PCDATA)>
+	<!ELEMENT VARIABLE ( NAME, ( OUTCOME | PROPERTY )* ) >
+		<!ATTLIST VARIABLE TYPE (nature|decision|utility) "nature">
+	<!ELEMENT OUTCOME (#PCDATA)>
+	<!ELEMENT DEFINITION ( FOR | GIVEN | TABLE | PROPERTY )* >
+	<!ELEMENT FOR (#PCDATA)>
+	<!ELEMENT GIVEN (#PCDATA)>
+	<!ELEMENT TABLE (#PCDATA)>
+	<!ELEMENT PROPERTY (#PCDATA)>
+]>
+
+<BIF VERSION="0.3" PRM="0.1">
+	<NETWORK>
+	<NAME>bayesiannetwork</NAME>
+		<!-- Class definitions -->
+		<PRM_CLASS>
+			<PRM_CLASSNAME>INSTRUCTOR</PRM_CLASSNAME>
+			<PRM_ATTRIBUTESET>
+				<PRM_PKEY>Professor</PRM_PKEY>				
+				<PRM_ATTRIBUTE>Popularity</PRM_ATTRIBUTE>
+				<PRM_ATTRIBUTE>TeachingAbility</PRM_ATTRIBUTE>
+			</PRM_ATTRIBUTESET>
+		</PRM_CLASS>
+		
+		<PRM_CLASS>
+			<PRM_CLASSNAME>COURSE</PRM_CLASSNAME>
+			<PRM_ATTRIBUTESET>
+				<PRM_PKEY>Course</PRM_PKEY>
+				<PRM_RKEY>Instructor</PRM_RKEY>				
+				<PRM_ATTRIBUTE>Rating</PRM_ATTRIBUTE>
+				<PRM_ATTRIBUTE>Difficulty</PRM_ATTRIBUTE>
+			</PRM_ATTRIBUTESET>
+		</PRM_CLASS>
+		<PRM_CLASS>
+			<PRM_CLASSNAME>STUDENT</PRM_CLASSNAME>
+			<PRM_ATTRIBUTESET>
+				<PRM_PKEY>Student</PRM_PKEY>
+				<PRM_ATTRIBUTE>Intelligence</PRM_ATTRIBUTE>
+				<PRM_ATTRIBUTE>Ranking</PRM_ATTRIBUTE>
+			</PRM_ATTRIBUTESET>
+		</PRM_CLASS>
+		
+		<PRM_CLASS>
+			<PRM_CLASSNAME>REGISTRATION</PRM_CLASSNAME>
+			<PRM_ATTRIBUTESET>
+				<PRM_PKEY>RegistrationNo</PRM_PKEY>
+				<PRM_RKEY>Course</PRM_RKEY>
+				<PRM_RKEY>Student</PRM_RKEY>								
+				<PRM_ATTRIBUTE>Grade</PRM_ATTRIBUTE>				
+				<PRM_ATTRIBUTE>Satisfaction</PRM_ATTRIBUTE>
+			</PRM_ATTRIBUTESET>
+		</PRM_CLASS>
+		
+		
+		<!-- Variables -->
+		<VARIABLE TYPE="nature">
+			<NAME>Popularity</NAME>
+			<OUTCOME>High</OUTCOME>
+			<OUTCOME>Medium</OUTCOME>
+			<OUTCOME>Low</OUTCOME>
+			<PROPERTY>position = (206, 104)</PROPERTY>
+		</VARIABLE>
+		<VARIABLE TYPE="nature">
+			<NAME>TeachingAbility</NAME>
+			<OUTCOME>High</OUTCOME>
+			<OUTCOME>Medium</OUTCOME>
+			<OUTCOME>Low</OUTCOME>
+			<PROPERTY>position = (206, 200)</PROPERTY>
+		</VARIABLE>
+		<VARIABLE TYPE="nature">
+			<NAME>Rating</NAME>			
+			<OUTCOME>High</OUTCOME>
+			<OUTCOME>Medium</OUTCOME>
+			<OUTCOME>Low</OUTCOME>
+			<PROPERTY>position = (560, 104)</PROPERTY>
+		</VARIABLE>
+		<VARIABLE TYPE="nature">
+			<NAME>Difficulty</NAME>
+			<OUTCOME>High</OUTCOME>
+			<OUTCOME>Low</OUTCOME>
+			<PROPERTY>position = (461, 202)</PROPERTY>
+		</VARIABLE>
+		<VARIABLE TYPE="nature">
+			<NAME>Intelligence</NAME>
+			<OUTCOME>High</OUTCOME>
+			<OUTCOME>Low</OUTCOME>
+			<PROPERTY>position = (350, 296)</PROPERTY>
+		</VARIABLE>
+		<VARIABLE TYPE="nature">
+			<NAME>Grade</NAME>
+			<OUTCOME>A</OUTCOME>
+			<OUTCOME>B</OUTCOME>
+			<OUTCOME>C</OUTCOME>
+			<PROPERTY>position = (218, 386)</PROPERTY>
+		</VARIABLE>
+		<VARIABLE TYPE = "nature">
+			<NAME> Ranking </NAME>
+			<OUTCOME>High</OUTCOME>
+			<OUTCOME>Medium</OUTCOME>
+			<OUTCOME>Low</OUTCOME>
+			<PROPERTY>position = (400, 386)</PROPERTY>
+		</VARIABLE>
+		<VARIABLE TYPE="nature">
+			<NAME>Satisfaction</NAME>
+			<OUTCOME>High</OUTCOME>			
+			<OUTCOME>Medium</OUTCOME>			
+			<OUTCOME>Low</OUTCOME>
+			<PROPERTY>position = (698, 200)</PROPERTY>
+		</VARIABLE>
+		<!-- Probability Distributions -->
+		<DEFINITION>
+			<FOR>Popularity</FOR> 
+			<GIVEN>TeachingAbility</GIVEN>  
+			<TABLE>0.9 0.4 0.1 0.05 0.4 0.3 0.05 0.2 0.6</TABLE>
+		</DEFINITION>
+		<DEFINITION>
+			<FOR>TeachingAbility</FOR>			
+			<TABLE>0.3 0.4 0.3</TABLE> 
+		</DEFINITION>
+		<DEFINITION>
+			<FOR>Rating</FOR> 
+			<GIVEN>Satisfaction</GIVEN> 
+			<TABLE>0.9 0.4 0.1 0.05 0.4 0.3 0.05 0.2 0.6</TABLE> 
+		</DEFINITION>
+		<DEFINITION>
+			<FOR>Difficulty</FOR>			
+			<TABLE>0.35 0.65</TABLE> 
+		</DEFINITION>
+		<DEFINITION>
+			<FOR>Intelligence</FOR>			
+			<TABLE>0.3 0.7</TABLE> 
+		</DEFINITION>
+		<DEFINITION>
+			<FOR>Ranking</FOR>
+			<GIVEN>Grade</GIVEN>
+			<TABLE>0.1 0.2 0.6 0.2 0.4 0.3 0.7 0.4 0.1</TABLE> 
+		</DEFINITION>
+		<DEFINITION>
+			<FOR>Grade</FOR>
+			<GIVEN>Intelligence</GIVEN>
+			<GIVEN>Difficulty</GIVEN>
+			<TABLE>0.5 0.1 0.8 0.3 0.4 0.4 0.1 0.6 0.1 0.5 0.1 0.1</TABLE>
+		</DEFINITION>
+		<DEFINITION>
+			<FOR>Satisfaction</FOR>
+			<GIVEN>Grade</GIVEN>
+			<GIVEN>TeachingAbility</GIVEN>   
+			<TABLE>0.8 0.6 0.4 0.6 0.55 0.3 0.4 0.4 0.3 0.15 0.25 0.10 0.25 0.2 0.3 0.3 0.4 0.2 0.05 0.15 0.5 0.15 0.25 0.4 0.3 0.2 0.5</TABLE>          
+		</DEFINITION>
+	</NETWORK>
+</BIF>

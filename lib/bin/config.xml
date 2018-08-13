@@ -1,0 +1,256 @@
+<?xml version="1.0"?>
+
+<!-- BNJ Configuration -->
+<!-- By: Roby Joehanes -->
+
+<!-- DTD for the BNJ configuration file -->
+<!DOCTYPE BNJCONFIG [
+   <!ELEMENT BNJCONFIG ( WINDOW | SETTING | ICONSETTING | COLORSETTING | FONTSETTING | CONVERTERS | DATACONVERTERS )+>
+
+   <!-- Windowing part -->
+   <!ELEMENT WINDOW ( MENU? , TOOLBAR? , ( POPUPMENU | SETTING | ICONSETTING | COLORSETTING | FONTSETTING )* ) >
+      <!ATTLIST WINDOW NAME ID #REQUIRED
+                       TITLE CDATA #REQUIRED
+                       SIZE CDATA #REQUIRED
+                       COLOR CDATA #IMPLIED>
+
+   <!-- Menuing part -->
+   <!ELEMENT MENU ( MENUENTRY )+>
+      <!ELEMENT MENUENTRY ( MENUITEM | SEPARATOR | MENUENTRY )+>
+      <!ATTLIST MENUENTRY NAME CDATA #REQUIRED>
+          <!ELEMENT MENUITEM EMPTY>
+          <!ATTLIST MENUITEM
+                    NAME CDATA #REQUIRED
+                    SHORTCUT CDATA #IMPLIED
+                    CMDSTRING CDATA #REQUIRED>
+          <!ELEMENT SEPARATOR EMPTY>
+
+   <!-- Popup Menu part -->
+   <!ELEMENT POPUPMENU ( MENUITEM | SEPARATOR | MENUENTRY )+>
+      <!ATTLIST POPUPMENU
+                NAME CDATA #REQUIRED>
+
+   <!-- Toolbar part -->
+   <!ELEMENT TOOLBAR ( TOOLBUTTON | TOOLTOGGLEBUTTON | SEPARATOR )+>
+      <!ELEMENT TOOLBUTTON EMPTY>
+      <!ELEMENT TOOLTOGGLEBUTTON EMPTY>
+      <!ATTLIST TOOLBUTTON
+                ICON CDATA #REQUIRED
+                CMDSTRING CDATA #REQUIRED>
+      <!ATTLIST TOOLTOGGLEBUTTON
+                ICON CDATA #REQUIRED
+		        GROUP CDATA #REQUIRED
+                CMDSTRING CDATA #REQUIRED>
+
+   <!-- Setting part -->
+   <!ELEMENT SETTING EMPTY>
+   <!ATTLIST SETTING
+             NAME CDATA #REQUIRED
+             VALUE CDATA #REQUIRED>
+
+   <!-- Engine Setting part -->
+   <!ELEMENT ENGINESETTING (SETTING)*>
+   <!ATTLIST ENGINESETTING
+             NAME CDATA #REQUIRED>
+
+   <!-- Icon Setting part -->
+   <!ELEMENT ICONSETTING EMPTY>
+   <!ATTLIST ICONSETTING
+             NAME CDATA #REQUIRED
+             ICON CDATA #REQUIRED>
+
+   <!-- Color Setting part -->
+   <!ELEMENT COLORSETTING EMPTY>
+   <!ATTLIST COLORSETTING
+             NAME CDATA #REQUIRED
+             RGB CDATA #REQUIRED>
+
+   <!-- Font Setting part -->
+   <!ELEMENT FONTSETTING EMPTY>
+   <!ATTLIST FONTSETTING
+             NAME CDATA #REQUIRED
+             FONTNAME CDATA #REQUIRED
+	         SIZE CDATA #REQUIRED
+	         STYLE CDATA #IMPLIED>
+
+   <!-- Converter part -->
+   <!ELEMENT CONVERTERS ( CONVERTER )+>
+   <!ELEMENT CONVERTER EMPTY>
+      <!ATTLIST CONVERTER
+       DESCRIPTION CDATA #REQUIRED
+       EXTENSION CDATA #REQUIRED
+       PACKAGENAME NMTOKEN #REQUIRED
+       CLASSNAME NMTOKEN #REQUIRED
+       >
+
+   <!-- Data Converter part -->
+   <!ELEMENT DATACONVERTERS ( DATACONVERTER )+>
+   <!ELEMENT DATACONVERTER EMPTY>
+      <!ATTLIST DATACONVERTER
+       DESCRIPTION CDATA #REQUIRED
+       EXTENSION CDATA #REQUIRED
+       PACKAGENAME NMTOKEN #REQUIRED
+       CLASSNAME NMTOKEN #REQUIRED
+       >
+]>
+
+<BNJCONFIG>
+   <!-- VALUE=(native|windows|gtk|motif|swing|metal|metouia|theme:<theme file name> | <any fully qualified L&F classname>) -->
+   <SETTING NAME="GUIStyle" VALUE="native" />
+   <WINDOW NAME="MAIN" TITLE="MAIN#TITLE" SIZE="800,600" COLOR="A0A0A0">
+      <MENU>
+         <MENUENTRY NAME="MAIN#FILE">
+            <MENUITEM NAME="MAIN#FILE#NEW" SHORTCUT="CTRL N" CMDSTRING="FILE NEW" />
+            <MENUITEM NAME="MAIN#FILE#OPEN" SHORTCUT="CTRL O" CMDSTRING="FILE OPEN" />
+            <MENUITEM NAME="MAIN#FILE#SAVE" SHORTCUT="CTRL S" CMDSTRING="FILE SAVE" />
+            <MENUITEM NAME="MAIN#FILE#SAVEAS" SHORTCUT="CTRL SHIFT S" CMDSTRING="FILE SAVE AS" />
+            <SEPARATOR />
+            <MENUITEM NAME="MAIN#FILE#EXIT" SHORTCUT="CTRL Q" CMDSTRING="FILE EXIT" />
+         </MENUENTRY>
+         <MENUENTRY NAME="MAIN#EDIT">
+            <MENUITEM NAME="MAIN#EDIT#ADDNODE" CMDSTRING="ADD NODE" />
+            <MENUITEM NAME="MAIN#EDIT#ADDUTILITY" CMDSTRING="ADD UTILITY" />
+            <MENUITEM NAME="MAIN#EDIT#ADDDECISION" CMDSTRING="ADD DECISION" />
+            <SEPARATOR />
+            <MENUITEM NAME="MAIN#EDIT#DELETE" SHORTCUT="DELETE" CMDSTRING="DELETE" />
+         </MENUENTRY>
+         <MENUENTRY NAME="MAIN#VIEW">
+            <MENUITEM NAME="MAIN#VIEW#AUTOLAYOUT" CMDSTRING="AUTO LAYOUT" />
+         </MENUENTRY>
+         <MENUENTRY NAME="MAIN#TOOLS">
+            <MENUITEM NAME="MAIN#TOOLS#INFERENCE" CMDSTRING="INFERENCE WIZARD" />
+            <MENUITEM NAME="MAIN#TOOLS#LEARNING" CMDSTRING="LEARNING WIZARD" />
+            <SEPARATOR />
+            <MENUITEM NAME="MAIN#TOOLS#CONVERTER" CMDSTRING="CONVERTER" />
+            <MENUITEM NAME="MAIN#TOOLS#DATAGENERATOR" CMDSTRING="DATA GENERATOR" />
+            <MENUITEM NAME="MAIN#TOOLS#DBGUI" CMDSTRING="DATABASE GUI" />
+            <SEPARATOR />
+            <MENUITEM NAME="MAIN#TOOLS#OPTIONS" CMDSTRING="OPTIONS" />
+            <MENUENTRY NAME="MAIN#PREFERENCES#LANGUAGES">
+            	<MENUITEM NAME="MAIN#PREFERENCES#LANGUAGES#ENGLISH" CMDSTRING="LANGUAGE ENGLISH" />
+            	<MENUITEM NAME="MAIN#PREFERENCES#LANGUAGES#FRENCH"  CMDSTRING="LANGUAGE FRENCH" />
+            	<MENUITEM NAME="MAIN#PREFERENCES#LANGUAGES#JAPANESE" CMDSTRING="LANGUAGE JAPANESE" />
+       		</MENUENTRY>
+         </MENUENTRY>
+      </MENU>
+
+      <TOOLBAR>
+         <TOOLBUTTON ICON="new.gif" CMDSTRING="FILE NEW" />
+         <TOOLBUTTON ICON="open.gif" CMDSTRING="FILE OPEN" />
+         <TOOLBUTTON ICON="save.gif" CMDSTRING="FILE SAVE" />
+         <TOOLBUTTON ICON="saveas.gif" CMDSTRING="FILE SAVE AS" />
+         <SEPARATOR />
+         <TOOLTOGGLEBUTTON ICON="select.gif"  GROUP="drawbuttons" CMDSTRING="SELECT"   />
+         <TOOLTOGGLEBUTTON ICON="addnode.gif" GROUP="drawbuttons" CMDSTRING="ADD NODE" />
+         <TOOLTOGGLEBUTTON ICON="adddec.gif"  GROUP="drawbuttons" CMDSTRING="ADD DECISION" />
+         <TOOLTOGGLEBUTTON ICON="addutil.gif" GROUP="drawbuttons" CMDSTRING="ADD UTILITY" />
+         <TOOLTOGGLEBUTTON ICON="addedge.gif" GROUP="drawbuttons" CMDSTRING="ADD EDGE" />
+         <SEPARATOR />
+      </TOOLBAR>
+
+      <POPUPMENU NAME="NormalPopup">
+         <MENUITEM NAME="MAIN#FILE#SAVE" SHORTCUT="CTRL S" CMDSTRING="FILE SAVE" />
+         <SEPARATOR />
+         <MENUITEM NAME="MAIN#VIEW#AUTOLAYOUT" CMDSTRING="AUTO LAYOUT" />
+      </POPUPMENU>
+
+      <POPUPMENU NAME="EdgeDeletePopup">
+         <MENUITEM NAME="MAIN#EDIT#DELETE" SHORTCUT="DELETE" CMDSTRING="DELETE EDGE" />
+         <MENUITEM NAME="MAIN#FILE#SAVE" SHORTCUT="CTRL S" CMDSTRING="FILE SAVE" />
+         <SEPARATOR />
+         <MENUITEM NAME="MAIN#VIEW#AUTOLAYOUT" CMDSTRING="AUTO LAYOUT" />
+      </POPUPMENU>
+
+      <POPUPMENU NAME="NodeDeletePopup">
+         <MENUITEM NAME="MAIN#EDIT#DELETE" SHORTCUT="DELETE" CMDSTRING="DELETE NODE" />
+         <MENUITEM NAME="MAIN#FILE#SAVE" SHORTCUT="CTRL S" CMDSTRING="FILE SAVE" />
+         <SEPARATOR />
+         <MENUITEM NAME="MAIN#VIEW#AUTOLAYOUT" CMDSTRING="AUTO LAYOUT" />
+      </POPUPMENU>
+
+      <POPUPMENU NAME="NodeDeleteWithPropertiesPopup">
+         <MENUITEM NAME="MAIN#EDIT#DELETE" SHORTCUT="DELETE" CMDSTRING="DELETE NODE" />
+         <MENUITEM NAME="MAIN#FILE#SAVE" SHORTCUT="CTRL S" CMDSTRING="FILE SAVE" />
+         <SEPARATOR />
+         <MENUITEM NAME="MAIN#VIEW#AUTOLAYOUT" CMDSTRING="AUTO LAYOUT" />
+         <SEPARATOR />
+         <MENUITEM NAME="MAIN#EDIT#PROPERTIES" CMDSTRING="NODE PROPERTIES" />
+      </POPUPMENU>
+
+      <COLORSETTING NAME="NodeBackground" RGB="FFFFC0" />
+      <COLORSETTING NAME="NodeOutline" RGB="000000" />
+      <COLORSETTING NAME="NodeHighlight" RGB="C00000" />
+      <COLORSETTING NAME="NodeFontColor" RGB="000000" />
+      <FONTSETTING  NAME="NodeFont" FONTNAME="Arial" SIZE="12" STYLE="plain" />
+      <COLORSETTING NAME="EdgeColor" RGB="000000" />
+      <ICONSETTING NAME="RandomTreeNode" ICON="i_node.gif" />
+      <ICONSETTING NAME="DecisionTreeNode" ICON="i_dec.gif" />
+      <ICONSETTING NAME="UtilityTreeNode" ICON="i_util.gif" />
+      <ICONSETTING NAME="NormalValueIcon" ICON="i_value.gif" />
+      <ICONSETTING NAME="EvidenceValueIcon" ICON="i_ev.gif" />
+      <ICONSETTING NAME="GraphIcon" ICON="i_graph.gif" />
+   </WINDOW>
+
+   <WINDOW NAME="PREF" TITLE="PREF#TITLE" SIZE="200,200" COLOR="A0A0A0">
+   </WINDOW>
+
+   <SETTING NAME="DEBUG" VALUE="false" />
+   <SETTING NAME="DefaultInferenceEngine" VALUE="edu.ksu.cis.bnj.bbn.inference.ls.LS" />
+   <SETTING NAME="DefaultStructureLearning" VALUE="edu.ksu.cis.bnj.bbn.learning.k2.K2" />
+   <SETTING NAME="DefaultDataGenerator" VALUE="edu.ksu.cis.bnj.bbn.inference.approximate.sampling.LikelihoodWeighting" />
+   <SETTING NAME="AvailableJDBCDrivers" VALUE="sun.jdbc.odbc.JdbcOdbcDriver, org.gjt.mm.mysql.Driver, oracle.jdbc.driver.OracleDriver, org.postgresql.Driver" />
+   <SETTING NAME="JDBCDriver" VALUE="org.gjt.mm.mysql.Driver" />
+   <SETTING NAME="JDBCURL" VALUE="jdbc:mysql://localhost:3306/dbname" />
+   <SETTING NAME="JDBCLogin" VALUE="anonymous" />
+   <SETTING NAME="JDBCPassword" VALUE="anonymous" /> <!-- For sensitive information, please don't store password in configuration files -->
+
+   <CONVERTERS>
+      <CONVERTER DESCRIPTION="Hugin .net format" EXTENSION="net"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.net" CLASSNAME="NetParser" />
+
+      <CONVERTER DESCRIPTION="LibB .net format" EXTENSION="libb"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.libb" CLASSNAME="LibBParser" />
+
+      <CONVERTER DESCRIPTION="BNIF format" EXTENSION="bif"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.bif" CLASSNAME="BifParser" />
+
+      <CONVERTER DESCRIPTION="Genie .dsl format" EXTENSION="dsl"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.dsl" CLASSNAME="DSLParser" />
+
+      <CONVERTER DESCRIPTION="XML Bif format" EXTENSION="xml"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.xmlbif" CLASSNAME="XMLBifParser" />
+
+      <CONVERTER DESCRIPTION="Netica .dnet format" EXTENSION="dnet"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.dnet" CLASSNAME="DnetParser" />
+
+      <CONVERTER DESCRIPTION="Microsoft .dsc format" EXTENSION="dsc"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.dsc" CLASSNAME="DscParser" />
+
+      <CONVERTER DESCRIPTION="Ergo .ent format" EXTENSION="ent"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.ent" CLASSNAME="EntParser" />
+
+      <CONVERTER DESCRIPTION="Microsoft .xbn format" EXTENSION="xbn"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.xbn" CLASSNAME="XBNParser" />
+
+      <CONVERTER DESCRIPTION="UKY SPO format" EXTENSION="spo"
+       PACKAGENAME="edu.ksu.cis.bnj.bbn.converter.spo" CLASSNAME="SPOParser" />
+   </CONVERTERS>
+
+   <DATACONVERTERS>
+      <DATACONVERTER DESCRIPTION="WEKA Arff format" EXTENSION="arff"
+       PACKAGENAME="edu.ksu.cis.kdd.data.converter.arff" CLASSNAME="ArffParser" />
+      <DATACONVERTER DESCRIPTION="XML Bif format" EXTENSION="xml"
+       PACKAGENAME="edu.ksu.cis.kdd.data.converter.xml" CLASSNAME="XMLDataParser" />
+      <DATACONVERTER DESCRIPTION="LibB Data format" EXTENSION="libb"
+       PACKAGENAME="edu.ksu.cis.kdd.data.converter.libb" CLASSNAME="LibBDataParser" />
+      <DATACONVERTER DESCRIPTION="Comma separated file format" EXTENSION="csf"
+       PACKAGENAME="edu.ksu.cis.kdd.data.converter.csf" CLASSNAME="CSFConverter" />
+      <DATACONVERTER DESCRIPTION="DAT format" EXTENSION="dat"
+       PACKAGENAME="edu.ksu.cis.kdd.data.converter.dat" CLASSNAME="DATConverter" />
+      <DATACONVERTER DESCRIPTION="MS Excel format" EXTENSION="xls"
+       PACKAGENAME="edu.ksu.cis.kdd.data.converter.excel" CLASSNAME="ExcelConverter" />
+   </DATACONVERTERS>
+
+</BNJCONFIG>
+
+

@@ -1,0 +1,246 @@
+net
+{
+    node_size = (116 20);
+    HR_Color_DiscreteChance = "16";
+    HR_Groups_GroupColors = "13";
+    HR_Groups_GroupNames = "Copyright";
+    HR_Groups_UserGroupsNo = "1";
+    HR_Color_Decision = "41";
+    HR_Color_Utility = "50";
+    HR_Color_ContinuosChance = "61";
+    HR_Color_DescreteChance = "25";
+    HR_Monitor_InitSD = "2";
+    HR_Monitor_InitStates = "5";
+    HR_Monitor_OpenGraph = "0";
+    HR_Monitor_GraphPrecision = "100";
+    HR_Monitor_AutoUpdGraph = "0";
+    HR_Compile_ApproxEpsilon = "0.00001";
+    HR_Compile_Approximate = "0";
+    HR_Compile_Compress = "0";
+    HR_Compile_TriangMethod = "0";
+    HR_Propagate_AutoNormal = "1";
+    HR_Propagate_AutoSum = "1";
+    HR_Propagate_Auto = "0";
+    HR_Font_Italic = "0";
+    HR_Font_Weight = "400";
+    HR_Font_Size = "-9";
+    HR_Font_Name = "Tahoma";
+    HR_Grid_GridShow = "0";
+    HR_Grid_GridSnap = "1";
+    HR_Grid_Y = "10";
+    HR_Grid_X = "10";
+}
+
+node NYU
+{
+    label = "(c) Baumard, 1997";
+    position = (10 170);
+    states = ("Competitive Analysis Belief Network");
+    HR_Grp = "0";
+    HR_Desc = "This network is part of series published in a CD-Rom, with\r\na book entitled \"Competitivite des Systemes d'Information\"\r\n(Paris: masson, fortchoming 1998).\r\nWeb access : www.masson.fr\r\nIt aims at assessing the the anti-trust threat in a given market. The other networks in the book assess the competitiveness of information systems and technologies.";
+    HR_State_0 = "For more info: Philippe.Baumard@dauphine.fr";
+}
+
+utility Utility
+{
+    position = (180 0);
+}
+
+node EntryStrategy
+{
+    position = (280 30);
+    states = ("Niche" "Differentiation" "PriceCutting" "AbandonEntry");
+}
+
+decision Retaliation
+{
+    position = (170 150);
+    states = ("HighlyExpected" "NotExpected");
+}
+
+decision LegalBarriers
+{
+    position = (280 150);
+    states = ("GovRegulation" "QuasiMonopoly" "Few");
+}
+
+decision AccessToDistribution
+{
+    position = (0 50);
+    states = ("FreeAccess" "FixedCostsInCarryingNewProducts" "DistributorsPreferenceToEstablishedFirms");
+}
+
+decision CustomerLoyalty
+{
+    position = (280 170);
+    states = ("Strong" "Weak");
+}
+
+decision BrandAwareness
+{
+    position = (170 170);
+    states = ("Strong" "Weak");
+}
+
+node BarriersToEntry
+{
+    position = (250 100);
+    states = ("StrongBarriers" "WeakBarriers");
+}
+
+node ThreatOfEntry
+{
+    position = (130 70);
+    states = ("HightThreat" "LowThreat");
+}
+
+decision ProductDifferentiation
+{
+    position = (0 30);
+    states = ("VeryHigh" "Moderate" "Low");
+}
+
+decision AbsoluteCostAdvantageOfEntrant
+{
+    position = (0 70);
+    states = ("Yes" "No");
+}
+
+decision EconomicsOfScale
+{
+    position = (0 90);
+    states = ("Necessary" "Unecessary");
+}
+
+decision CapitalRequirements
+{
+    position = (0 110);
+    states = ("Low" "High");
+}
+
+potential (NYU)
+{
+ data = ( 1 );
+}
+
+potential (Utility | ThreatOfEntry BarriersToEntry EntryStrategy)
+{
+ data = ((( 8	%  HightThreat  StrongBarriers  Niche
+	    2	%  HightThreat  StrongBarriers  Differentiation
+	    4	%  HightThreat  StrongBarriers  PriceCutting
+	    1 )	%  HightThreat  StrongBarriers  AbandonEntry
+	  ( 1	%  HightThreat  WeakBarriers  Niche
+	    5	%  HightThreat  WeakBarriers  Differentiation
+	    9	%  HightThreat  WeakBarriers  PriceCutting
+	    -8 ))	%  HightThreat  WeakBarriers  AbandonEntry
+	 (( 2	%  LowThreat  StrongBarriers  Niche
+	    -4	%  LowThreat  StrongBarriers  Differentiation
+	    -9	%  LowThreat  StrongBarriers  PriceCutting
+	    8 )	%  LowThreat  StrongBarriers  AbandonEntry
+	  ( 4	%  LowThreat  WeakBarriers  Niche
+	    3	%  LowThreat  WeakBarriers  Differentiation
+	    2	%  LowThreat  WeakBarriers  PriceCutting
+	    4 )));	%  LowThreat  WeakBarriers  AbandonEntry
+}
+
+potential (EntryStrategy | ProductDifferentiation BarriersToEntry ThreatOfEntry)
+{
+ data = (((( 0.83 0.15 0.01 0.01 )	%  VeryHigh  StrongBarriers  HightThreat
+	   ( 0.75 0.01 0.01 0.23 ))	%  VeryHigh  StrongBarriers  LowThreat
+	  (( 0.3 0.6 0.05 0.05 )	%  VeryHigh  WeakBarriers  HightThreat
+	   ( 0.6 0.3 0.05 0.05 )))	%  VeryHigh  WeakBarriers  LowThreat
+	 ((( 0.07 0.59 0.3 0.04 )	%  Moderate  StrongBarriers  HightThreat
+	   ( 0.22 0.24 0.1 0.44 ))	%  Moderate  StrongBarriers  LowThreat
+	  (( 0.01 0.49 0.3 0.2 )	%  Moderate  WeakBarriers  HightThreat
+	   ( 0.0917431 0.504587 0.0825688 0.321101 )))	%  Moderate  WeakBarriers  LowThreat
+	 ((( 0.01 0.07 0.8 0.12 )	%  Low  StrongBarriers  HightThreat
+	   ( 0.00980392 0.00980392 0.0490196 0.931373 ))	%  Low  StrongBarriers  LowThreat
+	  (( 0.01 0.03 0.95 0.01 )	%  Low  WeakBarriers  HightThreat
+	   ( 0.01 0.04 0.6 0.35 ))));	%  Low  WeakBarriers  LowThreat
+}
+
+potential (Retaliation) {}
+
+potential (LegalBarriers | Retaliation) {}
+
+potential (AccessToDistribution | AbsoluteCostAdvantageOfEntrant) {}
+
+potential (CustomerLoyalty | LegalBarriers) {}
+
+potential (BrandAwareness | CustomerLoyalty) {}
+
+potential (BarriersToEntry | LegalBarriers Retaliation CustomerLoyalty BrandAwareness)
+{
+ data = ((((( 0.99 0.01 )	%  GovRegulation  HighlyExpected  Strong  Strong
+	    ( 0.97 0.03 ))	%  GovRegulation  HighlyExpected  Strong  Weak
+	   (( 0.95 0.05 )	%  GovRegulation  HighlyExpected  Weak  Strong
+	    ( 0.9 0.1 )))	%  GovRegulation  HighlyExpected  Weak  Weak
+	  ((( 0.85 0.15 )	%  GovRegulation  NotExpected  Strong  Strong
+	    ( 0.8 0.2 ))	%  GovRegulation  NotExpected  Strong  Weak
+	   (( 0.75 0.25 )	%  GovRegulation  NotExpected  Weak  Strong
+	    ( 0.7 0.3 ))))	%  GovRegulation  NotExpected  Weak  Weak
+	 (((( 0.65 0.35 )	%  QuasiMonopoly  HighlyExpected  Strong  Strong
+	    ( 0.6 0.4 ))	%  QuasiMonopoly  HighlyExpected  Strong  Weak
+	   (( 0.55 0.45 )	%  QuasiMonopoly  HighlyExpected  Weak  Strong
+	    ( 0.53 0.47 )))	%  QuasiMonopoly  HighlyExpected  Weak  Weak
+	  ((( 0.47 0.53 )	%  QuasiMonopoly  NotExpected  Strong  Strong
+	    ( 0.45 0.55 ))	%  QuasiMonopoly  NotExpected  Strong  Weak
+	   (( 0.4 0.6 )	%  QuasiMonopoly  NotExpected  Weak  Strong
+	    ( 0.35 0.65 ))))	%  QuasiMonopoly  NotExpected  Weak  Weak
+	 (((( 0.3 0.7 )	%  Few  HighlyExpected  Strong  Strong
+	    ( 0.25 0.75 ))	%  Few  HighlyExpected  Strong  Weak
+	   (( 0.2 0.8 )	%  Few  HighlyExpected  Weak  Strong
+	    ( 0.15 0.85 )))	%  Few  HighlyExpected  Weak  Weak
+	  ((( 0.1 0.9 )	%  Few  NotExpected  Strong  Strong
+	    ( 0.05 0.95 ))	%  Few  NotExpected  Strong  Weak
+	   (( 0.03 0.97 )	%  Few  NotExpected  Weak  Strong
+	    ( 0.01 0.99 )))));	%  Few  NotExpected  Weak  Weak
+}
+
+potential (ThreatOfEntry | AccessToDistribution ProductDifferentiation AbsoluteCostAdvantageOfEntrant CapitalRequirements)
+{
+ data = ((((( 0.98 0.02 )	%  FreeAccess  VeryHigh  Yes  Low
+	    ( 0.97 0.03 ))	%  FreeAccess  VeryHigh  Yes  High
+	   (( 0.94 0.06 )	%  FreeAccess  VeryHigh  No  Low
+	    ( 0.91 0.09 )))	%  FreeAccess  VeryHigh  No  High
+	  ((( 0.88 0.12 )	%  FreeAccess  Moderate  Yes  Low
+	    ( 0.851485 0.148515 ))	%  FreeAccess  Moderate  Yes  High
+	   (( 0.821782 0.178218 )	%  FreeAccess  Moderate  No  Low
+	    ( 0.8 0.2 )))	%  FreeAccess  Moderate  No  High
+	  ((( 0.77 0.23 )	%  FreeAccess  Low  Yes  Low
+	    ( 0.74 0.26 ))	%  FreeAccess  Low  Yes  High
+	   (( 0.71 0.29 )	%  FreeAccess  Low  No  Low
+	    ( 0.68 0.32 ))))	%  FreeAccess  Low  No  High
+	 (((( 0.65 0.35 )	%  FixedCostsInCarryingNewProducts  VeryHigh  Yes  Low
+	    ( 0.62 0.38 ))	%  FixedCostsInCarryingNewProducts  VeryHigh  Yes  High
+	   (( 0.59 0.41 )	%  FixedCostsInCarryingNewProducts  VeryHigh  No  Low
+	    ( 0.56 0.44 )))	%  FixedCostsInCarryingNewProducts  VeryHigh  No  High
+	  ((( 0.53 0.47 )	%  FixedCostsInCarryingNewProducts  Moderate  Yes  Low
+	    ( 0.51 0.49 ))	%  FixedCostsInCarryingNewProducts  Moderate  Yes  High
+	   (( 0.49 0.51 )	%  FixedCostsInCarryingNewProducts  Moderate  No  Low
+	    ( 0.47 0.53 )))	%  FixedCostsInCarryingNewProducts  Moderate  No  High
+	  ((( 0.44 0.56 )	%  FixedCostsInCarryingNewProducts  Low  Yes  Low
+	    ( 0.41 0.59 ))	%  FixedCostsInCarryingNewProducts  Low  Yes  High
+	   (( 0.475 0.525 )	%  FixedCostsInCarryingNewProducts  Low  No  Low
+	    ( 0.35 0.65 ))))	%  FixedCostsInCarryingNewProducts  Low  No  High
+	 (((( 0.32 0.68 )	%  DistributorsPreferenceToEstablishedFirms  VeryHigh  Yes  Low
+	    ( 0.29 0.71 ))	%  DistributorsPreferenceToEstablishedFirms  VeryHigh  Yes  High
+	   (( 0.26 0.74 )	%  DistributorsPreferenceToEstablishedFirms  VeryHigh  No  Low
+	    ( 0.23 0.77 )))	%  DistributorsPreferenceToEstablishedFirms  VeryHigh  No  High
+	  ((( 0.2 0.8 )	%  DistributorsPreferenceToEstablishedFirms  Moderate  Yes  Low
+	    ( 0.17 0.83 ))	%  DistributorsPreferenceToEstablishedFirms  Moderate  Yes  High
+	   (( 0.14 0.86 )	%  DistributorsPreferenceToEstablishedFirms  Moderate  No  Low
+	    ( 0.11 0.89 )))	%  DistributorsPreferenceToEstablishedFirms  Moderate  No  High
+	  ((( 0.08 0.92 )	%  DistributorsPreferenceToEstablishedFirms  Low  Yes  Low
+	    ( 0.05 0.95 ))	%  DistributorsPreferenceToEstablishedFirms  Low  Yes  High
+	   (( 0.02 0.98 )	%  DistributorsPreferenceToEstablishedFirms  Low  No  Low
+	    ( 0.01 0.99 )))));	%  DistributorsPreferenceToEstablishedFirms  Low  No  High
+}
+
+potential (ProductDifferentiation | AccessToDistribution) {}
+
+potential (AbsoluteCostAdvantageOfEntrant | EconomicsOfScale) {}
+
+potential (EconomicsOfScale | CapitalRequirements) {}
+
+potential (CapitalRequirements | BrandAwareness) {}

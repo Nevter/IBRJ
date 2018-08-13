@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!-- Evidence file for asia -->
+<!-- By: Jan-Diederik van Wees -->
+
+<!-- DTD for the evidence file format -->
+<!DOCTYPE EVIDENCES [
+    <!ELEMENT EVIDENCES ( EVIDENCE )+>
+    <!ELEMENT EVIDENCE EMPTY>
+        <!ATTLIST EVIDENCE NAME CDATA #REQUIRED
+                           VALUE CDATA #REQUIRED>
+]>
+
+
+<EVIDENCES>
+    <EVIDENCE NAME="VisitAsia" VALUE="Visit" />
+    <EVIDENCE NAME="Smoking" VALUE="NonSmoker" />
+    <EVIDENCE NAME="XRay" VALUE="Normal" />
+    <EVIDENCE NAME="Dyspnea" VALUE="Present" />
+</EVIDENCES>

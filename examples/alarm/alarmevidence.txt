@@ -1,0 +1,3 @@
+1 1 1 1 0 1 1 1 1 1 1 1 0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 1 1 0 1 1 0 0 1 0 1
+Hypovolemia|LVFailure|MinVolSet|Disconnect|KinkedTube|ErrLowOutput|ErrCauter|Anaphylaxis|InsuffAnesth|PulmEmbolus|FiO2|Intubation|StrokeVolume|History|TPR|Shunt|LVEDVolume|CVP|PAP|PCWP|VentMach|VentTube|VentLung|Press|MinVol|VentAlv|PVSat|ArtCO2|SaO2|Catechol|HR|HRBP|HRSat|CO|HREKG|ExpCO2|BP
+False False Normal False False False False False False False Normal Normal Normal False High Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal Normal

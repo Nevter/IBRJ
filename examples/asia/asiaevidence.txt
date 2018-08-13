@@ -1,0 +1,3 @@
+0 1 1 0 0 0 0 0
+VisitAsia|Smoking|Tuberculosis|Cancer|TbOrCa|XRay|Bronchitis|Dyspnea
+No_Visit NonSmoker Absent Absent True Normal Present Present

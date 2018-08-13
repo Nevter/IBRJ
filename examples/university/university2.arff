@@ -1,0 +1,86 @@
+@RELATION COURSE
+@ATTRIBUTE Course_ID string @PRIMARY
+@ATTRIBUTE Rating {High, Medium, Low}
+@ATTRIBUTE Difficulty {High, Medium, Low}
+@ATTRIBUTE Prof_ID string @REFERENCE INSTRUCTOR.Prof_ID
+
+@DATA
+CIS_101, High, Low, Prof_1
+CIS_102, Low, Medium, Prof_2
+CIS_103, Medium, Medium, Prof_3
+CIS_104, High, Medium, Prof_1
+CIS_204, High, Low, Prof_2
+CIS_301, Low, High, Prof_1
+CIS_401, High, Low, Prof_3
+CIS_402, Low, High, Prof_4
+CIS_403, High, Medium, Prof_6
+CIS_404, Low, Medium, Prof_7
+CIS_405, Medium, Low, Prof_8
+CIS_406, Medium, Medium, Prof_5
+CIS_409, Low, Low, Prof_4
+CIS_500, Medium, Medium, Prof_8
+
+			
+@RELATION INSTRUCTOR
+@ATTRIBUTE Prof_ID string @PRIMARY
+@ATTRIBUTE TeachingAbility {High, Medium, Low}
+@ATTRIBUTE Popularity {High, Medium, Low}
+
+@DATA
+Prof_1, High, Medium
+Prof_2, Low, Low
+Prof_3, Low, Medium
+Prof_4, Medium, High
+Prof_5, High, Medium
+Prof_6, High, High
+Prof_7, Medium, Low
+Prof_8, High, Low
+Prof_10, High, High
+
+
+@RELATION REGISTRATION
+@ATTRIBUTE Reg_ID string @PRIMARY
+@ATTRIBUTE Grade {A, B, C}
+@ATTRIBUTE Satisfaction {High, Medium, Low}
+@ATTRIBUTE Course_ID string @REFERENCE COURSE.Course_ID
+@ATTRIBUTE Student_ID string @REFERENCE STUDENT.Student_ID
+
+@DATA
+Reg_1, A, Medium, CIS_101, Stud_1
+Reg_2, B, High, CIS_102, Stud_1
+Reg_3, B, Low, CIS_403, Stud_1
+Reg_4, B, Low, CIS_101, Stud_2 
+Reg_5, C, Low, CIS_204, Stud_2
+Reg_6, B, Medium, CIS_403, Stud_2
+Reg_7, A, Medium, CIS_404, Stud_3
+Reg_8, A, High, CIS_101, Stud_3
+Reg_9, B, Low, CIS_204, Stud_3
+Reg_10, C, High, CIS_301, Stud_4
+Reg_11, A, Medium, CIS_401, Stud_4
+Reg_12, B, High, CIS_402, Stud_5
+Reg_13, B, High, CIS_402, Stud_6
+Reg_14, C, Low, CIS_404, Stud_6
+Reg_15, A, High, CIS_404, Stud_7
+Reg_16, B, High, CIS_402, Stud_7
+Reg_17, A, High, CIS_101, Stud_7
+
+
+@RELATION STUDENT
+@ATTRIBUTE Student_ID string @PRIMARY
+@ATTRIBUTE Intelligence {High, Medium, Low}
+@ATTRIBUTE Ranking {High, Medium, Low}
+
+@DATA
+Stud_1, High, Medium
+Stud_2, High, High
+Stud_3, Low,	Low
+Stud_4, Medium, Medium
+Stud_5, High, Low
+Stud_6, Medium, High
+Stud_7, Low, High
+Stud_8, Low, Medium
+Stud_9, Low, High
+Stud_10, High, Low
+Stud_11, Medium, Medium
+Stud_12, Low, Medium
+Stud_13, High, Low

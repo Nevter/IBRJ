@@ -1,0 +1,303 @@
+net
+{
+    node_size = (80 40);
+    HR_Color_DiscreteChance = "16";
+    HR_Groups_GroupColors = "";
+    HR_Groups_GroupNames = "";
+    HR_Groups_UserGroupsNo = "0";
+    HR_Color_Decision = "17";
+    HR_Color_Utility = "36";
+    HR_Color_ContinuosChance = "48";
+    HR_Color_DescreteChance = "16";
+    HR_Monitor_InitSD = "2";
+    HR_Monitor_InitStates = "5";
+    HR_Monitor_OpenGraph = "0";
+    HR_Monitor_GraphPrecision = "100";
+    HR_Monitor_AutoUpdGraph = "0";
+    HR_Compile_ApproxEpsilon = "0.00001";
+    HR_Compile_Approximate = "0";
+    HR_Compile_Compress = "0";
+    HR_Compile_TriangMethod = "0";
+    HR_Propagate_AutoNormal = "1";
+    HR_Propagate_AutoSum = "1";
+    HR_Propagate_Auto = "0";
+    HR_Font_Italic = "0";
+    HR_Font_Weight = "400";
+    HR_Font_Size = "-12";
+    HR_Font_Name = "Arial";
+    HR_Grid_GridShow = "0";
+    HR_Grid_GridSnap = "1";
+    HR_Grid_Y = "10";
+    HR_Grid_X = "10";
+}
+
+node AD
+{
+    label = "Arne's dice";
+    position = (0 160);
+    states = ("1" "2");
+}
+
+node BD
+{
+    label = "Bente's dice";
+    position = (670 160);
+    states = ("1" "2");
+}
+
+node AB1
+{
+    label = "AB1";
+    position = (160 310);
+    states = ("1" "2" "2*1" "2*2");
+}
+
+decision BB1
+{
+    position = (520 310);
+    states = ("2" "2*1" "2*2" "call");
+}
+
+utility U4
+{
+    label = "U1U4";
+    position = (320 350);
+}
+
+node AB2
+{
+    position = (150 160);
+    states = ("2*1" "2*2" "call");
+}
+
+decision BB2
+{
+    label = "BB2";
+    position = (520 160);
+    states = ("2*2" "call");
+}
+
+utility U5
+{
+    label = "U5";
+    position = (280 270);
+}
+
+utility U6
+{
+    label = "U2U6";
+    position = (280 120);
+}
+
+node AB3
+{
+    label = "";
+    position = (150 0);
+    states = ("call");
+}
+
+utility U7
+{
+    label = "U7";
+    position = (360 60);
+}
+
+potential (AD)
+{
+ data = ( 0.5 0.5 );
+}
+
+potential (BD)
+{
+ data = ( 0.5 0.5 );
+}
+
+potential (AB1 | AD)
+{
+ data = (( 1 0 0 0 )	%  1
+	 ( 0 1 0 0 ));	%  2
+}
+
+potential (BB1 | AB1 BD) {}
+
+potential (U4 | BD AD AB1 BB1)
+{
+ data = (((( 0	%  1  1  1  2
+	     0	%  1  1  1  2*1
+	     0	%  1  1  1  2*2
+	     -1 )	%  1  1  1  call
+	   ( -10	%  1  1  2  2
+	     0	%  1  1  2  2*1
+	     0	%  1  1  2  2*2
+	     1 )	%  1  1  2  call
+	   ( -10	%  1  1  2*1  2
+	     -10	%  1  1  2*1  2*1
+	     0	%  1  1  2*1  2*2
+	     -1 )	%  1  1  2*1  call
+	   ( -10	%  1  1  2*2  2
+	     -10	%  1  1  2*2  2*1
+	     -10	%  1  1  2*2  2*2
+	     1 ))	%  1  1  2*2  call
+	  (( 0	%  1  2  1  2
+	     0	%  1  2  1  2*1
+	     0	%  1  2  1  2*2
+	     -1 )	%  1  2  1  call
+	   ( -10	%  1  2  2  2
+	     0	%  1  2  2  2*1
+	     0	%  1  2  2  2*2
+	     -1 )	%  1  2  2  call
+	   ( -10	%  1  2  2*1  2
+	     -10	%  1  2  2*1  2*1
+	     0	%  1  2  2*1  2*2
+	     1 )	%  1  2  2*1  call
+	   ( -10	%  1  2  2*2  2
+	     -10	%  1  2  2*2  2*1
+	     -10	%  1  2  2*2  2*2
+	     1 )))	%  1  2  2*2  call
+	 ((( 0	%  2  1  1  2
+	     0	%  2  1  1  2*1
+	     0	%  2  1  1  2*2
+	     -1 )	%  2  1  1  call
+	   ( -10	%  2  1  2  2
+	     0	%  2  1  2  2*1
+	     0	%  2  1  2  2*2
+	     -1 )	%  2  1  2  call
+	   ( -10	%  2  1  2*1  2
+	     -10	%  2  1  2*1  2*1
+	     0	%  2  1  2*1  2*2
+	     1 )	%  2  1  2*1  call
+	   ( -10	%  2  1  2*2  2
+	     -10	%  2  1  2*2  2*1
+	     -10	%  2  1  2*2  2*2
+	     1 ))	%  2  1  2*2  call
+	  (( 0	%  2  2  1  2
+	     0	%  2  2  1  2*1
+	     0	%  2  2  1  2*2
+	     1 )	%  2  2  1  call
+	   ( -10	%  2  2  2  2
+	     0	%  2  2  2  2*1
+	     0	%  2  2  2  2*2
+	     -1 )	%  2  2  2  call
+	   ( -10	%  2  2  2*1  2
+	     -10	%  2  2  2*1  2*1
+	     0	%  2  2  2*1  2*2
+	     1 )	%  2  2  2*1  call
+	   ( -10	%  2  2  2*2  2
+	     -10	%  2  2  2*2  2*1
+	     -10	%  2  2  2*2  2*2
+	     -1 ))));	%  2  2  2*2  call
+}
+
+potential (AB2 | BB1 AD)
+{
+ data = ((( 0 0 1 )	%  2  1
+	  ( 0 1 0 ))	%  2  2
+	 (( 0 0 1 )	%  2*1  1
+	  ( 0 0 1 ))	%  2*1  2
+	 (( 0 0 1 )	%  2*2  1
+	  ( 0 0 1 ))	%  2*2  2
+	 (( 0 0 1 )	%  call  1
+	  ( 0 0 1 )));	%  call  2
+}
+
+potential (BB2 | AB2 BD) {}
+
+potential (U5 | AD BD BB1 AB2)
+{
+ data = (((( 0	%  1  1  2  2*1
+	     0	%  1  1  2  2*2
+	     -1 )	%  1  1  2  call
+	   ( 0	%  1  1  2*1  2*1
+	     0	%  1  1  2*1  2*2
+	     1 )	%  1  1  2*1  call
+	   ( 0	%  1  1  2*2  2*1
+	     0	%  1  1  2*2  2*2
+	     -1 )	%  1  1  2*2  call
+	   ( 0	%  1  1  call  2*1
+	     0	%  1  1  call  2*2
+	     0 ))	%  1  1  call  call
+	  (( 0	%  1  2  2  2*1
+	     0	%  1  2  2  2*2
+	     1 )	%  1  2  2  call
+	   ( 0	%  1  2  2*1  2*1
+	     0	%  1  2  2*1  2*2
+	     -1 )	%  1  2  2*1  call
+	   ( 0	%  1  2  2*2  2*1
+	     0	%  1  2  2*2  2*2
+	     -1 )	%  1  2  2*2  call
+	   ( 0	%  1  2  call  2*1
+	     0	%  1  2  call  2*2
+	     0 )))	%  1  2  call  call
+	 ((( 0	%  2  1  2  2*1
+	     0	%  2  1  2  2*2
+	     1 )	%  2  1  2  call
+	   ( 0	%  2  1  2*1  2*1
+	     0	%  2  1  2*1  2*2
+	     -1 )	%  2  1  2*1  call
+	   ( 0	%  2  1  2*2  2*1
+	     0	%  2  1  2*2  2*2
+	     -1 )	%  2  1  2*2  call
+	   ( 0	%  2  1  call  2*1
+	     0	%  2  1  call  2*2
+	     0 ))	%  2  1  call  call
+	  (( 0	%  2  2  2  2*1
+	     0	%  2  2  2  2*2
+	     1 )	%  2  2  2  call
+	   ( 0	%  2  2  2*1  2*1
+	     0	%  2  2  2*1  2*2
+	     -1 )	%  2  2  2*1  call
+	   ( 0	%  2  2  2*2  2*1
+	     0	%  2  2  2*2  2*2
+	     1 )	%  2  2  2*2  call
+	   ( 0	%  2  2  call  2*1
+	     0	%  2  2  call  2*2
+	     0 ))));	%  2  2  call  call
+}
+
+potential (U6 | BD AD AB2 BB2)
+{
+ data = (((( 0	%  1  1  2*1  2*2
+	     -1 )	%  1  1  2*1  call
+	   ( -10	%  1  1  2*2  2*2
+	     1 )	%  1  1  2*2  call
+	   ( -10	%  1  1  call  2*2
+	     0 ))	%  1  1  call  call
+	  (( 0	%  1  2  2*1  2*2
+	     -1 )	%  1  2  2*1  call
+	   ( -10	%  1  2  2*2  2*2
+	     1 )	%  1  2  2*2  call
+	   ( -10	%  1  2  call  2*2
+	     0 )))	%  1  2  call  call
+	 ((( 0	%  2  1  2*1  2*2
+	     1 )	%  2  1  2*1  call
+	   ( -10	%  2  1  2*2  2*2
+	     1 )	%  2  1  2*2  call
+	   ( -10	%  2  1  call  2*2
+	     0 ))	%  2  1  call  call
+	  (( 0	%  2  2  2*1  2*2
+	     1 )	%  2  2  2*1  call
+	   ( -10	%  2  2  2*2  2*2
+	     -1 )	%  2  2  2*2  call
+	   ( -10	%  2  2  call  2*2
+	     0 ))));	%  2  2  call  call
+}
+
+potential (AB3 | BB2 AD)
+{
+ data = ((( 1 )	%  2*2  1
+	  ( 1 ))	%  2*2  2
+	 (( 1 )	%  call  1
+	  ( 1 )));	%  call  2
+}
+
+potential (U7 | BD AD BB2 AB3)
+{
+ data = (((( -1 )	%  1  1  2*2  call
+	   ( 0 ))	%  1  1  call  call
+	  (( -1 )	%  1  2  2*2  call
+	   ( 0 )))	%  1  2  call  call
+	 ((( -1 )	%  2  1  2*2  call
+	   ( 0 ))	%  2  1  call  call
+	  (( -1 )	%  2  2  2*2  call
+	   ( 0 ))));	%  2  2  call  call
+}
