@@ -22,7 +22,6 @@ public class DBR {
   public static void main(String[] args) {
     output("~~~~~~~~ Welcome to DBR ~~~~~~~~~~");
     output("\n~ A bayesian reasoner with logic ~\n");
-
     /*
     BNGraph graph = new BNGraph("./examples/asia/asia.bif");
 

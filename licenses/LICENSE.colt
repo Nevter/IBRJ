@@ -1,0 +1,69 @@
+------- Note From BNJ Developer Begins ------
+We adapt parts of COLT library (http://hoschek.home.cern.ch/hoschek/colt/)
+in five files:
+* BetaGamma.java
+* Constants.java
+* Gamma.java
+* Polynomial.java
+* Probability.java
+
+under the edu.ksu.cis.kdd.util.stat.distribution package.
+
+The modifications are:
+* Constants.java are taken directly from cern.jet.math.Constants without
+  modifications except for the comment.
+* Polynomial.java are taken directly from cern.jet.math.Polynomial without
+  modiciations except for the comment.
+* Copy cern.jet.stat.Gamma to the same package as this class and rename it to
+  BetaGamma to avoid naming conflicts.
+* Copy cern.jet.stat.Probability to the same package as this class and replace
+  all occurrence of Gamma to BetaGamma in accordance to the renaming.
+* Copy the raw() method from cern.jet.random.engine.RandomEngine to Sean Luke's
+  MersenneTwisterFast in edu.ksu.cis.kdd.util package.
+
+These modifications are for Gamma.java:
+* Put Sean Luke's MersenneTwisterFast instead of their implementation.
+* Modify the implementation so that random generators are taken from Settings
+  so that we can set the seed from the command line while being used by other
+  modules).
+* Remove the toString() and xstaticSetRandomGenerator(RandomElement) methods.
+* Put a function logGamma(double) from cern.jet.random.Fun and rename it to
+  logGammaApprox(double)
+* Apply beautifier.
+
+We just want to make clear that these modifications are not endorsed by
+the original authors. These modifications are provided "AS IS" with NO
+WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ITS PERFORMANCE,
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. WE WILL NOT BE LIABLE
+FOR ANY DAMAGES WHATSOEVER ARISING OUT OF THE USE OF OR INABILITY TO USE
+THIS SOFTWARE OR THE MODIFICATIONS, INCLUDING BUT NOT LIMITED TO DIRECT,
+INDIRECT, SPECIAL, CONSEQUENTIAL, PUNITIVE, AND EXEMPLARY DAMAGES, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
+
+The license below is taken from:
+http://hoschek.home.cern.ch/hoschek/colt/download/v1.0.3/download.htm
+
+Since we only take the parts we need, below is the only license that apply:
+------- Note From BNJ Developer Ends ------
+
+
+
+License Agreements and Copyrights for Colt Distribution Version 1.0.3
+
+These are the copyright and licence statements for the Colt Distribution,
+Version 1.0.3. Do not use this software if you do not accept the terms of
+the licenses described below. In alphabetic order:
+
+
+packages cern.colt* , cern.jet*, cern.clhep
+
+Written by Wolfgang Hoschek. Check the Colt home page for more info.
+Copyright © 1999 CERN - European Organization for Nuclear Research. 
+Permission to use, copy, modify, distribute and sell this software and
+its documentation for any purpose is hereby granted without fee, provided
+that the above copyright notice appear in all copies and that both that
+copyright notice and this permission notice appear in supporting
+documentation. CERN makes no representations about the suitability of this
+software for any purpose. It is provided "as is" without expressed or
+implied warranty. 
+
