@@ -10,7 +10,13 @@ public class DefeasibleImplication extends Implication {
   }
 
   public String toString(){
-    return "DefeasibleImplication\n" + super.toString();
+    StringBuffer buffer = new StringBuffer();
+
+    buffer.append(antecedentNode.getName());
+    buffer.append(" ~> ");
+    buffer.append(consequentNode.getName());
+
+    return buffer.toString();
   }
 
 }

@@ -2,7 +2,6 @@ package edu.uct.dbr.implication;
 
 import edu.uct.dbr.BNNode;
 
-
 public abstract class Implication {
   BNNode antecedentNode = null;
   BNNode consequentNode = null;
@@ -13,8 +12,20 @@ public abstract class Implication {
     this.consequentNode = consequentNode;
   }
 
+  public BNNode getAntecedentNote(){
+    return antecedentNode;
+  }
+
+  public BNNode getConsequentNode(){
+    return consequentNode;
+  }
+
   public String toString(){
-    return antecedentNode.getName() + " -> " + consequentNode.getName();
+    StringBuffer buffer = new StringBuffer();
+    buffer.append("Antecedent Node: " + antecedentNode.getName() + "\n");
+    buffer.append("Consequent Node: " + consequentNode.getName() + "\n");
+
+    return buffer.toString();
   }
 
 }

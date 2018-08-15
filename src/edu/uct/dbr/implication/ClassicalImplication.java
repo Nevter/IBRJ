@@ -10,7 +10,13 @@ public class ClassicalImplication extends Implication {
   }
 
   public String toString(){
-    return "ClassicalImplication\n" + super.toString();
+    StringBuffer buffer = new StringBuffer();
+
+    buffer.append(antecedentNode.getName());
+    buffer.append(" -> ");
+    buffer.append(consequentNode.getName());
+
+    return buffer.toString();
   }
 
 }
