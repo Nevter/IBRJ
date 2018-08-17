@@ -7,10 +7,9 @@ if [ "$IBNDIR" == "" ]; then
 IBNDIR=.
 fi
 
-IBNTEST=$IBNDIR/test
 IBNBIN=$IBNDIR/bin
 LIB=/home/luke/Honours/Project/JavaIBN/lib
 LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar
 IBNCLASSPATH=$IBNDIR:$IBNBIN:$LIBJAR
 
-java -cp $IBNCLASSPATH edu.uct.ibntest.testibn
+java -cp $IBNCLASSPATH edu.uct.ibn.IBN

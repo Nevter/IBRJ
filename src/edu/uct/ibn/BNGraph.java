@@ -1,7 +1,7 @@
-package edu.uct.dbr;
+package edu.uct.ibn;
 
-import edu.uct.dbr.implication.*;
-import edu.uct.dbr.BNNode.Relationship;
+import edu.uct.ibn.implication.*;
+import edu.uct.ibn.BNNode.Relationship;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,7 +15,7 @@ public class BNGraph {
 
   private BBNGraph graph = null;
   private String path = null;
-  private ArrayList<Implication> implication = new ArrayList<Implication>();
+  private ArrayList<Implication> knowledgeBase = new ArrayList<Implication>();
 
   public BNGraph(String path){
     graph = new BBNGraph();
@@ -103,11 +103,11 @@ public class BNGraph {
   }
 
   public void addImplicationStatement(Implication impl){
-    implication.add(impl);
+    knowledgeBase.add(impl);
   }
 
   public ArrayList<Implication> getImplicationStatements(){
-    return implication;
+    return knowledgeBase;
   }
 
   public String toString(){

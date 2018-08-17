@@ -1,6 +1,6 @@
-package edu.uct.dbr.gui;
+package edu.uct.ibn.gui;
 
-import edu.uct.dbr.BNGraph;
+import edu.uct.ibn.BNGraph;
 
 public class CPTDisplay{
   BNGraph graph = null;

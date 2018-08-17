@@ -1,6 +1,6 @@
-package edu.uct.dbr.implication;
+package edu.uct.ibn.implication;
 
-import edu.uct.dbr.BNNode;
+import edu.uct.ibn.BNNode;
 
 public abstract class Implication {
   BNNode antecedentNode = null;

@@ -1,4 +1,4 @@
-package edu.uct.dbr.util;
+package edu.uct.ibn.util;
 
 import java.util.Scanner;
 import java.io.*;

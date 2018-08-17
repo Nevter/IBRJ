@@ -1,4 +1,4 @@
-package edu.uct.dbr;
+package edu.uct.ibn;
 
 import java.util.Set;
 import java.util.HashSet;

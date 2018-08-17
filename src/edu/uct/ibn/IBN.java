@@ -1,9 +1,11 @@
-package edu.uct.dbr;
+package edu.uct.ibn;
 
 
-import edu.uct.dbr.gui.*;
-import edu.uct.dbr.implication.*;
-import edu.uct.dbr.util.*;
+//InferencialBayesianNetwork
+
+import edu.uct.ibn.gui.*;
+import edu.uct.ibn.implication.*;
+import edu.uct.ibn.util.*;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -17,12 +19,12 @@ import edu.ksu.cis.bnj.bbn.BBNGraph;
 import edu.ksu.cis.bnj.bbn.BBNNode;
 
 
-public class DBR {
+public class IBN {
 
   private static BNGraph graph = null;
 
   public static void main(String[] args) {
-    io.output("~~~~~~~~ Welcome to DBR ~~~~~~~~~~");
+    io.output("~~~~~~~~ Welcome to IBN ~~~~~~~~~~");
     io.output("\n~ A bayesian reasoner with logic ~\n");
 
     /*
@@ -39,13 +41,13 @@ public class DBR {
     System.out.println("Relation: "+graph.getRelationship(x, t));
 
     */
-    dbr();
+    ibn();
 
     io.output("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
   }
 
 
-  private static void dbr(){
+  private static void ibn(){
 
     io.output(menuText());
 

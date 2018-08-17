@@ -1,4 +1,4 @@
-package edu.uct.dbr;
+package edu.uct.ibn;
 
 import edu.ksu.cis.bnj.bbn.inference.elimbel.*;
 import edu.ksu.cis.bnj.bbn.inference.*;
@@ -13,13 +13,12 @@ public class BNInference {
     this.graph = graph;
   }
 
-
   public InferenceResult getMarginals(){
     variableElimination = new ElimBel(graph.getBBNGraph());
     return variableElimination.getMarginals();
   }
 
-
+  
 
 
 }

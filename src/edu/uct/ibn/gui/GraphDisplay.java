@@ -1,4 +1,4 @@
-package edu.uct.dbr.gui;
+package edu.uct.ibn.gui;
 
 
 import javax.swing.*;
@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-import edu.uct.dbr.BNGraph;
+import edu.uct.ibn.BNGraph;
 
 public class GraphDisplay extends JFrame {
 
