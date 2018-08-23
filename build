@@ -10,8 +10,8 @@ fi
 IBNSRC=$IBNDIR/src
 IBNBIN=$IBNDIR/bin
 IBNTEST=$IBNDIR/test
-LIB=/home/luke/Honours/Project/JavaIBN/lib
-LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar
+LIB=$IBNDIR/lib
+LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/junit-4.10.jar
 IBNCLASSPATH=$IBNDIR:$LIBJAR
 IBN=/edu/uct/ibn
 

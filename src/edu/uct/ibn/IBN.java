@@ -100,13 +100,13 @@ public class IBN {
     io.output("\nPlease enter the path to the file to load\n>");
     String userInput = io.input();
 
-    String filepath = "";
+    String filePath = "";
 
-    if (userInput.equals("a")) filepath = "./examples/asia/asia.bif";
-    else filepath = userInput;
+    if (userInput.equals("a")) filePath = "./examples/asia/asia.bif";
+    else filePath = userInput;
 
     try{
-      graph = new BNGraph(filepath);
+      graph = new BNGraph(filePath);
     } catch(Throwable e){
       io.output("\nSomething went wrong with opening that file. Is the path correct?");
     }
@@ -161,7 +161,7 @@ public class IBN {
   }
 
   private static void viewImplicationStatements(){
-    ArrayList<Implication> implicationStatements = graph.getImplicationStatements();
+    ArrayList<Implication> implicationStatements = graph.getKnowledgebase();
     for (Implication impl : implicationStatements){
       io.output(impl+"\n");
     }

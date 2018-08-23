@@ -106,7 +106,7 @@ public class BNGraph {
     knowledgeBase.add(impl);
   }
 
-  public ArrayList<Implication> getImplicationStatements(){
+  public ArrayList<Implication> getKnowledgebase(){
     return knowledgeBase;
   }
 
