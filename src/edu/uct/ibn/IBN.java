@@ -114,8 +114,8 @@ public class IBN {
 
   private static void inference(){
     BNInference inferencer = new BNInference(graph);
-    InferenceResult result = inferencer.getMarginals();
-    io.output(result.toString());
+    ArrayList<InferenceResult> results = inferencer.getMarginals();
+    io.output(results);
   }
 
   private static void addImplicationStatement(){
