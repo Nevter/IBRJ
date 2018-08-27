@@ -49,12 +49,6 @@ public class BNGraph {
   }
 
   public Relationship getRelationship(BNNode antecedent, BNNode consequent){
-
-    System.out.println("Check Relationship between:");
-    System.out.println(antecedent);
-    System.out.println(consequent);
-    System.out.println();
-
     if (antecedent.equals(consequent)){
       return Relationship.SELF;
     }

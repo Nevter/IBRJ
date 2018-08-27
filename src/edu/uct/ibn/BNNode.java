@@ -5,11 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 
 import edu.ksu.cis.bnj.bbn.BBNNode;
+import edu.ksu.cis.bnj.bbn.BBNCPF;
+import edu.ksu.cis.bnj.bbn.BBNDiscreteValue;
 
 public class BNNode {
 
   BBNNode node = null;
-  enum Relationship {PARENT, CHILD, ANCESTOR, DESCENDANT, SELF, NONE};
+  public enum Relationship {PARENT, CHILD, ANCESTOR, DESCENDANT, SELF, NONE};
 
   public BNNode(BBNNode node){
     this.node = node;
@@ -24,12 +26,29 @@ public class BNNode {
     return node;
   }
 
+  public BBNCPF getCPF(){
+    return node.getCPF();
+  }
+
   public String toString(){
     return getName();
   }
 
   public boolean equals(BNNode o){
     return node.equals(o.getNode());
+  }
+
+  public String getPossibleValues(){
+    return node.getValues().toString();
+  }
+
+  public String getTruthValueName(){
+    BBNDiscreteValue values = (BBNDiscreteValue) node.getValues();
+    return values.toArray()[0].toString();
+  }
+
+  public void observe(Object valueName){
+    node.setEvidenceValue(valueName);
   }
 
   public String toVerboseString(){

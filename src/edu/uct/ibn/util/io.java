@@ -15,6 +15,9 @@ public class io{
   public static String input(){
     return inputScanner.next().toLowerCase();
   }
+  public static String rawInput(){
+    return inputScanner.next();
+  }
 
   public static void output(Object output){
     System.out.print(output);

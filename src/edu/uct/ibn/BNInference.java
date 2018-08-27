@@ -6,19 +6,17 @@ import edu.ksu.cis.bnj.bbn.inference.*;
 
 import java.util.ArrayList;
 
+import edu.uct.ibn.util.io;
 import edu.uct.ibn.implication.*;
+import edu.uct.ibn.BNNode.Relationship;
+
 
 
 public class BNInference {
 
-  private BNGraph graph = null;
-  private ElimBel variableElimination = null;
-
-  public BNInference(BNGraph graph){
-    this.graph = graph;
-  }
-
-  public ArrayList<InferenceResult> getMarginals(){
+ 
+  public static ArrayList<InferenceResult> getMarginals(BNGraph graph){
+    
     ArrayList<InferenceResult> results = new ArrayList<InferenceResult>();
 
     ArrayList<Implication> kb = graph.getKnowledgebase();
@@ -27,7 +25,7 @@ public class BNInference {
     
     for (ArrayList<Implication> kbRank : rankings){
       BNGraph graphDash = supplementNetwork(graph, kbRank);
-      variableElimination = new ElimBel(graphDash.getBBNGraph());
+      ElimBel variableElimination = new ElimBel(graphDash.getBBNGraph());
       results.add(variableElimination.getMarginals());
     }
 
@@ -38,7 +36,7 @@ public class BNInference {
    * TODO: 
    * Implement this
    */
-  public ArrayList<ArrayList<Implication>> rationalClosure(ArrayList<Implication> kb){
+  public static ArrayList<ArrayList<Implication>> rationalClosure(ArrayList<Implication> kb){
     ArrayList<ArrayList<Implication>> kbRankings = new ArrayList<ArrayList<Implication>>();
 
     kbRankings.add(kb);
@@ -47,10 +45,16 @@ public class BNInference {
   }
 
 
-  public BNGraph supplementNetwork(BNGraph graph, ArrayList<Implication> kb){
+  private static BNGraph supplementNetwork(BNGraph graph, ArrayList<Implication> kb){
     
+    BNGraph graphDash = graph;
 
-    return graph;
+
+    for (Implication impl : kb){
+      graphDash = impl.supplementNetwork(graphDash); 
+    }
+
+    return graphDash;
   }
 
 
