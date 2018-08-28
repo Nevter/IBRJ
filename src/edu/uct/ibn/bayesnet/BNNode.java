@@ -3,8 +3,10 @@ package edu.uct.ibn.bayesnet;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Iterator;
 
 import edu.ksu.cis.bnj.bbn.BBNNode;
+import edu.ksu.cis.bnj.bbn.BBNValue;
 import edu.ksu.cis.bnj.bbn.BBNCPF;
 import edu.ksu.cis.bnj.bbn.BBNDiscreteValue;
 
@@ -38,7 +40,12 @@ public class BNNode {
     return node.equals(o.getNode());
   }
 
-  public String getPossibleValues(){
+  public BBNDiscreteValue getPossibleValues(){
+    BBNDiscreteValue values = (BBNDiscreteValue) node.getValues();
+    return values;
+  }
+
+  public String getPossibleValuesOutput(){
     return node.getValues().toString();
   }
 
@@ -47,8 +54,14 @@ public class BNNode {
     return values.toArray()[0].toString();
   }
 
-  public void observe(Object valueName){
-    node.setEvidenceValue(valueName);
+  public void observe(String valueName){
+    BBNDiscreteValue values = getPossibleValues();
+    for (Iterator itr = values.iterator(); itr.hasNext(); ){
+      String val = itr.next().toString();
+      if (val.toLowerCase().equals(valueName.toLowerCase())){
+        node.setEvidenceValue(val);
+      }
+    }
   }
 
   public String toVerboseString(){

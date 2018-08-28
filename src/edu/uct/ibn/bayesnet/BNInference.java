@@ -14,7 +14,27 @@ import edu.uct.ibn.bayesnet.BNNode.Relationship;
 
 public class BNInference {
 
- 
+  
+  public static ArrayList<String> getMarginalsOutput(BNGraph graph){
+    ArrayList<InferenceResult> results = getMarginals(graph);
+    ArrayList<String> resultOutput = new ArrayList<String>();
+
+    if (results.size() == 1){
+      resultOutput.add(results.get(0).toString());
+    }
+    else{
+      resultOutput.add("Marginals in order of typicality:");
+      int worldRank = 1;
+      for (InferenceResult r : results){
+        resultOutput.add("World Rank: "+worldRank++);
+        resultOutput.add(r.toString());
+      }
+    }
+
+    return resultOutput;
+  }
+
+
   public static ArrayList<InferenceResult> getMarginals(BNGraph graph){
     
     ArrayList<InferenceResult> results = new ArrayList<InferenceResult>();

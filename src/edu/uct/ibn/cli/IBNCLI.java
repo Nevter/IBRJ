@@ -13,178 +13,169 @@ import java.util.Set;
 import java.util.*;
 import java.util.Iterator;
 
-import edu.ksu.cis.bnj.bbn.inference.elimbel.*;
-import edu.ksu.cis.bnj.bbn.inference.*;
-import edu.ksu.cis.bnj.bbn.BBNGraph;
-import edu.ksu.cis.bnj.bbn.BBNNode;
-import edu.ksu.cis.bnj.bbn.BBNValue;
-import edu.ksu.cis.bnj.bbn.BBNDiscreteValue;
-import edu.ksu.cis.bnj.bbn.*;
 
 public class IBNCLI {
 
-    private static BNGraph graph = null;
+  private static BNGraph graph = null;
 
-    public static void run(){
-        io.output("~~~~~~~~ Welcome to IBN CLI ~~~~~~~~~~");
-        io.output("\n~~~ A bayesian reasoner with logic ~~~\n");
+  /**
+   * Run the IBN Command Line Interface
+   */
+  public static void run(){
+      io.output(message.CLI_HEADER);
 
-        ibn();
-     
-        io.output("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    }
-
-
-    private static void ibn(){
+      ibn();
     
-        String userInput = io.input(menuText());
-        
-        while(true){
-          switch(userInput){
-            case "l":
-            case "load":
-              load();
-              break;
-            case "i":
-            case "inference":
-              if (graph != null) inference(); else io.output("\nNo network loaded\n");
-              break;
-            case "a":
-            case "add":
-              if (graph != null) addImplicationStatement(); else io.output("\nNo network loaded\n");
-              break;
-            case "im":
-            case "implication":
-              if (graph != null) viewImplicationStatements(); else io.output("\nNo network loaded\n");
-              break;
-            case "o":
-            case "observe":
-              if (graph != null) observeNode(); else io.output("\nNo network loaded\n");
-              break;
-            case "c":
-            case "cpt":
-              if (graph != null) viewCPT(); else io.output("\nNo network loaded\n");
-              break;
-            case "g":
-            case "graph":
-              if (graph != null) viewGraph(); else io.output("\nNo network loaded\n");
-              break;
-            case "q":
-            case "quit":
-              return;
-            default:
-              io.output("\nUser input not recognised");
-          }
-    
-          userInput = io.input(menuText());
-        }
-    
-    }
+      io.output(message.LINE);
+  }
 
-    /**
-     * Load a graph from a given input file
-     */
-    private static void load(){
-      String userInput = io.input("\nEnter the path to the file to load");
+  /**
+   * The main loop that controls displays and controls user input on the Command line
+   */
+  private static void ibn(){
+    while(true){
       
-      String filePath = "";
+      String userInput = io.input(menuText());
       
-      if (userInput.equals("a")) filePath = "./examples/asia/asia.bif";
-      else filePath = userInput;
-      
-      try{
-        graph = new BNGraph(filePath);
-      } catch(Throwable e){
-        io.output("\nSomething went wrong with opening that file. Is the path correct?");
+      if (userInput.equals("l") || userInput.equals("load")){
+        load();
       }
-    }
-    
-
-
-    private static void observeNode(){
-      String observationNodeName = io.input("\nEnter node name");
-      BNNode observationNode = graph.getNode(observationNodeName);
-      if (observationNode == null){
-        io.output("Cannot find node with that name");
+      else if (userInput.equals("i") || userInput.equals("inference")){
+        if (graph != null) inference(); else io.output(message.ERROR_NO_GRAPH);
+      }
+      else if (userInput.equals("a") || userInput.equals("add")){
+        if (graph != null) addImplicationStatement(); else io.output(message.ERROR_NO_GRAPH);
+      }
+      else if (userInput.equals("im") || userInput.equals("implication")){
+        if (graph != null) viewImplicationStatements(); else io.output(message.ERROR_NO_GRAPH);
+      }
+      else if (userInput.equals("o") || userInput.equals("observe")){
+        if (graph != null) observeNode(); else io.output(message.ERROR_NO_GRAPH);
+      }
+      else if (userInput.equals("c") || userInput.equals("cpt")){
+        if (graph != null) viewCPT(); else io.output(message.ERROR_NO_GRAPH);
+      }
+      else if (userInput.equals("g") || userInput.equals("graph")){
+        if (graph != null) viewGraph(); else io.output(message.ERROR_NO_GRAPH);
+      }
+      else if (userInput.equals("q") || userInput.equals("quit")){
         return;
       }
-      io.output(observationNode.getPossibleValues());
-      io.output("\nEnter observed value:\n>");
-      String valueName = io.rawInput();
-      observationNode.observe(valueName);
-  
+      else {
+        io.output(message.ERROR_BAD_INPUT);
+      }
     }
+  }
 
+  /**
+   * Load a graph from a given input file
+   */
+  private static void load(){
+    String userInput = io.input(message.INPUT_FILE_PATH);
+    
+    //NOTE: The following is for ease of use during development
+    String filePath = "";
+    if (userInput.equals("a")) filePath = "./examples/asia/asia.bif";
+    else filePath = userInput;
+    
+    try{
+      graph = new BNGraph(filePath);
+    } catch(Throwable e){
+      io.output(message.ERROR_BAD_FILE_PATH);
+    }
+  }
+  
 
-    private static void inference(){
-      //BNInference inferencer = new BNInference();
-      ArrayList<InferenceResult> results = BNInference.getMarginals(graph);
-      io.outputInfResults(results);
+  /**
+   * Allows a user to input observe a nodes value
+   */
+  private static void observeNode(){
+    io.output("Nodes: " + graph.getNodeNames());
+    String observationNodeName = io.input(message.INPUT_NODE_NAME);
+    BNNode observationNode = graph.getNode(observationNodeName);
+    if (observationNode == null){
+      io.output(message.ERROR_BAD_NODE_NAME+observationNodeName);
+      return;
     }
-  
-    private static void addImplicationStatement(){    
-      
-      String userInput = io.input("\n(c)lassical or (d)efeasible implication?");
-  
-      Implication impl = null;
-  
-      io.output(graph.getNodeNames());
-  
-      String antecedentName = io.input("\nEnter antecedent node name");
-      String consequentName = io.input("\nEnter consequent node name");
-      
-      BNNode antecedentNode = graph.getNode(antecedentName);
-      BNNode consequentNode = graph.getNode(consequentName);
-  
-      if (antecedentNode == null && consequentNode == null) {
-        io.output("Cannot find nodes with those names");
-        return;
-      }
-  
-      Relationship relationship = graph.getRelationship(antecedentNode, consequentNode);
-  
-      if (relationship == Relationship.SELF){
-        io.output("Cannot add implication statement to same node");
-        return;
-      }
-  
-      if (userInput.equals("c")){
-        impl = new ClassicalImplication(antecedentNode, consequentNode, relationship);
-        }
-      else if (userInput.equals("d")){
-        impl = new DefeasibleImplication(antecedentNode, consequentNode, relationship);
-      }
-      graph.addImplicationStatement(impl);
-    }
-  
-    private static void viewImplicationStatements(){
-      ArrayList<Implication> implicationStatements = graph.getKnowledgebase();
-      for (Implication impl : implicationStatements){
-        io.output(impl+"\n");
-      }
-    }
-  
-    /**
-     * View a text description of the currently loaded graph's nodes CPTs. 
-     */
-    private static void viewCPT(){
-      io.output(graph.getNodeDescriptions());
-    }
-  
-    /**
-     * View a text description of the currently loaded graph. 
-     */
-    private static void viewGraph(){
-      io.output(graph.getGraphDescription());
-    }
-  
-    /**
-     * Get the correct menu text to display 
-     */
-    private static String menuText(){
-      String networkName = (graph == null) ? "None" : graph.getName();
-      return message.menuText(networkName);
+    io.output(observationNode.getPossibleValuesOutput());
+    String valueName = io.input(message.INPUT_OBSERVED_VALUE);
+    observationNode.observe(valueName);
+  }
+
+  /**
+   * Use Variable Elimination to get the marginals on the graph
+   */
+  private static void inference(){
+    ArrayList<String> results = BNInference.getMarginalsOutput(graph);
+    io.output(results);
+  }
+
+  /**
+   * TODO: Refactor this method
+   */
+  private static void addImplicationStatement(){    
+    String userInput = io.input(message.INPUT_IMPLICATION_TYPE);
+
+    io.output("Nodes: " + graph.getNodeNames());
+
+    String antecedentName = io.input(message.INPUT_ANTECEDENT_NODE_NAME);
+    BNNode antecedentNode = graph.getNode(antecedentName);
+    if (antecedentNode == null) {
+      io.output(message.ERROR_BAD_NODE_NAME+antecedentName);
+      return;
     }
     
+    String consequentName = io.input(message.INPUT_CONSEQUENT_NODE_NAME);
+    BNNode consequentNode = graph.getNode(consequentName); 
+    if (consequentNode == null) {
+      io.output(message.ERROR_BAD_NODE_NAME+consequentName);
+      return;
+    }
+
+    Relationship relationship = graph.getRelationship(antecedentNode, consequentNode);
+
+    if (relationship == Relationship.SELF){
+      io.output(message.ERROR_RELATIONSHIP_SELF);
+      return;
+    }
+    Implication impl = null;
+    if (userInput.equals("c")){
+      impl = new ClassicalImplication(antecedentNode, consequentNode, relationship);
+      }
+    else if (userInput.equals("d")){
+      impl = new DefeasibleImplication(antecedentNode, consequentNode, relationship);
+    }
+    graph.addImplicationStatement(impl);
+  }
+
+  /**
+   * View the implication statements that have been added to the network
+   */
+  private static void viewImplicationStatements(){
+    io.output(graph.getKnowledgebaseOutput());
+  }
+
+  /**
+   * View a text description of the currently loaded graph's nodes CPTs. 
+   */
+  private static void viewCPT(){
+    io.output(graph.getNodeOutputs());
+  }
+
+  /**
+   * View a text description of the currently loaded graph. 
+   */
+  private static void viewGraph(){
+    io.output(graph.getGraphOutput());
+  }
+
+  /**
+   * Get the correct menu text to display 
+   */
+  private static String menuText(){
+    String networkName = (graph == null) ? "None" : graph.getName();
+    return message.menuText(networkName);
+  }
+  
 
 }

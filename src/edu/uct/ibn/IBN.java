@@ -32,23 +32,19 @@ import edu.ksu.cis.bnj.bbn.*;
  *  * Make GUI
  * 
  * REFACTOR TODO: 
- *  * Change all CLI methods to be just related to receiving input ect. and the actual
- *    classes to do the operations 
  *  * Fix the mess that is Implication
  */
 
 public class IBN {
 
   public static void main(String[] args) {
-    
+    if (args.length > 0){
+      if (args[0].equals("-cli")) IBNCLI.run();
+      else if (args[0].equals("-gui")) {}//run the gui
+      else help();
+    }
     
     IBNCLI.run();
-    
-    //help();
-
-    //an option for running it as a GUI
-
-    //testEnvironment();
     
   }  
 

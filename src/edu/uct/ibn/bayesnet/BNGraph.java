@@ -6,6 +6,7 @@ import edu.uct.ibn.bayesnet.BNNode.Relationship;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
+
 import java.util.HashSet;
 
 import edu.ksu.cis.bnj.bbn.BBNGraph;
@@ -40,8 +41,7 @@ public class BNGraph {
 
   public Set getGraphNodes(){
     HashSet nodes = new HashSet();
-    for (Iterator i = graph.getNodes().iterator(); i.hasNext(); )
-    {
+    for (Iterator i = graph.getNodes().iterator(); i.hasNext(); ){
         BBNNode n = (BBNNode) i.next();
         nodes.add(new BNNode(n));
     }
@@ -97,33 +97,41 @@ public class BNGraph {
   }
 
   public void addImplicationStatement(Implication impl){
-    knowledgeBase.add(impl);
+    if (impl != null) knowledgeBase.add(impl);
   }
 
   public ArrayList<Implication> getKnowledgebase(){
     return knowledgeBase;
+  }
+  
+  public ArrayList<String> getKnowledgebaseOutput(){
+    ArrayList<String> kbOutput = new ArrayList<String>();
+    for (Implication i : knowledgeBase){
+      kbOutput.add(i.toString());
+    }
+    return kbOutput;
   }
 
   public String toString(){
     return graph.toString();
   }
 
-  public String getGraphDescription(){
+  public String getGraphOutput(){
     return graph.debugGetEdgePrintout();
   }
 
 
-  public ArrayList<String> getNodeNames(){
+  public String getNodeNames(){
     ArrayList<String> nodeNames = new ArrayList<String>();
     Set nodes = getGraphNodes();
     for (Iterator i=nodes.iterator(); i.hasNext(); ) {
       BNNode n = (BNNode) i.next();
       nodeNames.add(n.getName());
     }
-    return nodeNames;
+    return nodeNames.toString();
   }
 
-  public ArrayList<String> getNodeDescriptions(){
+  public ArrayList<String> getNodeOutputs(){
     ArrayList<String> nodeDescriptions = new ArrayList<String>();
     Set nodes = getGraphNodes();
     for (Iterator i=nodes.iterator(); i.hasNext(); ) {
