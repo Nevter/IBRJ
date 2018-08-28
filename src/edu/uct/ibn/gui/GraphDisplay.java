@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-import edu.uct.ibn.BNGraph;
+import edu.uct.ibn.bayesnet.BNGraph;
 
 public class GraphDisplay extends JFrame {
 

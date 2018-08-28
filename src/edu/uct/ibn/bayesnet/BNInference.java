@@ -1,4 +1,4 @@
-package edu.uct.ibn;
+package edu.uct.ibn.bayesnet;
 
 
 import edu.ksu.cis.bnj.bbn.inference.elimbel.*;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import edu.uct.ibn.util.io;
 import edu.uct.ibn.implication.*;
-import edu.uct.ibn.BNNode.Relationship;
+import edu.uct.ibn.bayesnet.BNNode.Relationship;
 
 
 

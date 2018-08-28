@@ -1,7 +1,7 @@
-package edu.uct.ibn;
+package edu.uct.ibn.bayesnet;
 
 import edu.uct.ibn.implication.*;
-import edu.uct.ibn.BNNode.Relationship;
+import edu.uct.ibn.bayesnet.BNNode.Relationship;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -110,6 +110,27 @@ public class BNGraph {
 
   public String getGraphDescription(){
     return graph.debugGetEdgePrintout();
+  }
+
+
+  public ArrayList<String> getNodeNames(){
+    ArrayList<String> nodeNames = new ArrayList<String>();
+    Set nodes = getGraphNodes();
+    for (Iterator i=nodes.iterator(); i.hasNext(); ) {
+      BNNode n = (BNNode) i.next();
+      nodeNames.add(n.getName());
+    }
+    return nodeNames;
+  }
+
+  public ArrayList<String> getNodeDescriptions(){
+    ArrayList<String> nodeDescriptions = new ArrayList<String>();
+    Set nodes = getGraphNodes();
+    for (Iterator i=nodes.iterator(); i.hasNext(); ) {
+      BNNode n = (BNNode) i.next();
+      nodeDescriptions.add(n.toVerboseString());
+    }
+    return nodeDescriptions;
   }
 
 }

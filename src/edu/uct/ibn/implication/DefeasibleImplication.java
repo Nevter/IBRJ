@@ -1,8 +1,8 @@
 package edu.uct.ibn.implication;
 
-import edu.uct.ibn.BNNode;
-import edu.uct.ibn.BNNode.Relationship;
-import edu.uct.ibn.BNGraph;
+import edu.uct.ibn.bayesnet.BNNode;
+import edu.uct.ibn.bayesnet.BNNode.Relationship;
+import edu.uct.ibn.bayesnet.BNGraph;
 
 
 public class DefeasibleImplication extends Implication {

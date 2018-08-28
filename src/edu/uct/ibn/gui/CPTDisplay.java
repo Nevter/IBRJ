@@ -1,6 +1,6 @@
 package edu.uct.ibn.gui;
 
-import edu.uct.ibn.BNGraph;
+import edu.uct.ibn.bayesnet.BNGraph;
 
 public class CPTDisplay{
   BNGraph graph = null;

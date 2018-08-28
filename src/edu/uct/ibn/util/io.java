@@ -13,17 +13,30 @@ public class io{
 
 
   public static String input(){
-    return inputScanner.next().toLowerCase();
+    return rawInput().toLowerCase();
   }
   public static String rawInput(){
     return inputScanner.next();
+  }
+
+  public static String input(String inputPrompt){
+    output(inputPrompt+"\n>");
+    return input();
   }
 
   public static void output(Object output){
     System.out.print(output);
   }
 
-  public static void output(ArrayList<InferenceResult> results){
+
+  public static void output(ArrayList<String> output){
+    for (String o : output){
+      output(output);
+    }
+  }
+
+  
+  public static void outputInfResults(ArrayList<InferenceResult> results){
     if (results.isEmpty()){
       return;
     }
