@@ -98,6 +98,7 @@ public class BNGraph {
 
   public void addImplicationStatement(Implication impl){
     if (impl != null) knowledgeBase.add(impl);
+    impl.supplementNetwork();
   }
 
   public ArrayList<Implication> getKnowledgebase(){

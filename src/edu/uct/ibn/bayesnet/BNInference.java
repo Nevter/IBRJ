@@ -4,77 +4,35 @@ package edu.uct.ibn.bayesnet;
 import edu.ksu.cis.bnj.bbn.inference.elimbel.*;
 import edu.ksu.cis.bnj.bbn.inference.*;
 
-import java.util.ArrayList;
-
-import edu.uct.ibn.util.io;
-import edu.uct.ibn.implication.*;
-import edu.uct.ibn.bayesnet.BNNode.Relationship;
-
-
+/**
+ * TODO: Extend to allow for other algorithms 
+ * Do this by having a static variable that determins what algorithm type to use. 
+ * have a method that allows this to be changed/set
+ * when marginals are requested it uses whatever algo type is defined by the variable
+ */
 
 public class BNInference {
 
-  
-  public static ArrayList<String> getMarginalsOutput(BNGraph graph){
-    ArrayList<InferenceResult> results = getMarginals(graph);
-    ArrayList<String> resultOutput = new ArrayList<String>();
-
-    if (results.size() == 1){
-      resultOutput.add(results.get(0).toString());
-    }
-    else{
-      resultOutput.add("Marginals in order of typicality:");
-      int worldRank = 1;
-      for (InferenceResult r : results){
-        resultOutput.add("World Rank: "+worldRank++);
-        resultOutput.add(r.toString());
-      }
-    }
-
-    return resultOutput;
-  }
-
-
-  public static ArrayList<InferenceResult> getMarginals(BNGraph graph){
-    
-    ArrayList<InferenceResult> results = new ArrayList<InferenceResult>();
-
-    ArrayList<Implication> kb = graph.getKnowledgebase();
-    
-    ArrayList<ArrayList<Implication>> rankings = rationalClosure(kb);
-    
-    for (ArrayList<Implication> kbRank : rankings){
-      BNGraph graphDash = supplementNetwork(graph, kbRank);
-      ElimBel variableElimination = new ElimBel(graphDash.getBBNGraph());
-      results.add(variableElimination.getMarginals());
-    }
-
-    return results;
-  }
-
   /**
-   * TODO: 
-   * Implement this
+   * Get the prior/ posterior Marginals by using Variable Elimination
+   * @param graph
+   * @return InferenceResult
    */
-  public static ArrayList<ArrayList<Implication>> rationalClosure(ArrayList<Implication> kb){
-    ArrayList<ArrayList<Implication>> kbRankings = new ArrayList<ArrayList<Implication>>();
+  public static InferenceResult getMarginals(BNGraph graph){
 
-    kbRankings.add(kb);
-
-    return kbRankings;
+    ElimBel variableElimination = new ElimBel(graph.getBBNGraph());
+    return variableElimination.getMarginals(); 
   }
-
-
-  private static BNGraph supplementNetwork(BNGraph graph, ArrayList<Implication> kb){
+  
+  /**
+   * Get the prior/ posterior Marginals as a String, used for output
+   * @param graph
+   * @return String
+   */
+  public static String getMarginalsOutput(BNGraph graph){
     
-    BNGraph graphDash = graph;
-
-
-    for (Implication impl : kb){
-      graphDash = impl.supplementNetwork(graphDash); 
-    }
-
-    return graphDash;
+    InferenceResult result = getMarginals(graph);
+    return result.toString();
   }
 
 

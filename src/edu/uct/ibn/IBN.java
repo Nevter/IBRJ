@@ -1,38 +1,29 @@
 package edu.uct.ibn;
 
-//InferencialBayesianNetwork
 
+import edu.uct.ibn.cli.IBNCLI;
+
+//THE FOLLOWING CAN BE REMOVED WHEN 'TEST ENVIRONMENT' IS REMOVED
 import edu.uct.ibn.gui.*;
 import edu.uct.ibn.implication.*;
 import edu.uct.ibn.util.*;
-import edu.uct.ibn.cli.*;
-import edu.uct.ibn.bayesnet.BNNode.Relationship;
 import edu.uct.ibn.bayesnet.*;
+import edu.uct.ibn.bayesnet.BNNode.Relationship;
 
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Set;
 import java.util.*;
-import java.util.Iterator;
 
 import edu.ksu.cis.bnj.bbn.inference.elimbel.*;
 import edu.ksu.cis.bnj.bbn.inference.*;
-import edu.ksu.cis.bnj.bbn.BBNGraph;
-import edu.ksu.cis.bnj.bbn.BBNNode;
-import edu.ksu.cis.bnj.bbn.BBNValue;
-import edu.ksu.cis.bnj.bbn.BBNDiscreteValue;
 import edu.ksu.cis.bnj.bbn.*;
 
 /**
  * TODO:
  *  * remove all references to BNJ from anywhere other than 
- *    API classes (classes in bayesnet package)
+ *    API classes (classes in bayesnet package) - ClassicalImplication
  *  * Add Classes descriptors 
  *  * Add method descriptors 
  *  * Make GUI
- * 
- * REFACTOR TODO: 
- *  * Fix the mess that is Implication
+ *
  */
 
 public class IBN {

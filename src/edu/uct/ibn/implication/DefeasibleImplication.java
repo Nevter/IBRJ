@@ -8,13 +8,12 @@ import edu.uct.ibn.bayesnet.BNGraph;
 public class DefeasibleImplication extends Implication {
 
 
-  public DefeasibleImplication(BNNode antecedentNode, BNNode consequentNode, Relationship relationship){
-    super(antecedentNode, consequentNode, relationship);
+  public DefeasibleImplication(BNNode antecedentNode, BNNode consequentNode, BNGraph graph){
+    super(antecedentNode, consequentNode, graph);
   }
 
-  public BNGraph supplementNetwork(BNGraph graph){
-    System.out.println("Cannot supplement network with defeasible logic");
-    return graph;
+  public void supplementNetwork(){
+    System.out.println("Cannot supplement network with defeasible logic (yet)");
   }
 
 

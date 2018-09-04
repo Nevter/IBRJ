@@ -8,12 +8,14 @@ public abstract class Implication {
   BNNode antecedentNode = null;
   BNNode consequentNode = null;
   Relationship relationship = null;
+  BNGraph graph = null;
 
 
-  public Implication(BNNode antecedentNode, BNNode consequentNode, Relationship relationship){
+  public Implication(BNNode antecedentNode, BNNode consequentNode, BNGraph graph){
     this.antecedentNode = antecedentNode;
     this.consequentNode = consequentNode;
-    this.relationship = relationship;
+    this.relationship = graph.getRelationship(antecedentNode, consequentNode);
+    this.graph = graph;
   }
 
   
@@ -29,7 +31,7 @@ public abstract class Implication {
     return relationship;
   }
   
-  public abstract BNGraph supplementNetwork(BNGraph graph);
+  public abstract void supplementNetwork();
 
   public abstract String toString();
 

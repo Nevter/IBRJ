@@ -85,7 +85,6 @@ public class IBNCLI {
     }
   }
   
-
   /**
    * Allows a user to input observe a nodes value
    */
@@ -106,8 +105,8 @@ public class IBNCLI {
    * Use Variable Elimination to get the marginals on the graph
    */
   private static void inference(){
-    ArrayList<String> results = BNInference.getMarginalsOutput(graph);
-    io.output(results);
+    String result = BNInference.getMarginalsOutput(graph);
+    io.output(result);
   }
 
   /**
@@ -132,18 +131,12 @@ public class IBNCLI {
       return;
     }
 
-    Relationship relationship = graph.getRelationship(antecedentNode, consequentNode);
-
-    if (relationship == Relationship.SELF){
-      io.output(message.ERROR_RELATIONSHIP_SELF);
-      return;
-    }
     Implication impl = null;
     if (userInput.equals("c")){
-      impl = new ClassicalImplication(antecedentNode, consequentNode, relationship);
-      }
+      impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
+    }
     else if (userInput.equals("d")){
-      impl = new DefeasibleImplication(antecedentNode, consequentNode, relationship);
+      impl = new DefeasibleImplication(antecedentNode, consequentNode, graph);
     }
     graph.addImplicationStatement(impl);
   }
