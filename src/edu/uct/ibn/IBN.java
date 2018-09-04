@@ -22,7 +22,10 @@ import edu.ksu.cis.bnj.bbn.*;
  *    API classes (classes in bayesnet package) - ClassicalImplication
  *  * Add Classes descriptors 
  *  * Add method descriptors 
+ * 
+ *  * Work out and implement None case
  *  * Make GUI
+ *  * Write tests
  *
  */
 
@@ -36,6 +39,7 @@ public class IBN {
     }
     
     IBNCLI.run();
+    //testEnvironment();
     
   }  
 
@@ -54,9 +58,21 @@ public class IBN {
     }
     System.out.println("~~~~~~~~~~");
     
-    //ElimBel variableElimination = new ElimBel(graph.getBBNGraph());
-    //io.output(variableElimination.getMarginals());
+
+    BNNode asia = graph.getNode("VisitAsia");
+    BNNode cancer = graph.getNode("Cancer");
+
+    io.output(cancer.toVerboseString());
+
+    graph.addEdge(asia, cancer);
+    graph.addImplicationStatement(new ClassicalImplication(asia, cancer, graph));
+
+    io.output("\n\n~~~~~\n"+cancer.toVerboseString());
     
+    /*
+    variableElimination = new ElimBel(graph.getBBNGraph());
+    io.output(variableElimination.getMarginals());
+
     BNNode lungCancer = graph.getNode("Cancer");
     BBNDiscreteValue lcV = (BBNDiscreteValue) lungCancer.getNode().getValues();
     io.output(lcV.toArray()[0]);
@@ -100,7 +116,7 @@ public class IBN {
       
       io.output("\n"); io.output("\n");
     }
-    
+      */
     
     //variableElimination = new ElimBel(graph.getBBNGraph());
     //io.output(variableElimination.getMarginals());

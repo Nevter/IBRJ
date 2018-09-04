@@ -22,7 +22,7 @@ public class ClassicalImplication extends Implication {
 
     switch(relationship){
       case PARENT:
-        supplementDirect();
+        supplement();
         break;
       case CHILD:
         supplementReverse();
@@ -42,17 +42,17 @@ public class ClassicalImplication extends Implication {
   /**
    * the parent case
    */
-  private void supplementDirect(){
+  private void supplement(){
     String consequentNodeName = consequentNode.getName();
     String antecedentNodeName = antecedentNode.getName();
     String consequentTruthValueName = consequentNode.getTruthValueName();
     String antecedentTruthValueName = antecedentNode.getTruthValueName();
 
-
-    BBNCPF consequentCPF = graph.getNode(consequentNodeName).getCPF();
+    //this should work but if not revert to this line:
+    //BBNCPF consequentCPF = graph.getNode(consequentNodeName).getCPF();
+    BBNCPF consequentCPF = consequentNode.getCPF();
 
     Set<Hashtable> tableEntries = consequentCPF.getTable().keySet();
-
     HashSet<Hashtable> entriesToChange = findEntries(tableEntries, antecedentNodeName, antecedentTruthValueName);
     HashSet<Hashtable> entriesToSetToOne = findEntries(entriesToChange, consequentNodeName, consequentTruthValueName);
     HashSet<Hashtable> entriesToSetToZero = (HashSet<Hashtable>) entriesToChange.clone();
@@ -69,6 +69,17 @@ public class ClassicalImplication extends Implication {
     
   } 
   
+  /**
+   * the none, ancestor and descendent case
+   */
+  private void supplementNone(){
+    //add the new edge
+    graph.addEdge(antecedentNode, consequentNode);
+    //with this new edge, antecedentNode is now a parent of consequent Node and thus
+    //it is treated the same as the Parent case. 
+    supplement();
+  }
+
   /** 
    * the child case
    */
@@ -78,14 +89,14 @@ public class ClassicalImplication extends Implication {
   }
 
   /**
-   * the none, ancestor and descendent case
+   * 
+   * Find all the entries in table entries that have the nodeName set to valueName
+   * 
+   * @param tableEntries - The table entries to search in
+   * @param nodeName - 
+   * @param valueName
+   * @return 
    */
-  private void supplementNone(){
-
-    
-  }
-
-
   private HashSet<Hashtable> findEntries(Set<Hashtable> tableEntries, String nodeName, String valueName){
     HashSet<Hashtable> entries = new HashSet<Hashtable>();
 

@@ -54,6 +54,11 @@ public class BNNode {
     return values.toArray()[0].toString();
   }
 
+  public String getFalseValueName(){
+    BBNDiscreteValue values = (BBNDiscreteValue) node.getValues();
+    return values.toArray()[1].toString();
+  }
+
   public void observe(String valueName){
     BBNDiscreteValue values = getPossibleValues();
     for (Iterator itr = values.iterator(); itr.hasNext(); ){
