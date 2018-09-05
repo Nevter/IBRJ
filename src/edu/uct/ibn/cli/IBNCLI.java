@@ -1,7 +1,6 @@
 package edu.uct.ibn.cli;
 
 
-import edu.uct.ibn.gui.*;
 import edu.uct.ibn.implication.*;
 import edu.uct.ibn.util.*;
 import edu.uct.ibn.bayesnet.BNNode.Relationship;

@@ -23,7 +23,6 @@ import edu.ksu.cis.bnj.bbn.*;
  *  * Add Classes descriptors 
  *  * Add method descriptors 
  * 
- *  * Work out and implement None case
  *  * Make GUI
  *  * Write tests
  *
@@ -38,9 +37,9 @@ public class IBN {
       else help();
     }
     
-    IBNCLI.run();
+    //IBNCLI.run();
     //testEnvironment();
-    
+    IBNGUI.main(new String[0]);
   }  
 
   public static void help(){
