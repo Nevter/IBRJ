@@ -23,8 +23,8 @@ public class IBNGUI extends JFrame{
 		setTitle("IBN");
 		setSize(1000, 600);
 		setLocationRelativeTo(null);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
-
+    	setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
 		IBNMainPanel mainPanel = new IBNMainPanel();
 		contentPane.add(mainPanel, "Center");
 	}

@@ -22,4 +22,8 @@ public class IBNObservationPanel extends JPanel {
 		setOpaque(true);
 		setBackground(Color.GREEN);
 	}
+
+	public void updateObservations(){
+		System.out.println("put observations in here");
+	}
 }

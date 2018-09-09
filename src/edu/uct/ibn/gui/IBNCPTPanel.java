@@ -15,10 +15,8 @@ public class IBNCPTPanel extends JPanel{
   }
 
   private void init(){
-    setLayout(new BorderLayout());
     JLabel textLabel = new JLabel("The CPT Panel");
     add(textLabel, BorderLayout.CENTER);
-
 		setOpaque(true);
 		setBackground(Color.BLUE);
   }

@@ -43,7 +43,7 @@ public class IBN {
   }  
 
   public static void help(){
-
+    System.out.println("There will be some help info here at some point");
   }
 
   public static void testEnvironment(){
@@ -57,7 +57,6 @@ public class IBN {
     }
     System.out.println("~~~~~~~~~~");
     
-
     BNNode asia = graph.getNode("VisitAsia");
     BNNode cancer = graph.getNode("Cancer");
 

@@ -38,6 +38,7 @@ public class IBNGraphPanel extends GraphScrollPane {
   }
 
   private void init(){
+    setSize(700, 500);
     graphPanel = (GraphPanel) getViewport().getView();
     vGraph = super.getVisualGraph();
     //nodeManager = new NodeManager(vGraph);

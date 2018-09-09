@@ -29,10 +29,12 @@ public class ClassicalImplication extends Implication {
         break;
       case NONE:
       case ANCESTOR:
+      case DESCENDANT:
         supplementNone();
         break;  
-      case DESCENDANT:
       case SELF:
+        supplementReverse();
+        break;
       default:
         System.out.println("Cannot supplement network for this implication statement: " + this.toString());
     }
@@ -43,26 +45,24 @@ public class ClassicalImplication extends Implication {
    * the parent case
    */
   private void supplement(){
-    String consequentNodeName = consequentNode.getName();
-    String antecedentNodeName = antecedentNode.getName();
-    String consequentTruthValueName = consequentNode.getTruthValueName();
-    String antecedentTruthValueName = antecedentNode.getTruthValueName();
+    String consequent = consequentNode.getName();
+    String antecedent = antecedentNode.getName();
+    String consequentTruthValue = consequentNode.getTruthValueName();
+    String consequentFalseValue = consequentNode.getFalseValueName();
+    String antecedentTruthValue = antecedentNode.getTruthValueName();
 
-    //this should work but if not revert to this line:
-    //BBNCPF consequentCPF = graph.getNode(consequentNodeName).getCPF();
     BBNCPF consequentCPF = consequentNode.getCPF();
 
     Set<Hashtable> tableEntries = consequentCPF.getTable().keySet();
-    HashSet<Hashtable> entriesToChange = findEntries(tableEntries, antecedentNodeName, antecedentTruthValueName);
-    HashSet<Hashtable> entriesToSetToOne = findEntries(entriesToChange, consequentNodeName, consequentTruthValueName);
-    HashSet<Hashtable> entriesToSetToZero = (HashSet<Hashtable>) entriesToChange.clone();
-    entriesToSetToZero.removeAll(entriesToSetToOne);
 
-    for (Hashtable h : entriesToSetToOne){
+    HashSet<Hashtable> setToOne = findEntries(tableEntries, antecedent, antecedentTruthValue, consequent, consequentTruthValue);
+    HashSet<Hashtable> setToZero = findEntries(tableEntries, antecedent, antecedentTruthValue, consequent, consequentFalseValue);
+
+    for (Hashtable h : setToOne){
       consequentCPF.remove(h);
       consequentCPF.put(h, new BBNConstant(1.0));
     }
-    for (Hashtable h : entriesToSetToZero){
+    for (Hashtable h : setToZero){
       consequentCPF.remove(h);
       consequentCPF.put(h, new BBNConstant(0.0));
     }
@@ -84,28 +84,47 @@ public class ClassicalImplication extends Implication {
    * the child case
    */
   private void supplementReverse(){
+    String consequent = consequentNode.getName();
+    String antecedent = antecedentNode.getName();
+    String consequentTruthValue = consequentNode.getTruthValueName();
+    String consequentFalseValue = consequentNode.getFalseValueName();
+    String antecedentTruthValue = antecedentNode.getTruthValueName();
 
-    
+    BBNCPF consequentCPF = consequentNode.getCPF();
+
+    Set<Hashtable> tableEntries = consequentCPF.getTable().keySet();
+
+    HashSet<Hashtable> setToZero = findEntries(tableEntries, antecedent, antecedentTruthValue, consequent, consequentTruthValue);
+    HashSet<Hashtable> setToOne = findEntries(tableEntries, antecedent, antecedentTruthValue, consequent, consequentFalseValue);
+
+    for (Hashtable h : setToOne){
+      consequentCPF.remove(h);
+      consequentCPF.put(h, new BBNConstant(1.0));
+    }
+    for (Hashtable h : setToZero){
+      consequentCPF.remove(h);
+      consequentCPF.put(h, new BBNConstant(0.0));
+    }
   }
+    
 
-  /**
+    /**
    * 
    * Find all the entries in table entries that have the nodeName set to valueName
    * 
-   * @param tableEntries - The table entries to search in
-   * @param nodeName - 
-   * @param valueName
-   * @return 
+   * @param table - The table entries to search in
+   * @param nodeA - The first node to search for
+   * @param valueA - The value of the the first node to search for
+   * @param nodeB - The second node to search for
+   * @param valueB - The value of the second node to search for
+   * @return A Set of hashtables, containing the entries that match the given input
    */
-  private HashSet<Hashtable> findEntries(Set<Hashtable> tableEntries, String nodeName, String valueName){
+  private HashSet<Hashtable> findEntries(Set<Hashtable> table, String nodeA, String valueA, String nodeB, String valueB){
     HashSet<Hashtable> entries = new HashSet<Hashtable>();
 
-    for (Hashtable h : tableEntries){
-      Set<String> tableKeySet = h.keySet();
-      for (String kVal : tableKeySet){
-        if (kVal.equals(nodeName) && h.get(kVal).equals(valueName)){
-          entries.add(h);
-        }
+    for (Hashtable h : table){   
+      if(h.get(nodeA).equals(valueA) && h.get(nodeB).equals(valueB)){
+        entries.add(h);
       }
     }
 

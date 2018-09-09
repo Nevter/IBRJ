@@ -12,7 +12,6 @@ import java.util.Set;
 import java.util.*;
 import java.util.Iterator;
 
-
 public class IBNCLI {
 
   private static BNGraph graph = null;

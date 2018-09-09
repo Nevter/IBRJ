@@ -163,14 +163,14 @@ public class BNGraph {
   }
 
 
-  public String getNodeNames(){
+  public ArrayList<String> getNodeNames(){
     ArrayList<String> nodeNames = new ArrayList<String>();
     Set nodes = getGraphNodes();
     for (Iterator i=nodes.iterator(); i.hasNext(); ) {
       BNNode n = (BNNode) i.next();
       nodeNames.add(n.getName());
     }
-    return nodeNames.toString();
+    return nodeNames;
   }
 
   public ArrayList<String> getNodeOutputs(){

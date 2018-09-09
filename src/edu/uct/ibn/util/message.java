@@ -19,6 +19,8 @@ public class message{
   public static final String INPUT_IMPLICATION_TYPE = "(c)lassical or (d)efeasible implication?";
   public static final String INPUT_OBSERVED_VALUE = "Enter observed value";
 
+  public static final String GUI_HELP = "Click \"Load Network\" to load a network\n click draw inference to draw inference";
+  
   /**
    * Get the menu instruction text
    */
