@@ -19,13 +19,13 @@ public class IBNMainPanel extends JPanel {
 	protected BNGraph graph = null;
 	protected IBNImplicationPanel implPanel = null;
 	protected IBNObservationPanel obsPanel = null;
-	protected IBNCPTPanel cptPanel = null;
 
 	Button loadNetworkBtn = null;
 	Button drawInferenceBtn = null;
 	Button addImplicationBtn = null;
 	Button addObservationBtn = null;
 	Button helpBtn = null;
+	Button cptBtn = null;
 
 	public IBNMainPanel(){
 		super();
@@ -43,7 +43,8 @@ public class IBNMainPanel extends JPanel {
 		add(graphPanel, BorderLayout.CENTER);
 
 		JPanel infoPanel = new JPanel();
-		infoPanel.setLayout(new GridLayout(3,1));
+		infoPanel.setLayout(new GridLayout(2,1));
+		
 		
 		obsPanel = new IBNObservationPanel();
 		infoPanel.add(obsPanel, BorderLayout.NORTH);
@@ -51,8 +52,6 @@ public class IBNMainPanel extends JPanel {
 		implPanel = new IBNImplicationPanel(graph);
 		infoPanel.add(implPanel, BorderLayout.CENTER);
 
-		cptPanel = new IBNCPTPanel();
-		infoPanel.add(cptPanel, BorderLayout.SOUTH);
 
 		add(infoPanel, BorderLayout.EAST);
 
@@ -60,20 +59,22 @@ public class IBNMainPanel extends JPanel {
 
 	private void setGraph(){
 		graphPanel.setGraph(graph);
+		
 		implPanel.setGraph(graph);
+		obsPanel.setGraph(graph);
 		drawInferenceBtn.setEnabled(true);
 		addImplicationBtn.setEnabled(true);
 		addObservationBtn.setEnabled(true);
+		cptBtn.setEnabled(true);
 	}
 
 	private JPanel createButtonPanel(){
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(new GridLayout(1,5));
+		buttonPanel.setLayout(new GridLayout(1,6));
 	
 		loadNetworkBtn = new Button("Load a network");
 		loadNetworkBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				System.out.println("Clicked the Load a network button");
 				String filePath = JOptionPane.showInputDialog("Enter path to file to load:", "");
 				if (filePath == null){return;}
 				if (filePath.equals("a")) filePath = "./examples/asia/asia.bif";
@@ -86,10 +87,23 @@ public class IBNMainPanel extends JPanel {
 				setGraph();
 			}
 		});
+		cptBtn = new Button("View a CPT");
+		cptBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+
+				ArrayList<String> nodes = graph.getNodeNames();
+				String nodeNames[] = nodes.toArray(new String[0]);
+				String nodeName = (String) JOptionPane.showInputDialog(null, "Select node", "View CPT", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
+				if (nodeName == null){return;}
+				BNNode node = graph.getNode(nodeName);
+				String nodeCPT = node.getCPF().toString();
+				JOptionPane.showMessageDialog(null, nodeCPT);
+
+			}
+		});
 		drawInferenceBtn = new Button("Draw Inference");
 		drawInferenceBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-					System.out.println("Clicked the draw inference button");
 					String result = BNInference.getMarginalsOutput(graph);
 					JOptionPane.showMessageDialog(null, result);
 			}
@@ -127,7 +141,6 @@ public class IBNMainPanel extends JPanel {
 		addObservationBtn = new Button("Add Observation");
 		addObservationBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				System.out.println("Clicked the Add Observation button");
 				ArrayList<String> nodes = graph.getNodeNames();
 				String nodeNames[] = nodes.toArray(new String[0]);
 				String nodeToObserve = (String) JOptionPane.showInputDialog(null, "Select node to observe", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
@@ -151,7 +164,9 @@ public class IBNMainPanel extends JPanel {
 		addObservationBtn.setEnabled(false);
 		addImplicationBtn.setEnabled(false);
 		drawInferenceBtn.setEnabled(false);
+		cptBtn.setEnabled(false);
 		buttonPanel.add(loadNetworkBtn);
+		buttonPanel.add(cptBtn);
 		buttonPanel.add(drawInferenceBtn);
 		buttonPanel.add(addImplicationBtn);
 		buttonPanel.add(addObservationBtn);

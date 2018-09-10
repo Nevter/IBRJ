@@ -33,8 +33,6 @@ public class ClassicalImplication extends Implication {
         supplementNone();
         break;  
       case SELF:
-        supplementReverse();
-        break;
       default:
         System.out.println("Cannot supplement network for this implication statement: " + this.toString());
     }
@@ -84,27 +82,31 @@ public class ClassicalImplication extends Implication {
    * the child case
    */
   private void supplementReverse(){
+    System.out.println("Supplement reverse");
     String consequent = consequentNode.getName();
     String antecedent = antecedentNode.getName();
+    
     String consequentTruthValue = consequentNode.getTruthValueName();
     String consequentFalseValue = consequentNode.getFalseValueName();
+    
     String antecedentTruthValue = antecedentNode.getTruthValueName();
+    String antecedentFalseValue = antecedentNode.getFalseValueName();
 
-    BBNCPF consequentCPF = consequentNode.getCPF();
+    BBNCPF antecedentCPF = antecedentNode.getCPF();
+    Set<Hashtable> tableEntries = antecedentCPF.getTable().keySet();
 
-    Set<Hashtable> tableEntries = consequentCPF.getTable().keySet();
-
-    HashSet<Hashtable> setToZero = findEntries(tableEntries, antecedent, antecedentTruthValue, consequent, consequentTruthValue);
-    HashSet<Hashtable> setToOne = findEntries(tableEntries, antecedent, antecedentTruthValue, consequent, consequentFalseValue);
+    HashSet<Hashtable> setToZero = findEntries(tableEntries, consequent, consequentFalseValue, antecedent, antecedentTruthValue);
+    HashSet<Hashtable> setToOne = findEntries(tableEntries, consequent, consequentFalseValue, antecedent, antecedentFalseValue);
 
     for (Hashtable h : setToOne){
-      consequentCPF.remove(h);
-      consequentCPF.put(h, new BBNConstant(1.0));
+      antecedentCPF.remove(h);
+      antecedentCPF.put(h, new BBNConstant(1.0));
     }
     for (Hashtable h : setToZero){
-      consequentCPF.remove(h);
-      consequentCPF.put(h, new BBNConstant(0.0));
+      antecedentCPF.remove(h);
+      antecedentCPF.put(h, new BBNConstant(0.0));
     }
+    System.out.println("Supplement reverse");
   }
     
 
@@ -134,7 +136,7 @@ public class ClassicalImplication extends Implication {
   public String toString(){
     StringBuffer buffer = new StringBuffer();
 
-    buffer.append(relationship + ": ");
+    //buffer.append(relationship + ": ");
     buffer.append(antecedentNode.getName());
     buffer.append(" -> ");
     buffer.append(consequentNode.getName());

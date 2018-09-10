@@ -13,6 +13,7 @@ import edu.uct.ibn.implication.Implication;
 public class IBNImplicationPanel extends JPanel {
 
 	private BNGraph graph;
+	private JTextArea textField;
 
 	public IBNImplicationPanel(BNGraph g){
 		super();
@@ -21,10 +22,14 @@ public class IBNImplicationPanel extends JPanel {
 	}
 
 	private void init(){
-		JLabel textLabel = new JLabel("The Implication Panel");
-		add(textLabel, BorderLayout.CENTER);
-		setOpaque(true);
-		setBackground(Color.CYAN);
+		setLayout(new BorderLayout());
+		JLabel textLabel = new JLabel("Implications");
+		add(textLabel, BorderLayout.NORTH);
+		
+		textField = new JTextArea();
+		textField.setEditable(false);
+		add(textField, BorderLayout.CENTER);
+	
 	}
 
 	public void setGraph(BNGraph graph){
@@ -32,9 +37,10 @@ public class IBNImplicationPanel extends JPanel {
 	}
 	
 	public void reloadImplications(){
+		textField.setText("");
 		ArrayList<Implication> kb = graph.getKnowledgebase();
 		for (Implication impl : kb){
-			add(new JLabel(impl.toString()), BorderLayout.CENTER);
+			textField.append(impl.toString()+"\n");
 		}
 	}
 }

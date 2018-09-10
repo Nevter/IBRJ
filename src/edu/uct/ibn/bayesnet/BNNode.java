@@ -69,6 +69,15 @@ public class BNNode {
     }
   }
 
+  public String getObservedValue(){
+    if (isObserved()) return node.getEvidenceValue().toString();
+    else return null;
+  }
+
+  public boolean isObserved(){
+    return node.isEvidence();
+  }
+
   public String toVerboseString(){
     return node.toVerboseString();
   }

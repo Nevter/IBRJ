@@ -158,6 +158,17 @@ public class BNGraph {
     return graph.toString();
   }
 
+  public ArrayList<String> getObservations(){
+    Set<BNNode> nodes = getGraphNodes();
+    ArrayList<String> observations = new ArrayList<String>();
+    for (BNNode n : nodes){
+      if (n.isObserved()){
+        observations.add(n.getName()+" = "+n.getObservedValue());
+      } 
+    }
+    return observations;
+  }
+
   public String getGraphOutput(){
     return graph.debugGetEdgePrintout();
   }
