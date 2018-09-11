@@ -1,4 +1,4 @@
-package edu.uct.ibn.bayesnet;
+package edu.uct.ibr.bayesnet;
 
 
 import edu.ksu.cis.bnj.bbn.inference.elimbel.*;

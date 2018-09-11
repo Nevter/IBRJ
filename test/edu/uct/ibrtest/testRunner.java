@@ -1,4 +1,4 @@
-package edu.uct.ibntest;
+package edu.uct.ibrtest;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -9,7 +9,7 @@ public class testRunner {
         System.out.println("~~~ Running Tests ~~~");
 
         System.out.println("testBNInference:");
-        Result result = JUnitCore.runClasses(edu.uct.ibntest.testBNInference.class);
+        Result result = JUnitCore.runClasses(edu.uct.ibrtest.testBNInference.class);
         printResult(result);
 
     }

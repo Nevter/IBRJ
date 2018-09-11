@@ -1,4 +1,4 @@
-package edu.uct.ibn.bayesnet;
+package edu.uct.ibr.bayesnet;
 
 import java.util.Set;
 import java.util.HashSet;

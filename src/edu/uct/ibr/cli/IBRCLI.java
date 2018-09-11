@@ -1,10 +1,10 @@
-package edu.uct.ibn.cli;
+package edu.uct.ibr.cli;
 
 
-import edu.uct.ibn.implication.*;
-import edu.uct.ibn.util.*;
-import edu.uct.ibn.bayesnet.BNNode.Relationship;
-import edu.uct.ibn.bayesnet.*;
+import edu.uct.ibr.implication.*;
+import edu.uct.ibr.util.*;
+import edu.uct.ibr.bayesnet.BNNode.Relationship;
+import edu.uct.ibr.bayesnet.*;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -12,17 +12,17 @@ import java.util.Set;
 import java.util.*;
 import java.util.Iterator;
 
-public class IBNCLI {
+public class IBRCLI {
 
   private static BNGraph graph = null;
 
   /**
-   * Run the IBN Command Line Interface
+   * Run the IBR Command Line Interface
    */
   public static void run(){
       io.output(message.CLI_HEADER);
 
-      ibn();
+      ibr();
     
       io.output(message.LINE);
   }
@@ -30,7 +30,7 @@ public class IBNCLI {
   /**
    * The main loop that controls displays and controls user input on the Command line
    */
-  private static void ibn(){
+  private static void ibr(){
     while(true){
       
       String userInput = io.input(menuText());

@@ -1,4 +1,4 @@
-package edu.uct.ibntest;
+package edu.uct.ibrtest;
 
 import org.junit.Test;
 import org.junit.Ignore;

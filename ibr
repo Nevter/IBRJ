@@ -1,15 +1,15 @@
 #!/bin/bash
 # Build script by: Luke Neville
 
-# To run, ensure user has execute privileges and run ./ibn
+# To run, ensure user has execute privileges and run ./IBR
 
-if [ "$IBNDIR" == "" ]; then
-IBNDIR=.
+if [ "$IBRDIR" == "" ]; then
+IBRDIR=.
 fi
 
-IBNBIN=$IBNDIR/bin
-LIB=$IBNDIR/lib
+IBRBIN=$IBRDIR/bin
+LIB=$IBRDIR/lib
 LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar
-IBNCLASSPATH=$IBNDIR:$IBNBIN:$LIBJAR
+IBRCLASSPATH=$IBRDIR:$IBRBIN:$LIBJAR
 
-java -cp $IBNCLASSPATH edu.uct.ibn.IBN
+java -cp $IBRCLASSPATH edu.uct.ibr.IBR

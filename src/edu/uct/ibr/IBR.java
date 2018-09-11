@@ -1,14 +1,14 @@
-package edu.uct.ibn;
+package edu.uct.ibr;
 
 
-import edu.uct.ibn.cli.IBNCLI;
+import edu.uct.ibr.cli.IBRCLI;
 
 //THE FOLLOWING CAN BE REMOVED WHEN 'TEST ENVIRONMENT' IS REMOVED
-import edu.uct.ibn.gui.*;
-import edu.uct.ibn.implication.*;
-import edu.uct.ibn.util.*;
-import edu.uct.ibn.bayesnet.*;
-import edu.uct.ibn.bayesnet.BNNode.Relationship;
+import edu.uct.ibr.gui.*;
+import edu.uct.ibr.implication.*;
+import edu.uct.ibr.util.*;
+import edu.uct.ibr.bayesnet.*;
+import edu.uct.ibr.bayesnet.BNNode.Relationship;
 
 import java.util.*;
 
@@ -23,23 +23,32 @@ import edu.ksu.cis.bnj.bbn.*;
  *  * Add Classes descriptors 
  *  * Add method descriptors 
  * 
- *  * Make GUI
+ * 
+ * 
  *  * Write tests
+ * 
+ *  * Write algo that checks for cycles 
+ *  * add in cycle checking functionality
+ *  * if a cycle is found, bounce the user 
+ *  * if a impl cycle is found, do crazy node manipulation shiat
+ *  
+ *  * add entailment checking for defeasible stuff 
+ *  * etc. 
  *
  */
 
-public class IBN {
+public class IBR {
 
   public static void main(String[] args) {
     if (args.length > 0){
-      if (args[0].equals("-cli")) IBNCLI.run();
+      if (args[0].equals("-cli")) IBRCLI.run();
       else if (args[0].equals("-gui")) {}//run the gui
       else help();
     }
     
-    //IBNCLI.run();
+    //IBRCLI.run();
     //testEnvironment();
-    IBNGUI.main(new String[0]);
+    IBRGUI.main(new String[0]);
   }  
 
   public static void help(){

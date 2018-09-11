@@ -1,4 +1,4 @@
-package edu.uct.ibn.util;
+package edu.uct.ibr.util;
 
 public class message{
 

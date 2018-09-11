@@ -1,4 +1,4 @@
-package edu.uct.ibn.gui;
+package edu.uct.ibr.gui;
 
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -8,9 +8,9 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.*;
 
-public class IBNGUI extends JFrame{
+public class IBRGUI extends JFrame{
 
-	public IBNGUI(){
+	public IBRGUI(){
 		super();
 		init();
 	}
@@ -20,17 +20,17 @@ public class IBNGUI extends JFrame{
 		contentPane.setLayout(new BorderLayout());
 		setContentPane(contentPane);
 
-		setTitle("IBN");
+		setTitle("IBR");
 		setSize(1000, 600);
 		setLocationRelativeTo(null);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
-		IBNMainPanel mainPanel = new IBNMainPanel();
+		IBRMainPanel mainPanel = new IBRMainPanel();
 		contentPane.add(mainPanel, "Center");
 	}
 
 	public static void main(String[] args) {
-		IBNGUI gui = new IBNGUI();
+		IBRGUI gui = new IBRGUI();
 		gui.setVisible(true);
 	}
 

@@ -1,4 +1,4 @@
-package edu.uct.ibn.util;
+package edu.uct.ibr.util;
 
 import java.util.Scanner;
 import java.util.ArrayList;;

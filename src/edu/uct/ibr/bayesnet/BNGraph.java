@@ -1,7 +1,7 @@
-package edu.uct.ibn.bayesnet;
+package edu.uct.ibr.bayesnet;
 
-import edu.uct.ibn.implication.*;
-import edu.uct.ibn.bayesnet.BNNode.Relationship;
+import edu.uct.ibr.implication.*;
+import edu.uct.ibr.bayesnet.BNNode.Relationship;
 
 import java.util.ArrayList;
 import java.util.Iterator;

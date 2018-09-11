@@ -1,4 +1,4 @@
-package edu.uct.ibn.gui;
+package edu.uct.ibr.gui;
 
 
 import java.awt.*;
@@ -9,13 +9,13 @@ import java.util.*;
 import javax.swing.*;
 
 import edu.ksu.cis.bnj.gui.components.*;
-import edu.uct.ibn.bayesnet.BNGraph;
+import edu.uct.ibr.bayesnet.BNGraph;
 import salvo.jesus.graph.*;
 import salvo.jesus.graph.visual.*;
 
 
 
-public class IBNGraphPanel extends GraphScrollPane {
+public class IBRGraphPanel extends GraphScrollPane {
 
   protected GraphPanel graphPanel;
   protected VisualGraph vGraph;
@@ -32,7 +32,7 @@ public class IBNGraphPanel extends GraphScrollPane {
   protected NodeManager nodeManager;
   protected static Cursor waitCursor = new Cursor(Cursor.WAIT_CURSOR);
 
-  public IBNGraphPanel( ){
+  public IBRGraphPanel( ){
     super();
     init();
   }

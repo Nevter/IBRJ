@@ -1,4 +1,4 @@
-package edu.uct.ibn.gui;
+package edu.uct.ibr.gui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -7,18 +7,18 @@ import java.util.*;
 
 import javax.swing.*;
 
-import edu.uct.ibn.implication.*;
-import edu.uct.ibn.util.*;
-import edu.uct.ibn.bayesnet.BNNode.Relationship;
-import edu.uct.ibn.bayesnet.*;
+import edu.uct.ibr.implication.*;
+import edu.uct.ibr.util.*;
+import edu.uct.ibr.bayesnet.BNNode.Relationship;
+import edu.uct.ibr.bayesnet.*;
 
 
-public class IBNMainPanel extends JPanel {
+public class IBRMainPanel extends JPanel {
 	
-	protected IBNGraphPanel graphPanel = null;
+	protected IBRGraphPanel graphPanel = null;
 	protected BNGraph graph = null;
-	protected IBNImplicationPanel implPanel = null;
-	protected IBNObservationPanel obsPanel = null;
+	protected IBRImplicationPanel implPanel = null;
+	protected IBRObservationPanel obsPanel = null;
 
 	Button loadNetworkBtn = null;
 	Button drawInferenceBtn = null;
@@ -27,7 +27,7 @@ public class IBNMainPanel extends JPanel {
 	Button helpBtn = null;
 	Button cptBtn = null;
 
-	public IBNMainPanel(){
+	public IBRMainPanel(){
 		super();
 		init();
 	}
@@ -38,7 +38,7 @@ public class IBNMainPanel extends JPanel {
 		JPanel buttonPanel = createButtonPanel();
 		add(buttonPanel, BorderLayout.NORTH);
 
-		graphPanel = new IBNGraphPanel();
+		graphPanel = new IBRGraphPanel();
 
 		add(graphPanel, BorderLayout.CENTER);
 
@@ -46,10 +46,10 @@ public class IBNMainPanel extends JPanel {
 		infoPanel.setLayout(new GridLayout(2,1));
 		
 		
-		obsPanel = new IBNObservationPanel();
+		obsPanel = new IBRObservationPanel();
 		infoPanel.add(obsPanel, BorderLayout.NORTH);
 		
-		implPanel = new IBNImplicationPanel(graph);
+		implPanel = new IBRImplicationPanel(graph);
 		infoPanel.add(implPanel, BorderLayout.CENTER);
 
 

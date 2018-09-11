@@ -3,18 +3,18 @@
 
 # To run, ensure user has execute privileges and run ./build
 
-if [ "$IBNDIR" == "" ]; then
-IBNDIR=.
+if [ "$IBRDIR" == "" ]; then
+IBRDIR=.
 fi
 
-IBNSRC=$IBNDIR/src
-IBNBIN=$IBNDIR/bin
-IBNTEST=$IBNDIR/test
-LIB=$IBNDIR/lib
+IBRSRC=$IBRDIR/src
+IBRBIN=$IBRDIR/bin
+IBRTEST=$IBRDIR/test
+LIB=$IBRDIR/lib
 LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/junit-4.10.jar
-IBNCLASSPATH=$IBNDIR:$LIBJAR
-IBN=/edu/uct/ibn
+IBRCLASSPATH=$IBRDIR:$LIBJAR
+IBR=/edu/uct/ibr
 
-javac -g:none -d $IBNBIN  -sourcepath $IBNSRC -cp $IBNCLASSPATH $IBNSRC/$IBN/*.java $IBNSRC/$IBN/gui/*.java $IBNSRC/$IBN/implication/*.java $IBNSRC/$IBN/util/*.java
+javac -g:none -d $IBRBIN  -sourcepath $IBRSRC -cp $IBRCLASSPATH $IBRSRC/$IBR/*.java $IBRSRC/$IBR/gui/*.java $IBRSRC/$IBR/implication/*.java $IBRSRC/$IBR/util/*.java
 
-javac -g:none -d $IBNBIN  -sourcepath $IBNSRC -cp $IBNCLASSPATH $IBNTEST/edu/uct/ibntest/*.java
+javac -g:none -d $IBRBIN  -sourcepath $IBRSRC -cp $IBRCLASSPATH $IBRTEST/edu/uct/ibrtest/*.java

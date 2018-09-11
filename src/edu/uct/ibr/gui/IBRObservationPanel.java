@@ -1,4 +1,4 @@
-package edu.uct.ibn.gui;
+package edu.uct.ibr.gui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,20 +6,20 @@ import java.io.File;
 import java.util.*;
 
 import javax.swing.*;
-import edu.uct.ibn.bayesnet.BNGraph;
-import edu.uct.ibn.implication.Implication;
+import edu.uct.ibr.bayesnet.BNGraph;
+import edu.uct.ibr.implication.Implication;
 
-public class IBNObservationPanel extends JPanel {
+public class IBRObservationPanel extends JPanel {
 
 	private BNGraph graph;
 	private JTextArea textField;
 	
 
-	public IBNObservationPanel(){
+	public IBRObservationPanel(){
 		this(null);
 	}
 
-	public IBNObservationPanel(BNGraph g){
+	public IBRObservationPanel(BNGraph g){
 		super();
 		graph = g;
 		init();
