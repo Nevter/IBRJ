@@ -10,7 +10,7 @@ fi
 IBNTEST=$IBNDIR/test
 IBNBIN=$IBNDIR/bin
 LIB=$IBNDIR/lib
-LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/junit-4.10.jar
+LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/junit-4.10.jar:$LIB/aima-core.jar
 IBNCLASSPATH=$IBNDIR:$IBNBIN:$LIBJAR
 
 java -cp $IBNCLASSPATH edu.uct.ibntest.testRunner

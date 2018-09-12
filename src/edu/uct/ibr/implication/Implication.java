@@ -19,7 +19,7 @@ public abstract class Implication {
   }
 
   
-  public BNNode getAntecedentNote(){
+  public BNNode getAntecedentNode(){
     return antecedentNode;
   }
   

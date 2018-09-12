@@ -9,7 +9,7 @@ fi
 
 IBRBIN=$IBRDIR/bin
 LIB=$IBRDIR/lib
-LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar
+LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/aima-core.jar
 IBRCLASSPATH=$IBRDIR:$IBRBIN:$LIBJAR
 
 java -cp $IBRCLASSPATH edu.uct.ibr.IBR
