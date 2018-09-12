@@ -18,17 +18,21 @@ import edu.ksu.cis.bnj.bbn.BBNConstant;
 public class BNGraph {
 
   private BBNGraph graph = null;
+  private BBNGraph botGraph = null;
   private String path = null;
   private ArrayList<Implication> knowledgeBase = new ArrayList<Implication>();
-
+  private ArrayList<Implication> logicalObservations = new ArrayList<Implication>();
+  
   public BNGraph(String path){
     graph = new BBNGraph();
+    botGraph = new BBNGraph();
     this.path = path;
     load(path);
   }
 
   public void load(String path){
     graph = graph.load(path);
+    botGraph = botGraph.load(path);
   }
 
   /**
@@ -39,8 +43,14 @@ public class BNGraph {
    * @param src
    * @param dest
    */
-  public void addEdge(BNNode src, BNNode dest){
-    graph.addEdge(src.getNode(), dest.getNode());
+  public boolean addEdge(BNNode src, BNNode dest){
+    try{
+      graph.addEdge(src.getNode(), dest.getNode());
+    } catch (Exception e){
+      System.out.println(e);
+      System.out.println("Addign this edge creates a cycle");
+      return false;
+    }
 
     //Create the new CPT for the dest node (with this added parent):
   
@@ -66,7 +76,11 @@ public class BNGraph {
     }
 
     dest.getNode().setCPF(newDestCPF);
+    return true;
+  }
 
+  public BBNGraph getBotBBNGraph(){
+    return botGraph;
   }
 
   public BNNode getNode(String nodeName){
@@ -87,6 +101,10 @@ public class BNGraph {
         nodes.add(new BNNode(n));
     }
     return nodes;
+  }
+
+  public ArrayList<Implication> getLogicalObservations(){
+    return logicalObservations;
   }
 
   public Relationship getRelationship(BNNode antecedent, BNNode consequent){
@@ -166,7 +184,21 @@ public class BNGraph {
         observations.add(n.getName()+" = "+n.getObservedValue());
       } 
     }
+    for (Implication i : logicalObservations){
+      observations.add(i.toString());
+    }
     return observations;
+  }
+
+
+
+
+  public void observe(BNNode node, String value){
+    node.observe(value);
+  }
+
+  public void observe(Implication impl){
+    logicalObservations.add(impl);
   }
 
   public String getGraphOutput(){

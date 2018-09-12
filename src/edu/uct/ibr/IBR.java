@@ -46,9 +46,9 @@ public class IBR {
       else help();
     }
     
+    IBRGUI.main(new String[0]);
     //IBRCLI.run();
     //testEnvironment();
-    IBRGUI.main(new String[0]);
   }  
 
   public static void help(){
@@ -58,14 +58,21 @@ public class IBR {
   public static void testEnvironment(){
 
     BNGraph graph = new BNGraph("./examples/asia/asia.bif");
+    System.out.println(GraphUtil.hasCycles(graph));
+    BNNode a = graph.getNode("VisitAsia");
+    BNNode b = graph.getNode("XRay");
+    graph.addEdge(b, a);
+    //System.out.println(GraphUtil.hasCycles(graph));
+
     //System.out.println(graph.getGraphDescription());
+    /*
     Set nodes = graph.getGraphNodes();
     for (Iterator i=nodes.iterator(); i.hasNext(); ) {
       BNNode n = (BNNode) i.next();
       System.out.println(n);
     }
     System.out.println("~~~~~~~~~~");
-    
+  
     BNNode asia = graph.getNode("VisitAsia");
     BNNode cancer = graph.getNode("Cancer");
 
@@ -76,7 +83,6 @@ public class IBR {
 
     io.output("\n\n~~~~~\n"+cancer.toVerboseString());
     
-    /*
     variableElimination = new ElimBel(graph.getBBNGraph());
     io.output(variableElimination.getMarginals());
 

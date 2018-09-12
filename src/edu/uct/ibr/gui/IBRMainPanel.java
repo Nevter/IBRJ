@@ -75,13 +75,11 @@ public class IBRMainPanel extends JPanel {
 		loadNetworkBtn = new Button("Load a network");
 		loadNetworkBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				String filePath = JOptionPane.showInputDialog("Enter path to file to load:", "");
+				String filePath = (String) JOptionPane.showInputDialog(null,"Enter path to file to load:","Load Network", JOptionPane.DEFAULT_OPTION, null, null, "./examples/asia/asia.bif");
 				if (filePath == null){return;}
-				if (filePath.equals("a")) filePath = "./examples/asia/asia.bif";
 				try{
 					graph = new BNGraph(filePath);
-				}
-				catch(Exception e){
+				} catch(Exception e){
 					JOptionPane.showMessageDialog(null, "File not found");
 				}
 				setGraph();
@@ -141,15 +139,47 @@ public class IBRMainPanel extends JPanel {
 		addObservationBtn = new Button("Add Observation");
 		addObservationBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				ArrayList<String> nodes = graph.getNodeNames();
-				String nodeNames[] = nodes.toArray(new String[0]);
-				String nodeToObserve = (String) JOptionPane.showInputDialog(null, "Select node to observe", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
-				if (nodeToObserve == null){return;}
-				BNNode node = graph.getNode(nodeToObserve);
-				String values[] = {node.getTruthValueName(), node.getFalseValueName()};
-				String observationValue = (String) JOptionPane.showInputDialog(null, "Select observation value", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, values, values[0]);
-				if (observationValue == null){return;}
-				node.observe(observationValue);
+				
+				String observationTypes[] = {"Logical", "Probabilistic"};
+				String obsType = (String) JOptionPane.showInputDialog(null, "Select observation type", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, observationTypes, observationTypes[0]);
+				if (obsType == null){return;}
+
+				if (obsType == observationTypes[1]){
+					ArrayList<String> nodes = graph.getNodeNames();
+					String nodeNames[] = nodes.toArray(new String[0]);
+					String nodeToObserve = (String) JOptionPane.showInputDialog(null, "Select node to observe", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
+					if (nodeToObserve == null){return;}
+					BNNode node = graph.getNode(nodeToObserve);
+					String values[] = {node.getTruthValueName(), node.getFalseValueName()};
+					String observationValue = (String) JOptionPane.showInputDialog(null, "Select observation value", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, values, values[0]);
+					if (observationValue == null){return;}
+					node.observe(observationValue);
+				}
+				if (obsType == observationTypes[0]){
+					ArrayList<String> nodes = graph.getNodeNames();
+
+					String implTypes[] = {"Classical","Defeasible"};
+					String implicationType = (String) JOptionPane.showInputDialog(null, "Select implication type", "Add implication", JOptionPane.QUESTION_MESSAGE, null, implTypes, implTypes[0]);
+					if (implicationType == null){return;}
+					String nodeNames[] = nodes.toArray(new String[0]);
+					String antecedent = (String) JOptionPane.showInputDialog(null, "Select antecedent node", "Add implication", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
+					if (antecedent == null){return;}
+					String consequent = (String) JOptionPane.showInputDialog(null, "Select consequent node", "Add implication", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
+					if (consequent == null){return;}
+					BNNode antecedentNode = graph.getNode(antecedent);
+					BNNode consequentNode = graph.getNode(consequent);
+				
+					Implication impl = null;
+					if (implicationType == implTypes[0]){
+						impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
+					}
+					else {
+						impl = new DefeasibleImplication(antecedentNode, consequentNode, graph);
+					}
+
+					graph.observe(impl);
+
+				}
 
 				obsPanel.updateObservations();
 			}

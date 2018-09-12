@@ -18,7 +18,7 @@ public class message{
   public static final String INPUT_CONSEQUENT_NODE_NAME = "Enter consequent node name";
   public static final String INPUT_IMPLICATION_TYPE = "(c)lassical or (d)efeasible implication?";
   public static final String INPUT_OBSERVED_VALUE = "Enter observed value";
-
+  public static final String CLI_OBSERVATION_TYPE ="(l)ogical or (p)robabilistic observation?";
   public static final String GUI_HELP = "Click \"Load Network\" to load a network\n click draw inference to draw inference";
   
   /**

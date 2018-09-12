@@ -87,16 +87,53 @@ public class IBRCLI {
    * Allows a user to input observe a nodes value
    */
   private static void observeNode(){
-    io.output("Nodes: " + graph.getNodeNames());
-    String observationNodeName = io.input(message.INPUT_NODE_NAME);
-    BNNode observationNode = graph.getNode(observationNodeName);
-    if (observationNode == null){
-      io.output(message.ERROR_BAD_NODE_NAME+observationNodeName);
+    String observationType = io.input(message.CLI_OBSERVATION_TYPE);
+  
+    if(observationType.equals("l")){
+      //logical observation
+      String userInput = io.input(message.INPUT_IMPLICATION_TYPE);
+      io.output("Nodes: " + graph.getNodeNames());
+      String antecedentName = io.input(message.INPUT_ANTECEDENT_NODE_NAME);
+      BNNode antecedentNode = graph.getNode(antecedentName);
+      if (antecedentNode == null) {
+        io.output(message.ERROR_BAD_NODE_NAME+antecedentName);
+        return;
+      }
+      
+      String consequentName = io.input(message.INPUT_CONSEQUENT_NODE_NAME);
+      BNNode consequentNode = graph.getNode(consequentName); 
+      if (consequentNode == null) {
+        io.output(message.ERROR_BAD_NODE_NAME+consequentName);
+        return;
+      }
+  
+      Implication impl = null;
+      if (userInput.equals("c")){
+        impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
+      }
+      else if (userInput.equals("d")){
+        impl = new DefeasibleImplication(antecedentNode, consequentNode, graph);
+      }
+      graph.observe(impl);
+    }
+    else if(observationType.equals("p")){
+      //probabilistic observation
+      io.output("Nodes: " + graph.getNodeNames());
+      String observationNodeName = io.input(message.INPUT_NODE_NAME);
+      BNNode observationNode = graph.getNode(observationNodeName);
+      if (observationNode == null){
+        io.output(message.ERROR_BAD_NODE_NAME+observationNodeName);
+        return;
+      }
+      io.output(observationNode.getPossibleValuesOutput());
+      String valueName = io.input(message.INPUT_OBSERVED_VALUE);
+      observationNode.observe(valueName);
+    } 
+    else {
       return;
     }
-    io.output(observationNode.getPossibleValuesOutput());
-    String valueName = io.input(message.INPUT_OBSERVED_VALUE);
-    observationNode.observe(valueName);
+  
+    
   }
 
   /**

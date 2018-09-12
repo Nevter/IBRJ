@@ -72,10 +72,10 @@ public class ClassicalImplication extends Implication {
    */
   private void supplementNone(){
     //add the new edge
-    graph.addEdge(antecedentNode, consequentNode);
+    if (graph.addEdge(antecedentNode, consequentNode))
     //with this new edge, antecedentNode is now a parent of consequent Node and thus
     //it is treated the same as the Parent case. 
-    supplement();
+      supplement();
   }
 
   /** 

@@ -1,5 +1,6 @@
 package edu.uct.ibr.bayesnet;
 
+import edu.uct.ibr.util.Entailment;;
 
 import edu.ksu.cis.bnj.bbn.inference.elimbel.*;
 import edu.ksu.cis.bnj.bbn.inference.*;
@@ -20,8 +21,18 @@ public class BNInference {
    */
   public static InferenceResult getMarginals(BNGraph graph){
 
-    ElimBel variableElimination = new ElimBel(graph.getBBNGraph());
-    return variableElimination.getMarginals(); 
+    //check if all logical observations are entailed by the Knowledge Base. 
+    //if they are, use the full IBN
+    if (Entailment.entails(graph.getKnowledgebase(), graph.getLogicalObservations())){
+      ElimBel variableElimination = new ElimBel(graph.getBBNGraph());
+      return variableElimination.getMarginals();
+    }
+    //if they aren't, use the BotGraph
+    else {
+      ElimBel variableElimination = new ElimBel(graph.getBotBBNGraph());
+      return variableElimination.getMarginals();
+    }
+ 
   }
   
   /**
