@@ -12,8 +12,9 @@ public class DefeasibleImplication extends Implication {
     super(antecedentNode, consequentNode, graph);
   }
 
-  public void supplementNetwork(){
+  public boolean supplementNetwork(){
     System.out.println("Cannot supplement network with defeasible logic (yet)");
+    return true;
   }
 
 

@@ -155,9 +155,20 @@ public class BNGraph {
     return graph.getName();
   }
 
-  public void addImplicationStatement(Implication impl){
-    if (impl != null) knowledgeBase.add(impl);
-    impl.supplementNetwork();
+  public boolean addImplicationStatement(Implication impl){
+    boolean success = true;
+    if (impl != null){
+      if (impl.supplementNetwork()){
+        knowledgeBase.add(impl);
+      }
+      else {
+        success = false;
+      }
+    }
+    else {
+      success = false;
+    }
+    return success;
   }
 
   public ArrayList<Implication> getKnowledgebase(){

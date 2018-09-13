@@ -31,7 +31,7 @@ public abstract class Implication {
     return relationship;
   }
   
-  public abstract void supplementNetwork();
+  public abstract boolean supplementNetwork();
 
   public abstract String toString();
 

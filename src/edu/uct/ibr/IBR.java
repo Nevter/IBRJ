@@ -46,9 +46,9 @@ public class IBR {
       else help();
     }
     
-    //IBRGUI.main(new String[0]);
+    IBRGUI.main(new String[0]);
     //IBRCLI.run();
-    testEnvironment();
+    //testEnvironment();
   }  
 
   public static void help(){
@@ -59,15 +59,23 @@ public class IBR {
 
     BNGraph graph = new BNGraph("./examples/asia/asia.bif");
     BNNode a = graph.getNode("VisitAsia");
-    BNNode b = graph.getNode("XRay");
+    BNNode b = graph.getNode("Tuberculosis");
+    BNNode c = graph.getNode("TbOrCa");
+    BNNode d = graph.getNode("XRay");
+    BNNode e = graph.getNode("Smoking");
+    BNNode f = graph.getNode("Cancer");
     
     ArrayList<Implication> kb = new ArrayList<Implication>();
     ArrayList<Implication> obs = new ArrayList<Implication>();
     kb.add(new ClassicalImplication(a,b,graph));
+    kb.add(new ClassicalImplication(b,c,graph));
+    kb.add(new ClassicalImplication(a,d,graph));
+
+    obs.add(new ClassicalImplication(e, c, graph));
+    obs.add(new ClassicalImplication(e, b, graph));
 
     System.out.println(Entailment.entails(kb, obs));
 
-  
     /*
     System.out.println(GraphUtil.hasCycles(graph));
     graph.addEdge(b, a);

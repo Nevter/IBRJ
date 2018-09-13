@@ -18,31 +18,31 @@ public class ClassicalImplication extends Implication {
   }
 
 
-  public void supplementNetwork(){
-
+  public boolean supplementNetwork(){
+    boolean success = false;
     switch(relationship){
       case PARENT:
-        supplement();
+        success = supplement();
         break;
       case CHILD:
-        supplementReverse();
+        success = supplementReverse();
         break;
       case NONE:
       case ANCESTOR:
       case DESCENDANT:
-        supplementNone();
+        success = supplementNone();
         break;  
       case SELF:
       default:
         System.out.println("Cannot supplement network for this implication statement: " + this.toString());
     }
-    
+    return success;
   }
 
   /**
    * the parent case
    */
-  private void supplement(){
+  private boolean supplement(){
     String consequent = consequentNode.getName();
     String antecedent = antecedentNode.getName();
     String consequentTruthValue = consequentNode.getTruthValueName();
@@ -64,24 +64,26 @@ public class ClassicalImplication extends Implication {
       consequentCPF.remove(h);
       consequentCPF.put(h, new BBNConstant(0.0));
     }
-    
+    return true;
   } 
   
   /**
    * the none, ancestor and descendent case
    */
-  private void supplementNone(){
+  private boolean supplementNone(){
     //add the new edge
-    if (graph.addEdge(antecedentNode, consequentNode))
-    //with this new edge, antecedentNode is now a parent of consequent Node and thus
-    //it is treated the same as the Parent case. 
-      supplement();
+    if (graph.addEdge(antecedentNode, consequentNode)){
+      //with this new edge, antecedentNode is now a parent of consequent Node and thus
+      //it is treated the same as the Parent case. 
+      return supplement();
+    }
+    return false;
   }
 
   /** 
    * the child case
    */
-  private void supplementReverse(){
+  private boolean supplementReverse(){
     System.out.println("Supplement reverse");
     String consequent = consequentNode.getName();
     String antecedent = antecedentNode.getName();
@@ -106,7 +108,7 @@ public class ClassicalImplication extends Implication {
       antecedentCPF.remove(h);
       antecedentCPF.put(h, new BBNConstant(0.0));
     }
-    System.out.println("Supplement reverse");
+    return true;
   }
     
 

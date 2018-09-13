@@ -130,7 +130,9 @@ public class IBRMainPanel extends JPanel {
 					impl = new DefeasibleImplication(antecedentNode, consequentNode, graph);
 				}
 
-				graph.addImplicationStatement(impl);
+				if (!graph.addImplicationStatement(impl)){
+					JOptionPane.showMessageDialog(null, "Implication could not be added");
+				}
 
 				implPanel.reloadImplications();
 
@@ -141,7 +143,7 @@ public class IBRMainPanel extends JPanel {
 			public void actionPerformed(ActionEvent event) {
 				
 				String observationTypes[] = {"Logical", "Probabilistic"};
-				String obsType = (String) JOptionPane.showInputDialog(null, "Select observation type", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, observationTypes, observationTypes[0]);
+				String obsType = (String) JOptionPane.showInputDialog(null, "Select observation type", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, observationTypes, observationTypes[1]);
 				if (obsType == null){return;}
 
 				if (obsType == observationTypes[1]){

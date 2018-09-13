@@ -32,7 +32,7 @@ public class BNInference {
       ElimBel variableElimination = new ElimBel(graph.getBotBBNGraph());
       return variableElimination.getMarginals();
     }
- 
+
   }
   
   /**
