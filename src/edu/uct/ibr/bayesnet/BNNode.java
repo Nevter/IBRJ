@@ -4,8 +4,10 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Iterator;
+import java.util.Objects;
 
 import edu.ksu.cis.bnj.bbn.BBNNode;
+import edu.ksu.cis.bnj.bbn.BBNGraph;
 import edu.ksu.cis.bnj.bbn.BBNValue;
 import edu.ksu.cis.bnj.bbn.BBNCPF;
 import edu.ksu.cis.bnj.bbn.BBNDiscreteValue;
@@ -17,6 +19,10 @@ public class BNNode {
 
   public BNNode(BBNNode node){
     this.node = node;
+  }
+
+  public BNNode(BNGraph graph, String nodeName){
+    this(new BBNNode(graph.getBBNGraph(),nodeName));
   }
 
   public String getName(){
@@ -91,9 +97,9 @@ public class BNNode {
     return children;
   }
 
-  public Set getParents(){
+  public Set<BNNode> getParents(){
     List<BBNNode> parentsBBNNode = node.getParents();
-    HashSet parents = new HashSet();
+    HashSet<BNNode> parents = new HashSet();
     for (BBNNode n : parentsBBNNode){
       parents.add(new BNNode(n));
     }
@@ -121,4 +127,20 @@ public class BNNode {
     descendants.removeAll(children);
     return descendants;
   }
+
+  @Override
+  public boolean equals(Object anObject) {
+    if (!(anObject instanceof BNNode)) {
+        return false;
+    }
+    BNNode otherMember = (BNNode)anObject;
+    return otherMember.toVerboseString().equals(toVerboseString());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getName(), isObserved());
+  }
+
+
 }

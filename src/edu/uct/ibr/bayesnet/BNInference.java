@@ -24,6 +24,10 @@ public class BNInference {
     //check if all logical observations are entailed by the Knowledge Base. 
     //if they are, use the full IBN
     if (Entailment.entails(graph.getKnowledgebase(), graph.getLogicalObservations())){
+      
+      System.out.println("getMarginals");
+      System.out.println(graph.getBBNGraph());
+
       ElimBel variableElimination = new ElimBel(graph.getBBNGraph());
       return variableElimination.getMarginals();
     }
@@ -32,7 +36,6 @@ public class BNInference {
       ElimBel variableElimination = new ElimBel(graph.getBotBBNGraph());
       return variableElimination.getMarginals();
     }
-
   }
   
   /**

@@ -11,7 +11,7 @@ IBRSRC=$IBRDIR/src
 IBRBIN=$IBRDIR/bin
 IBRTEST=$IBRDIR/test
 LIB=$IBRDIR/lib
-LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/junit-4.10.jar:$LIB/aima-core.jar
+LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/jgrapht-core-1.2.0.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/junit-4.10.jar:$LIB/aima-core.jar
 IBRCLASSPATH=$IBRDIR:$LIBJAR
 IBR=/edu/uct/ibr
 

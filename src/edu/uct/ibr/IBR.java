@@ -45,10 +45,13 @@ public class IBR {
       else if (args[0].equals("-gui")) {}//run the gui
       else help();
     }
-    
-    IBRGUI.main(new String[0]);
-    //IBRCLI.run();
-    //testEnvironment();
+    String type = io.input("(g)ui, (c)li, (h)elp");
+    switch(type){
+      case "g": IBRGUI.main(new String[0]); break;
+      case "c": IBRCLI.run(); break;
+      case "h": help(); break;
+      default: testEnvironment(); break;
+    }
   }  
 
   public static void help(){
@@ -64,19 +67,26 @@ public class IBR {
     BNNode d = graph.getNode("XRay");
     BNNode e = graph.getNode("Smoking");
     BNNode f = graph.getNode("Cancer");
+    BNNode h = graph.getNode("Dyspnea");
     
-    ArrayList<Implication> kb = new ArrayList<Implication>();
-    ArrayList<Implication> obs = new ArrayList<Implication>();
-    kb.add(new ClassicalImplication(a,b,graph));
-    kb.add(new ClassicalImplication(b,c,graph));
-    kb.add(new ClassicalImplication(a,d,graph));
 
-    obs.add(new ClassicalImplication(e, c, graph));
-    obs.add(new ClassicalImplication(e, b, graph));
+    graph.addImplicationStatement(new ClassicalImplication(b,c,graph));
+    graph.addImplicationStatement(new ClassicalImplication(c,f,graph));
+    graph.addImplicationStatement(new ClassicalImplication(f,b,graph));
+    System.out.println("~~~~~~~~~~~~~~~");
 
-    System.out.println(Entailment.entails(kb, obs));
+    System.out.println(BNInference.getMarginalsOutput(graph));
 
     /*
+    ArrayList<Implication> kb = new ArrayList<Implication>();
+    
+    kb.add(new ClassicalImplication(c,d,graph));
+    kb.add(new ClassicalImplication(d,h,graph));
+    kb.add(new ClassicalImplication(h,c,graph));
+    kb.add(new ClassicalImplication(a,b,graph));
+
+    System.out.println(ImplicationUtil.getConnectedClassicalImplications(kb));
+
     System.out.println(GraphUtil.hasCycles(graph));
     graph.addEdge(b, a);
     //System.out.println(GraphUtil.hasCycles(graph));
@@ -99,8 +109,7 @@ public class IBR {
 
     io.output("\n\n~~~~~\n"+cancer.toVerboseString());
     
-    variableElimination = new ElimBel(graph.getBBNGraph());
-    io.output(variableElimination.getMarginals());
+    
 
     BNNode lungCancer = graph.getNode("Cancer");
     BBNDiscreteValue lcV = (BBNDiscreteValue) lungCancer.getNode().getValues();

@@ -84,7 +84,6 @@ public class ClassicalImplication extends Implication {
    * the child case
    */
   private boolean supplementReverse(){
-    System.out.println("Supplement reverse");
     String consequent = consequentNode.getName();
     String antecedent = antecedentNode.getName();
     
