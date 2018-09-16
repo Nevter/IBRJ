@@ -18,8 +18,8 @@ public class ImplicationUtil {
 	}
 
 
-  	public static boolean hasClassicalCycle(ArrayList<Implication> kb){
-		ArrayList<Implication> classicalImpl = getClassical(kb);
+  public static boolean hasClassicalCycle(ArrayList<Implication> kb){
+		ArrayList<Implication> classicalImpl = kb;
 		
 		DefaultDirectedGraph<String, DefaultEdge> graph = GraphUtil.createGraph(classicalImpl);
 		List<Set<String>> connectedSets = getStronglyConnectedSets(graph);
@@ -27,7 +27,7 @@ public class ImplicationUtil {
 	}
 
 	public static Set<String> getConnectedClassicalImplications(ArrayList<Implication> kb){
-		ArrayList<Implication> classicalImpl = getClassical(kb);
+		ArrayList<Implication> classicalImpl = kb;
 
 		DefaultDirectedGraph<String, DefaultEdge> graph = GraphUtil.createGraph(classicalImpl);
 		List<Set<String>> connectedSets = getStronglyConnectedSets(graph);
@@ -45,27 +45,6 @@ public class ImplicationUtil {
 			}
 		}
 		return null;
-	}
-
-	public static ArrayList<Implication> getClassical(ArrayList<Implication> kb){
-		ArrayList<Implication> classicalImplications = new ArrayList<Implication>();
-		for (Implication impl : kb){
-			if (impl.getClass() == ClassicalImplication.class){
-				classicalImplications.add(impl);
-			}
-		}
-		return classicalImplications;
-	}
-
-
-	public static ArrayList<Implication> getDefeasible(ArrayList<Implication> kb){
-		ArrayList<Implication> defeasibleImplications = new ArrayList<Implication>();
-		for (Implication impl : kb){
-			if (impl.getClass() == DefeasibleImplication.class){
-				defeasibleImplications.add(impl);
-			}
-		}
-		return defeasibleImplications;
 	}
 
 	public static List<Set<String>> getStronglyConnectedSets(DefaultDirectedGraph graph){

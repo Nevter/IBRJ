@@ -59,7 +59,6 @@ public class BNGraph {
       graph.addEdge(src.getNode(), dest.getNode());
     } catch (Exception e){
       System.out.println(e);
-      System.out.println("Addign this edge creates a cycle");
       return false;
     }
 
@@ -193,7 +192,6 @@ public class BNGraph {
   }
 
   private void collapseCycle(){
-    System.out.println("Collapse Cycle");
     Set<String> cycleNodeNames = ImplicationUtil.getConnectedClassicalImplications(knowledgeBase);
 
     Set<BNNode> cycleNodes = new HashSet<BNNode>();
@@ -309,8 +307,6 @@ public class BNGraph {
       Set<String> botParents = botGraph.getNode(childNode.getName()).getParentNames();
       cycleNodeNamesParents.retainAll(botParents);
       if (cycleNodeNamesParents.size() > 1){
-        System.out.println("Child has two parents in cycle");
-        System.out.println(cycleNodeNamesParents);
         BBNCPF childCPF = (BBNCPF)childNode.getCPF();
         Hashtable childTable = childCPF.getTable();
         Set<Hashtable> childTableKeys = childTable.keySet();
@@ -341,8 +337,6 @@ public class BNGraph {
       }
 
       //8.3) change all references in the CPT to be to the cycle node instead of parent node
-      //System.out.println("Change all references iN CPT for child node: "+childNode.getName());
-      System.out.println(childNode.getName());
       BBNCPF childCPF = childNode.getCPF();
       Set<BNNode> childParents = childNode.getParents();
       Set<String> cpfNodeNames = new HashSet<String>();
@@ -354,13 +348,11 @@ public class BNGraph {
       Hashtable childCPTTable = childCPF.getTable();
       Set<Hashtable> oldTableEntries = childCPF.getTable().keySet();
       for (Hashtable entry : oldTableEntries){
-        //System.out.println("next entry: "+ entry);
+      
         //work out if positive or negative cycle entry
         boolean positive = false;
         for (String cycleNN : cycleNodeNames){
-          //System.out.println("cycleNN: "+cycleNN);
           if (entry.containsKey(cycleNN)){
-            //System.out.println("Entry contains cycleNN");
             if (new BNNode((BBNNode)botGraph.getNode(cycleNN)).getTruthValueName().equals(entry.get(cycleNN))){
               positive = true;
               break;
@@ -368,14 +360,11 @@ public class BNGraph {
           }
         }
         Hashtable newEntry = (Hashtable) entry.clone();
-        System.out.println("new Entry: "+newEntry);
         if (positive){
           //dealing with a 'true' entry
           for (String cycleNN : cycleNodeNames){
-            System.out.println("remove: "+cycleNN);
             newEntry.remove(cycleNN);
           }
-          System.out.println("new Entry': "+newEntry);
           newEntry.put(cycleNodeName,"true");
           newChildCPF.put(newEntry, (BBNConstant)childCPTTable.get(entry));
         }
@@ -419,7 +408,6 @@ public class BNGraph {
     String queryResult = queryBotNetwork(observations);
     String[] queryLines = queryResult.split("\n");
     for (String line : queryLines) {
-      //System.out.println(line);
       String[] lineSegments = line.split("=");    
       for (int i = 0; i<lineSegments.length;i++){
         lineSegments[i] = lineSegments[i].replaceAll("\\[", "").replaceAll("\\]", "").replaceAll(" ", "");

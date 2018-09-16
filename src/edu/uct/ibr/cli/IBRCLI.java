@@ -91,7 +91,6 @@ public class IBRCLI {
   
     if(observationType.equals("l")){
       //logical observation
-      String userInput = io.input(message.INPUT_IMPLICATION_TYPE);
       io.output("Nodes: " + graph.getNodeNames());
       String antecedentName = io.input(message.INPUT_ANTECEDENT_NODE_NAME);
       BNNode antecedentNode = graph.getNode(antecedentName);
@@ -107,13 +106,7 @@ public class IBRCLI {
         return;
       }
   
-      Implication impl = null;
-      if (userInput.equals("c")){
-        impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
-      }
-      else if (userInput.equals("d")){
-        impl = new DefeasibleImplication(antecedentNode, consequentNode, graph);
-      }
+      Implication impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
       graph.observe(impl);
     }
     else if(observationType.equals("p")){
@@ -148,7 +141,6 @@ public class IBRCLI {
    * TODO: Refactor this method
    */
   private static void addImplicationStatement(){    
-    String userInput = io.input(message.INPUT_IMPLICATION_TYPE);
 
     io.output("Nodes: " + graph.getNodeNames());
 
@@ -166,13 +158,7 @@ public class IBRCLI {
       return;
     }
 
-    Implication impl = null;
-    if (userInput.equals("c")){
-      impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
-    }
-    else if (userInput.equals("d")){
-      impl = new DefeasibleImplication(antecedentNode, consequentNode, graph);
-    }
+    Implication impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
     graph.addImplicationStatement(impl);
   }
 

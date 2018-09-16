@@ -23,17 +23,8 @@ import edu.ksu.cis.bnj.bbn.*;
  *  * Add Classes descriptors 
  *  * Add method descriptors 
  * 
- * 
- * 
+ 
  *  * Write tests
- * 
- *  * Write algo that checks for cycles 
- *  * add in cycle checking functionality
- *  * if a cycle is found, bounce the user 
- *  * if a impl cycle is found, do crazy node manipulation shiat
- *  
- *  * add entailment checking for defeasible stuff 
- *  * etc. 
  *
  */
 

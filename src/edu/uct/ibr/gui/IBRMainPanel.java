@@ -111,9 +111,6 @@ public class IBRMainPanel extends JPanel {
 			public void actionPerformed(ActionEvent event) {				
 				ArrayList<String> nodes = graph.getNodeNames();
 
-				String implTypes[] = {"Classical","Defeasible"};
-				String implicationType = (String) JOptionPane.showInputDialog(null, "Select implication type", "Add implication", JOptionPane.QUESTION_MESSAGE, null, implTypes, implTypes[0]);
-				if (implicationType == null){return;}
 				String nodeNames[] = nodes.toArray(new String[0]);
 				String antecedent = (String) JOptionPane.showInputDialog(null, "Select antecedent node", "Add implication", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
 				if (antecedent == null){return;}
@@ -122,13 +119,7 @@ public class IBRMainPanel extends JPanel {
 				BNNode antecedentNode = graph.getNode(antecedent);
 				BNNode consequentNode = graph.getNode(consequent);
 			
-				Implication impl = null;
-				if (implicationType == implTypes[0]){
-					impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
-				}
-				else {
-					impl = new DefeasibleImplication(antecedentNode, consequentNode, graph);
-				}
+				Implication impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
 
 				if (!graph.addImplicationStatement(impl)){
 					JOptionPane.showMessageDialog(null, "Implication could not be added");
@@ -142,11 +133,11 @@ public class IBRMainPanel extends JPanel {
 		addObservationBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				
-				String observationTypes[] = {"Logical", "Probabilistic"};
-				String obsType = (String) JOptionPane.showInputDialog(null, "Select observation type", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, observationTypes, observationTypes[1]);
+				String observationTypes[] = {"Probabilistic","Logical"};
+				String obsType = (String) JOptionPane.showInputDialog(null, "Select observation type", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, observationTypes, observationTypes[0]);
 				if (obsType == null){return;}
 
-				if (obsType == observationTypes[1]){
+				if (obsType == observationTypes[0]){
 					ArrayList<String> nodes = graph.getNodeNames();
 					String nodeNames[] = nodes.toArray(new String[0]);
 					String nodeToObserve = (String) JOptionPane.showInputDialog(null, "Select node to observe", "Observe Node", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
@@ -157,12 +148,9 @@ public class IBRMainPanel extends JPanel {
 					if (observationValue == null){return;}
 					node.observe(observationValue);
 				}
-				if (obsType == observationTypes[0]){
+				if (obsType == observationTypes[1]){
 					ArrayList<String> nodes = graph.getNodeNames();
 
-					String implTypes[] = {"Classical","Defeasible"};
-					String implicationType = (String) JOptionPane.showInputDialog(null, "Select implication type", "Add implication", JOptionPane.QUESTION_MESSAGE, null, implTypes, implTypes[0]);
-					if (implicationType == null){return;}
 					String nodeNames[] = nodes.toArray(new String[0]);
 					String antecedent = (String) JOptionPane.showInputDialog(null, "Select antecedent node", "Add implication", JOptionPane.QUESTION_MESSAGE, null, nodeNames, nodeNames[0]);
 					if (antecedent == null){return;}
@@ -171,13 +159,7 @@ public class IBRMainPanel extends JPanel {
 					BNNode antecedentNode = graph.getNode(antecedent);
 					BNNode consequentNode = graph.getNode(consequent);
 				
-					Implication impl = null;
-					if (implicationType == implTypes[0]){
-						impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
-					}
-					else {
-						impl = new DefeasibleImplication(antecedentNode, consequentNode, graph);
-					}
+					Implication impl = new ClassicalImplication(antecedentNode, consequentNode, graph);
 
 					graph.observe(impl);
 
