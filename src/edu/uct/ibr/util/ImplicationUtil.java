@@ -12,12 +12,13 @@ import java.util.List;
 
 public class ImplicationUtil {
 
+	//does adding impl create a classical cycle?
 	public static boolean hasClassicalCycle(ArrayList<Implication> kb, Implication impl){
 		kb.add(impl);
 		return hasClassicalCycle(kb);
 	}
 
-
+	//does kb contain a classical cycle
   public static boolean hasClassicalCycle(ArrayList<Implication> kb){
 		ArrayList<Implication> classicalImpl = kb;
 		
@@ -26,6 +27,7 @@ public class ImplicationUtil {
 		return getStronglyConnectedSet(connectedSets) == null ? false : true;
 	}
 
+	//get implications that are connected via transitivity
 	public static Set<String> getConnectedClassicalImplications(ArrayList<Implication> kb){
 		ArrayList<Implication> classicalImpl = kb;
 
@@ -36,8 +38,7 @@ public class ImplicationUtil {
 
 	}
 
-
-
+	//Get the first set of strongly connected items
 	public static Set<String> getStronglyConnectedSet(List<Set<String>> connectedSets){
 		for (Set<String> conSet : connectedSets){
 			if (conSet.size() > 1){
@@ -47,6 +48,7 @@ public class ImplicationUtil {
 		return null;
 	}
 
+	//Get all the strongly connected sets
 	public static List<Set<String>> getStronglyConnectedSets(DefaultDirectedGraph graph){
 		KosarajuStrongConnectivityInspector conInsp = new KosarajuStrongConnectivityInspector(graph);
 

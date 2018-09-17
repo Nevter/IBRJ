@@ -3,14 +3,14 @@
 
 # To run, ensure user has execute privileges and run ./ibn
 
-if [ "$IBNDIR" == "" ]; then
-IBNDIR=.
+if [ "$IBRDIR" == "" ]; then
+IBRDIR=.
 fi
 
-IBNTEST=$IBNDIR/test
-IBNBIN=$IBNDIR/bin
-LIB=$IBNDIR/lib
-LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/junit-4.10.jar:$LIB/aima-core.jar
-IBNCLASSPATH=$IBNDIR:$IBNBIN:$LIBJAR
+IBNTEST=$IBRDIR/test
+IBNBIN=$IBRDIR/bin
+LIB=$IBRDIR/lib
+LIBJAR=$LIB/bin/:$LIB/jxl.jar:$LIB/log4j-core.jar:$LIB/log4j.jar:$LIB/metouia.jar:$LIB/mysql.jar:$LIB/ojdbc14_g.jar:$LIB/openjgraph.jar:$LIB/postgresql.jar:$LIB/skinlf.jar:$LIB/junit-4.10.jar:$LIB/aima-core.jar:$LIB/jgrapht-core-1.2.0.jar
+IBNCLASSPATH=$IBRDIR:$IBNBIN:$LIBJAR
 
-java -cp $IBNCLASSPATH edu.uct.ibntest.testRunner
+java -cp $IBNCLASSPATH edu.uct.ibrtest.testRunner

@@ -111,7 +111,7 @@ public class ClassicalImplication extends Implication {
   }
     
 
-    /**
+  /**
    * 
    * Find all the entries in table entries that have the nodeName set to valueName
    * 

@@ -23,7 +23,6 @@ import edu.ksu.cis.bnj.bbn.*;
  *  * Add Classes descriptors 
  *  * Add method descriptors 
  * 
- 
  *  * Write tests
  *
  */
