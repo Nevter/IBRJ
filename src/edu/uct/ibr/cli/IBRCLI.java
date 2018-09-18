@@ -38,6 +38,9 @@ public class IBRCLI {
       if (userInput.equals("l") || userInput.equals("load")){
         load();
       }
+      else if (userInput.equals("s") || userInput.equals("save")){
+        if (graph != null) save(); else io.output(message.ERROR_NO_GRAPH);
+      }
       else if (userInput.equals("i") || userInput.equals("inference")){
         if (graph != null) inference(); else io.output(message.ERROR_NO_GRAPH);
       }
@@ -81,6 +84,11 @@ public class IBRCLI {
     } catch(Throwable e){
       io.output(message.ERROR_BAD_FILE_PATH);
     }
+  }
+
+  private static void save(){
+    String outputFile = io.input(message.OUTPUT_FILE_PATH);
+    graph.save(outputFile);
   }
   
   /**

@@ -21,6 +21,7 @@ public class IBRMainPanel extends JPanel {
 	protected IBRObservationPanel obsPanel = null;
 
 	Button loadNetworkBtn = null;
+	Button saveNetworkBtn = null;
 	Button drawInferenceBtn = null;
 	Button addImplicationBtn = null;
 	Button addObservationBtn = null;
@@ -62,6 +63,7 @@ public class IBRMainPanel extends JPanel {
 		
 		implPanel.setGraph(graph);
 		obsPanel.setGraph(graph);
+		saveNetworkBtn.setEnabled(true);
 		drawInferenceBtn.setEnabled(true);
 		addImplicationBtn.setEnabled(true);
 		addObservationBtn.setEnabled(true);
@@ -83,6 +85,16 @@ public class IBRMainPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "File not found");
 				}
 				setGraph();
+				implPanel.reloadImplications();
+				obsPanel.updateObservations();
+			}
+		});
+		saveNetworkBtn = new Button("Save the network");
+		saveNetworkBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				String filePath = (String) JOptionPane.showInputDialog(null,"Enter output file name:","Save Network", JOptionPane.DEFAULT_OPTION, null, null, "./examples/asia/asia.bif");
+				if (filePath == null){return;}
+				graph.save(filePath);
 				implPanel.reloadImplications();
 				obsPanel.updateObservations();
 			}
@@ -177,11 +189,13 @@ public class IBRMainPanel extends JPanel {
 			}
 		});
 		
+		saveNetworkBtn.setEnabled(false);
 		addObservationBtn.setEnabled(false);
 		addImplicationBtn.setEnabled(false);
 		drawInferenceBtn.setEnabled(false);
 		cptBtn.setEnabled(false);
 		buttonPanel.add(loadNetworkBtn);
+		buttonPanel.add(saveNetworkBtn);
 		buttonPanel.add(cptBtn);
 		buttonPanel.add(drawInferenceBtn);
 		buttonPanel.add(addImplicationBtn);

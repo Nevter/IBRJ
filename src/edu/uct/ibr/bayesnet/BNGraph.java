@@ -3,6 +3,7 @@ package edu.uct.ibr.bayesnet;
 import edu.uct.ibr.implication.*;
 import edu.uct.ibr.bayesnet.BNNode.Relationship;
 import edu.uct.ibr.util.ImplicationUtil;
+import edu.uct.ibr.util.ibifFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,8 +42,24 @@ public class BNGraph {
   }
 
   public void load(String path){
-    graph = graph.load(path);
-    botGraph = botGraph.load(path);
+    String format = path.substring(path.lastIndexOf('.'), path.length());
+    if (format.equals(".ibif")){
+      //if the path is a .ibif use the ibif factory
+      ArrayList<String[]> loadedKB = ibifFactory.load(path);
+      graph = graph.load("temp.bif");
+      botGraph = botGraph.load("temp.bif");
+      for (String[] implPair : loadedKB){
+        BNNode antecedent = this.getNode(implPair[0]);
+        BNNode consequent = this.getNode(implPair[1]);
+        if (antecedent != null && consequent != null){
+          this.addImplicationStatement(new ClassicalImplication(antecedent,consequent,this));
+        }
+      }
+    }
+    else{
+      graph = graph.load(path);
+      botGraph = botGraph.load(path);
+    }
   }
 
   /**
@@ -91,6 +108,17 @@ public class BNGraph {
     return botGraph;
   }
 
+  public void save(String outputFile){
+    if(knowledgeBase.size() < 1){
+      //there are no implication statements, save normally. 
+      graph.save(outputFile+".bif");
+    }
+    else {
+      //there are implication statements, save in ibif.
+      ibifFactory.save(this, outputFile+".ibif");
+    }
+
+  }
   public BNNode getNode(String nodeName){
     Set nodes = getGraphNodes();
     for (Iterator i=nodes.iterator(); i.hasNext(); ) {

@@ -20,14 +20,14 @@ public class message{
   public static final String INPUT_OBSERVED_VALUE = "Enter observed value";
   public static final String CLI_OBSERVATION_TYPE ="(l)ogical or (p)robabilistic observation?";
   public static final String GUI_HELP = "Click \"Load Network\" to load a network\n click draw inference to draw inference";
-  
+  public static final String OUTPUT_FILE_PATH = "Enter the output file name";
   /**
    * Get the menu instruction text
    */
   public static String menuText(String networkName){
     String menuText = ln+ln+"~IBN Menu~"+
                       ln+"Network loaded: "+networkName+
-                      ln+"(l)oad a BN, draw (i)nference, (a)dd implication, (o)bserve, "+
+                      ln+"(l)oad a BN, (s)ave, draw (i)nference, (a)dd implication, (o)bserve, "+
                       ln+"view (im)plication, view (C)PT, view (g)raph, (q)uit";
     return menuText;
   }
