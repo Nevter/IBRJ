@@ -58,12 +58,15 @@ public class IBR {
     BNNode h = graph.getNode("Dyspnea");
     
     
-    //graph.addImplicationStatement(new ClassicalImplication(b,c,graph));
-    //graph.addImplicationStatement(new ClassicalImplication(c,f,graph));
-    //graph.addImplicationStatement(new ClassicalImplication(f,b,graph));
+    graph.addImplicationStatement(new ClassicalImplication(b,c,graph));
+    graph.addImplicationStatement(new ClassicalImplication(c,f,graph));
+    graph.addImplicationStatement(new ClassicalImplication(f,b,graph));
     System.out.println("~~~~~~~~~~~~~~~");
 
-    System.out.println(graph.getGraphOutput());
+    ibifFactory.save(graph,"output.ibif");
+
+    //BBNGraph g = graph.getBBNGraph();
+    //g.save("output.bif");
 
     /*
     ArrayList<Implication> kb = new ArrayList<Implication>();
