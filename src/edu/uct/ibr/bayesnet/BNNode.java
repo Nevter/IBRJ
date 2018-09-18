@@ -17,6 +17,10 @@ public class BNNode {
   BBNNode node = null;
   public enum Relationship {PARENT, CHILD, ANCESTOR, DESCENDANT, SELF, NONE};
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+//               Constructors
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
   public BNNode(BBNNode node){
     this.node = node;
   }
@@ -24,6 +28,10 @@ public class BNNode {
   public BNNode(BNGraph graph, String nodeName){
     this(new BBNNode(graph.getBBNGraph(),nodeName));
   }
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+//            Getters & Setters
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
   public String getName(){
     if (node != null) return node.getName();
@@ -36,14 +44,6 @@ public class BNNode {
 
   public BBNCPF getCPF(){
     return node.getCPF();
-  }
-
-  public String toString(){
-    return getName();
-  }
-
-  public boolean equals(BNNode o){
-    return node.equals(o.getNode());
   }
 
   public BBNDiscreteValue getPossibleValues(){
@@ -65,6 +65,15 @@ public class BNNode {
     return values.toArray()[1].toString();
   }
 
+  public String getObservedValue(){
+    if (isObserved()) return node.getEvidenceValue().toString();
+    else return null;
+  }
+
+  public boolean isObserved(){
+    return node.isEvidence();
+  }
+
   public void observe(String valueName){
     BBNDiscreteValue values = getPossibleValues();
     for (Iterator itr = values.iterator(); itr.hasNext(); ){
@@ -75,19 +84,7 @@ public class BNNode {
     }
   }
 
-  public String getObservedValue(){
-    if (isObserved()) return node.getEvidenceValue().toString();
-    else return null;
-  }
-
-  public boolean isObserved(){
-    return node.isEvidence();
-  }
-
-  public String toVerboseString(){
-    return node.toVerboseString();
-  }
-
+  
   public Set getChildren(){
     List<BBNNode> childrenBBNNode = node.getChildren();
     HashSet children = new HashSet();
@@ -128,6 +125,20 @@ public class BNNode {
     return descendants;
   }
 
+
+  public String toVerboseString(){
+    return node.toVerboseString();
+  }
+
+  @Override
+  public String toString(){
+    return getName();
+  }
+
+  public boolean equals(BNNode o){
+    return node.equals(o.getNode());
+  }
+  
   @Override
   public boolean equals(Object anObject) {
     if (!(anObject instanceof BNNode)) {
@@ -141,6 +152,5 @@ public class BNNode {
   public int hashCode() {
     return Objects.hash(getName(), isObserved());
   }
-
 
 }

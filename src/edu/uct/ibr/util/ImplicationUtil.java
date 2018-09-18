@@ -14,8 +14,9 @@ public class ImplicationUtil {
 
 	//does adding impl create a classical cycle?
 	public static boolean hasClassicalCycle(ArrayList<Implication> kb, Implication impl){
-		kb.add(impl);
-		return hasClassicalCycle(kb);
+		ArrayList<Implication> kbDash = (ArrayList<Implication>) kb.clone();
+		kbDash.add(impl);
+		return hasClassicalCycle(kbDash);
 	}
 
 	//does kb contain a classical cycle

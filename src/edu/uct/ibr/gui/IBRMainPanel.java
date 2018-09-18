@@ -83,6 +83,8 @@ public class IBRMainPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "File not found");
 				}
 				setGraph();
+				implPanel.reloadImplications();
+				obsPanel.updateObservations();
 			}
 		});
 		cptBtn = new Button("View a CPT");

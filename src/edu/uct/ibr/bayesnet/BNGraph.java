@@ -4,7 +4,6 @@ import edu.uct.ibr.implication.*;
 import edu.uct.ibr.bayesnet.BNNode.Relationship;
 import edu.uct.ibr.util.ImplicationUtil;
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -58,7 +57,6 @@ public class BNGraph {
     try{
       graph.addEdge(src.getNode(), dest.getNode());
     } catch (Exception e){
-      System.out.println(e);
       return false;
     }
 
@@ -169,6 +167,9 @@ public class BNGraph {
     boolean success = true;
     if (impl != null){
       if (ImplicationUtil.hasClassicalCycle(knowledgeBase, impl)){
+        if (!knowledgeBase.contains(impl)){
+          knowledgeBase.add(impl);
+        }
         collapseCycle();
       }
       else if (impl.supplementNetwork()){
@@ -217,7 +218,13 @@ public class BNGraph {
     for (BNNode n : cycleNodes) {
       graph.removeNode(n.getNode());
     }
-    String cycleNodeName = "CycleNode";
+
+    String cycleNodeName = "";
+    for (BNNode n : cycleNodes) {
+      cycleNodeName += n.getName() + "+";
+    }
+    cycleNodeName = cycleNodeName.substring(0,cycleNodeName.length()-1);
+
     //4)Add new cycleNode
     BNNode cycleNode = new BNNode(this,cycleNodeName);
     graph.addNode(cycleNode.getNode());

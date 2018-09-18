@@ -14,13 +14,6 @@ public class testRunner {
         result = JUnitCore.runClasses(edu.uct.ibrtest.testIBRUtil.class);
         printResult(result);
 
-        System.out.println("testImplication:");
-        result = JUnitCore.runClasses(edu.uct.ibrtest.testImplication.class);
-        printResult(result);
-
-        System.out.println("testBNInference:");
-        result = JUnitCore.runClasses(edu.uct.ibrtest.testBNInference.class);
-        printResult(result);
 
         System.out.println("testBNNode:");
         result = JUnitCore.runClasses(edu.uct.ibrtest.testBNNode.class);
@@ -28,6 +21,11 @@ public class testRunner {
 
         System.out.println("testBNGraph:");
         result = JUnitCore.runClasses(edu.uct.ibrtest.testBNGraph.class);
+        printResult(result);
+
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("IBRJ Integration Tests");
+        result = JUnitCore.runClasses(edu.uct.ibrtest.testIBRJIntegration.class);
         printResult(result);
 
     }

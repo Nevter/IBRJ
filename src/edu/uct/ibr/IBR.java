@@ -21,9 +21,7 @@ import edu.ksu.cis.bnj.bbn.*;
  *  * remove all references to BNJ from anywhere other than 
  *    API classes (classes in bayesnet package) - ClassicalImplication
  *  * Add Classes descriptors 
- *  * Add method descriptors 
- * 
- *  * Write tests
+ *  * Add method descriptors  
  *
  */
 
@@ -59,13 +57,13 @@ public class IBR {
     BNNode f = graph.getNode("Cancer");
     BNNode h = graph.getNode("Dyspnea");
     
-
-    graph.addImplicationStatement(new ClassicalImplication(b,c,graph));
-    graph.addImplicationStatement(new ClassicalImplication(c,f,graph));
-    graph.addImplicationStatement(new ClassicalImplication(f,b,graph));
+    
+    //graph.addImplicationStatement(new ClassicalImplication(b,c,graph));
+    //graph.addImplicationStatement(new ClassicalImplication(c,f,graph));
+    //graph.addImplicationStatement(new ClassicalImplication(f,b,graph));
     System.out.println("~~~~~~~~~~~~~~~");
 
-    System.out.println(BNInference.getMarginalsOutput(graph));
+    System.out.println(graph.getGraphOutput());
 
     /*
     ArrayList<Implication> kb = new ArrayList<Implication>();
