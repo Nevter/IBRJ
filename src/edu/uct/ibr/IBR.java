@@ -39,6 +39,12 @@ public class IBR {
   }  
 
   public static void help(){
-    System.out.println("There will be some help info here at some point");
+    System.out.println(" ~~ IBRJ ~~\n"+
+        "The ./ibr script can be run with two flags:\n"+
+        "* -cli to run the program in CLI mode\n"+
+        "* -gui to run the program in GUI mode\n"+
+        "Alternatively, run the program with no flags\n"+
+        "and enter 'g' to run the GUI or 'c' to run \n"+
+        "the CLI.");
   }
 }

@@ -88,12 +88,7 @@ public class IBRCLI {
    * Load a graph from a given input file
    */
   private static void load(){
-    String userInput = io.input(message.INPUT_FILE_PATH);
-    
-    //NOTE: The following is for ease of use during development
-    String filePath = "";
-    if (userInput.equals("a")) filePath = "./examples/asia/asia.bif";
-    else filePath = userInput;
+    String filePath = io.input(message.INPUT_FILE_PATH);
     
     try{
       graph = new BNGraph(filePath);

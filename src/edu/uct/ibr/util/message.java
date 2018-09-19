@@ -36,8 +36,12 @@ public class message{
   public static final String INPUT_IMPLICATION_TYPE = "(c)lassical or (d)efeasible implication?";
   public static final String INPUT_OBSERVED_VALUE = "Enter observed value";
   public static final String CLI_OBSERVATION_TYPE ="(l)ogical or (p)robabilistic observation?";
-  public static final String GUI_HELP = "Click \"Load Network\" to load a network\n click draw inference to draw inference";
   public static final String OUTPUT_FILE_PATH = "Enter the output file name";
+  public static final String GUI_HELP = ""+
+        "Use the top panel buttons to perform actions on the network.\n"+
+        "The right side panels show information about the network such\n"+
+        "as implications added and observations made.\n"+
+        "Network nodes can be moved by clicking and dragging them.";
   /**
    * Get the menu instruction text
    */
