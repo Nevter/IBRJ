@@ -58,6 +58,10 @@ public class BNGraph {
     load(path);
   }
 
+  /**
+   * Load a file into this BNGraph
+   * @param path
+   */
   public void load(String path){
     String format = path.substring(path.lastIndexOf('.'), path.length());
     if (format.equals(".ibif")){
@@ -80,6 +84,7 @@ public class BNGraph {
   }
 
   /**
+   * Add an edge between the src and dest nodes. Returns a boolean as the success of the operation
    * we have to make a whole new CPF because: when a CPF is made, it takes in a list of node names that can
    * be in the CPF. As we are adding new values to the CPF, it doesnt accept them as they arent in this 
    * initial list. There is no way of adding nodes to this list. Thus we have to make a whole new CPF and 
@@ -121,10 +126,18 @@ public class BNGraph {
     return true;
   }
 
+  /**
+   * Get the bot BBNGraph
+   * @return
+   */
   public BBNGraph getBotBBNGraph(){
     return botGraph;
   }
 
+  /**
+   * Save this BNGraph to the outputFile. The file type will be .bif
+   * if Knowledge base is empty, else it will be a .ibif.
+   */
   public void save(String outputFile){
     if(knowledgeBase.size() < 1){
       //there are no implication statements, save normally. 
@@ -136,6 +149,12 @@ public class BNGraph {
     }
 
   }
+
+  /**
+   * Get a node in the graph
+   * @param nodeName
+   * @return
+   */
   public BNNode getNode(String nodeName){
     Set nodes = getGraphNodes();
     for (Iterator i=nodes.iterator(); i.hasNext(); ) {
@@ -147,6 +166,10 @@ public class BNGraph {
     return null;
   }
 
+  /**
+   * get a set of all the nodes in the graph
+   * @return
+   */
   public Set getGraphNodes(){
     HashSet nodes = new HashSet();
     for (Iterator i = graph.getNodes().iterator(); i.hasNext(); ){
@@ -156,10 +179,20 @@ public class BNGraph {
     return nodes;
   }
 
+  /**
+   * Get all logical observations made on the IBN
+   * @return
+   */
   public ArrayList<Implication> getLogicalObservations(){
     return logicalObservations;
   }
 
+  /**
+   * Get the relationship between the two nodes. Relationships defined in BNNode
+   * @param antecedent
+   * @param consequent
+   * @return
+   */
   public Relationship getRelationship(BNNode antecedent, BNNode consequent){
     if (antecedent.equals(consequent)){
       return Relationship.SELF;
@@ -200,14 +233,27 @@ public class BNGraph {
     return Relationship.NONE;
   }
 
+  /**
+   * Get this BBNGraph
+   * @return
+   */
   public BBNGraph getBBNGraph(){
     return graph;
   }
 
+  /**
+   * Get the name of this graph
+   * @return
+   */
   public String getName(){
     return graph.getName();
   }
 
+  /**
+   * Add an implication statement to the knowledge base and modify the graph correctly
+   * @param impl
+   * @return
+   */
   public boolean addImplicationStatement(Implication impl){
     boolean success = true;
     if (impl != null){
@@ -237,6 +283,9 @@ public class BNGraph {
     return success;
   }
 
+  /**
+   * Collapse nodes that form part of an implication cycle into one node
+   */
   private void collapseCycle(){
     Set<String> cycleNodeNames = ImplicationUtil.getConnectedClassicalImplications(knowledgeBase);
 
@@ -434,6 +483,11 @@ public class BNGraph {
     }
   }
 
+  /**
+   * Get the probability table, given a hashtable of observations
+   * @param cP
+   * @return
+   */
   public double getConditionalProbabilities(Hashtable<String[],Hashtable<String,String>> cP){
     double val = 1.0;
 
@@ -445,6 +499,11 @@ public class BNGraph {
     return val;
   }
 
+  /**
+   * Make a query on the bottom network given a set of observations
+   * @param observations
+   * @return
+   */
   public String queryBotNetwork(Hashtable<String,String> observations){
     Set<String> obsKeySet = observations.keySet();
     BBNGraph botGraphDash = (BBNGraph)botGraph.clone();
@@ -456,6 +515,13 @@ public class BNGraph {
     return result;
   }
 
+  /**
+   * Make a query on a specific node and value given a set of observations
+   * @param queryNode
+   * @param queryValue
+   * @param observations
+   * @return
+   */
   public double queryBotNetwork(String queryNode, String queryValue, Hashtable<String,String> observations){
     String queryResult = queryBotNetwork(observations);
     String[] queryLines = queryResult.split("\n");
@@ -474,10 +540,18 @@ public class BNGraph {
     return 0.0;
   }
 
+  /**
+   * Get the knowledge base
+   * @return
+   */
   public ArrayList<Implication> getKnowledgebase(){
     return knowledgeBase;
   }
   
+  /**
+   * Get the knowledgebase as a set of strings
+   * @return
+   */
   public ArrayList<String> getKnowledgebaseOutput(){
     ArrayList<String> kbOutput = new ArrayList<String>();
     for (Implication i : knowledgeBase){
@@ -486,10 +560,17 @@ public class BNGraph {
     return kbOutput;
   }
 
+  /**
+   * The output of this graph
+   */
   public String toString(){
     return graph.toString();
   }
 
+  /**
+   * Get the probabilistic observations make on this network
+   * @return
+   */
   public ArrayList<String> getObservations(){
     Set<BNNode> nodes = getGraphNodes();
     ArrayList<String> observations = new ArrayList<String>();
@@ -504,20 +585,36 @@ public class BNGraph {
     return observations;
   }
 
-
+  /**
+   * Make a probabilistic observation on a node in this network
+   * @param node
+   * @param value
+   */
   public void observe(BNNode node, String value){
     node.observe(value);
   }
 
+  /**
+   * Make a logical observation on this network
+   * @param impl
+   */
   public void observe(Implication impl){
     logicalObservations.add(impl);
   }
 
+  /**
+   * Get a toString of this graph
+   * @return
+   */
   public String getGraphOutput(){
     return graph.debugGetEdgePrintout();
   }
 
 
+  /**
+   * Get the names of the nodes in this network
+   * @return
+   */
   public ArrayList<String> getNodeNames(){
     ArrayList<String> nodeNames = new ArrayList<String>();
     Set nodes = getGraphNodes();
@@ -528,6 +625,10 @@ public class BNGraph {
     return nodeNames;
   }
 
+  /**
+   * Get the output names for all the nodes in this network
+   * @return
+   */
   public ArrayList<String> getNodeOutputs(){
     ArrayList<String> nodeDescriptions = new ArrayList<String>();
     Set nodes = getGraphNodes();

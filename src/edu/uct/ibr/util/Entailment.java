@@ -28,6 +28,13 @@ import java.util.HashSet;
 
 public class Entailment {
 
+
+	/**
+	 * Check if the observations are entailed by the observations
+	 * @param kb
+	 * @param observations
+	 * @return
+	 */
 	public static boolean entails(ArrayList<Implication> kb, ArrayList<Implication> observations ){
 		
 		//if the observation symbols aren't specified in the KB, then we dont care about them
@@ -45,7 +52,6 @@ public class Entailment {
 					}
 
 		}
-		
 
 		//if the KB is empty, then we don't care the observations
 		//if there are no observations, then we just use the KB
@@ -70,6 +76,11 @@ public class Entailment {
 		return entails;
 	}
 
+	/**
+	 * Convert an implication statement into an AIMA.ComplexSentence
+	 * @param impl
+	 * @return
+	 */
 	public static ComplexSentence implToSentence(Implication impl){
 		PropositionSymbol antecedent = new PropositionSymbol(impl.getAntecedentNode().getName());
 		PropositionSymbol consequent = new PropositionSymbol(impl.getConsequentNode().getName());

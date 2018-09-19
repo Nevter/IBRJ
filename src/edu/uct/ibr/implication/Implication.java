@@ -35,19 +35,34 @@ public abstract class Implication {
     this.graph = graph;
   }
 
-  
+  /**
+   * Get the implication antecedent node
+   * @return
+   */
   public BNNode getAntecedentNode(){
     return antecedentNode;
   }
-  
+
+  /**
+   * Get the implication consequent node
+   * @return
+   */
   public BNNode getConsequentNode(){
     return consequentNode;
   }
   
+  /**
+   * Get the relationship of this implication
+   * @return
+   */
   public Relationship getRelationship(){
     return relationship;
   }
   
+  /**
+   * The supplement Network method must be defined
+   * @return
+   */
   public abstract boolean supplementNetwork();
 
   public abstract String toString();

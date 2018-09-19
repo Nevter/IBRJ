@@ -101,7 +101,9 @@ public class IBRCLI {
       io.output(message.ERROR_BAD_FILE_PATH);
     }
   }
-
+  /**
+   * Save the network
+   */
   private static void save(){
     String outputFile = io.input(message.OUTPUT_FILE_PATH);
     graph.save(outputFile);
@@ -162,7 +164,7 @@ public class IBRCLI {
   }
 
   /**
-   * TODO: Refactor this method
+   * Add an implication statement to this network
    */
   private static void addImplicationStatement(){    
 

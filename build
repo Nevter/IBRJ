@@ -18,3 +18,5 @@ IBR=/edu/uct/ibr
 javac -g:none -d $IBRBIN  -sourcepath $IBRSRC -cp $IBRCLASSPATH $IBRSRC/$IBR/*.java $IBRSRC/$IBR/gui/*.java $IBRSRC/$IBR/implication/*.java $IBRSRC/$IBR/util/*.java
 
 javac -g:none -d $IBRBIN -sourcepath $IBRSRC -cp $IBRCLASSPATH $IBRTEST/edu/uct/ibrtest/*.java
+
+javadoc -d ./doc/ -sourcepath $IBRSRC -cp $IBRCLASSPATH -subpackages edu.uct.ibr 

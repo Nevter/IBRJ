@@ -83,6 +83,11 @@ public class ibifFactory{
         return buf.toString();
     }
 
+    /**
+     * Save a BNGraph to the output file
+     * @param g
+     * @param path
+     */
     public static void save(BNGraph g, String path){
         String content = ibifConverter(g);
         fileWriter(content, path);
@@ -127,7 +132,11 @@ public class ibifFactory{
         return sb.toString();
     }
 
-
+    /**
+     * Get the .bif section of an ibif file
+     * @param content
+     * @return
+     */
     public static String getBIFfromIBIF(String content){
         int kbStart = content.indexOf("      <!-- Knowledge base -->");
         int kbEnd = content.lastIndexOf("</NETWORK>");
@@ -135,6 +144,11 @@ public class ibifFactory{
         return bif;
     }
 
+    /**
+     * Get a the knowledge base section of an .ibif
+     * @param content
+     * @return
+     */
     public static String getKBfromIBIF(String content){
         int kbStart = content.indexOf("<sentence>");
         int kbEnd = content.lastIndexOf("</NETWORK>");
@@ -142,6 +156,12 @@ public class ibifFactory{
         return kb;
     }
 
+    /**
+     * Create a knowledgebase of implications from a string. 
+     * Used when a IBN is being loaded from an .ibif
+     * @param content
+     * @return
+     */
     public static ArrayList<String[]> createKBfromStr(String content){
         ArrayList<String[]> kb = new ArrayList<String[]>();
         System.out.println("Create kb from Str");
@@ -158,6 +178,11 @@ public class ibifFactory{
         return kb;
     }
 
+    /**
+     * load an IBN from the file path
+     * @param path
+     * @return
+     */
     public static ArrayList<String[]> load(String path){
         String ibifContent = fileReader(path);
         String bif = getBIFfromIBIF(ibifContent);

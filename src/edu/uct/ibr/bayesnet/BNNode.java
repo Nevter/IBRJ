@@ -34,9 +34,6 @@ public class BNNode {
   BBNNode node = null;
   public enum Relationship {PARENT, CHILD, ANCESTOR, DESCENDANT, SELF, NONE};
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-//               Constructors
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
   public BNNode(BBNNode node){
     this.node = node;
@@ -46,51 +43,87 @@ public class BNNode {
     this(new BBNNode(graph.getBBNGraph(),nodeName));
   }
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-//            Getters & Setters
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
+  /**
+   * Get the name of this name
+   * @return
+   */
   public String getName(){
     if (node != null) return node.getName();
     else return "";
   }
 
+  /**
+   * Get the BBNNode
+   * @return
+   */
   public BBNNode getNode(){
     return node;
   }
 
+  /**
+   * Get the CPT of this table
+   * @return
+   */
   public BBNCPF getCPF(){
     return node.getCPF();
   }
 
+  /**
+   * Get the possible values this node can take
+   * @return
+   */
   public BBNDiscreteValue getPossibleValues(){
     BBNDiscreteValue values = (BBNDiscreteValue) node.getValues();
     return values;
   }
 
+  /**
+   * Get the possible values this node can take as a string
+   * @return
+   */
   public String getPossibleValuesOutput(){
     return node.getValues().toString();
   }
 
+  /**
+   * Get the truth value name of this node
+   * @return
+   */
   public String getTruthValueName(){
     BBNDiscreteValue values = (BBNDiscreteValue) node.getValues();
     return values.toArray()[0].toString();
   }
 
+  /**
+   * Get the false value name of this node
+   * @return
+   */
   public String getFalseValueName(){
     BBNDiscreteValue values = (BBNDiscreteValue) node.getValues();
     return values.toArray()[1].toString();
   }
 
+  /**
+   * Get the observed value name of this node
+   * @return
+   */
   public String getObservedValue(){
     if (isObserved()) return node.getEvidenceValue().toString();
     else return null;
   }
 
+  /**
+   * check if this node has been observerd
+   * @return
+   */
   public boolean isObserved(){
     return node.isEvidence();
   }
 
+  /**
+   * Observe this node
+   * @param valueName
+   */
   public void observe(String valueName){
     BBNDiscreteValue values = getPossibleValues();
     for (Iterator itr = values.iterator(); itr.hasNext(); ){
@@ -101,7 +134,10 @@ public class BNNode {
     }
   }
 
-  
+  /**
+   * Get the children of this node
+   * @return
+   */
   public Set getChildren(){
     List<BBNNode> childrenBBNNode = node.getChildren();
     HashSet children = new HashSet();
@@ -111,6 +147,10 @@ public class BNNode {
     return children;
   }
 
+  /**
+   * Get the parents of this node
+   * @return
+   */
   public Set<BNNode> getParents(){
     List<BBNNode> parentsBBNNode = node.getParents();
     HashSet<BNNode> parents = new HashSet();
@@ -120,6 +160,10 @@ public class BNNode {
     return parents;
   }
 
+  /**
+   * Get the ancestors of this node (does not include parents)
+   * @return
+   */
   public Set getAncestors(){
     Set<BBNNode> ancestorsBBNNode = node.getAncestors();
     HashSet ancestors = new HashSet();
@@ -131,6 +175,10 @@ public class BNNode {
     return ancestors;
   }
 
+  /**
+   * Get the descendants of this node (does not include children)
+   * @return
+   */
   public Set getDescendants(){
     Set<BBNNode> descendantsBBNNode = node.getDescendants();
     HashSet descendants = new HashSet();
@@ -142,7 +190,10 @@ public class BNNode {
     return descendants;
   }
 
-
+  /**
+   * Get a verbose output string
+   * @return
+   */
   public String toVerboseString(){
     return node.toVerboseString();
   }

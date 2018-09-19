@@ -35,6 +35,9 @@ public class ClassicalImplication extends Implication {
   }
 
 
+  /**
+   * Supplement the network this implication is related to with this implication.
+   */
   public boolean supplementNetwork(){
     boolean success = false;
     switch(relationship){
